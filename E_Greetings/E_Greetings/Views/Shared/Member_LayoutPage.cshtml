@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modernize an Admin Panel Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Modernize Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="@Url.Content("~/Content/Admin/")css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap Css -->
+    <!-- Bars Css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Admin/")css/bar.css">
+    <!--// Bars Css -->
+    <!-- Calender Css -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Admin/")css/pignose.calender.css" />
+    <!--// Calender Css -->
+    <!-- Common Css -->
+    <link href="@Url.Content("~/Content/Admin/")css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--// Common Css -->
+    <!-- Nav Css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Admin/")css/style4.css">
+    <!--// Nav Css -->
+    <!-- Fontawesome Css -->
+    <link href="@Url.Content("~/Content/Admin/")css/fontawesome-all.css" rel="stylesheet">
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+    <!--web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--//web-fonts-->
+    <link href="~/Content/Chosen/chosen.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="se-pre-con"></div>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                @{
+                    E_Greetings.Models.ModelsView.UserModelView item = null;
+                    if (Session["userId"] != null) { item = Session["userId"] as E_Greetings.Models.ModelsView.UserModelView; }
+                }
+                <h1>
+                    @if (Session["userId"] != null)
+                    {
+                        <a href="@Url.Action("Index", "User", new { id = item.ID })">E-Greetings</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Index", "User")">E-Greetings</a>
+                    }
+                </h1>
+                <span>G</span>
+            </div>
+            <div class="profile-bg"></div>
+            <ul class="list-unstyled components">
+                @if (Session["userId"] != null)
+                {
+                    <li class="active">
+                        <a href="@Url.Action("showMail", "MailGroup", new { name = "" }, null)">
+                            <i class="far fa-th-list"></i>
+                            List Mail
+                        </a>
+                    </li>
+                }
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-file"></i>
+                        All Card
+                        <i class="fas fa-angle-down fa-pull-right"></i>
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="cards.html">BirthDay</a>
+                        </li>
+                        <li>
+                            <a href="carousels.html">Chirstmas</a>
+                        </li>
+                        <li>
+                            <a href="forms.html">Valentine</a>
+                        </li>
+                        <li>
+                            <a href="modals.html">Modals</a>
+                        </li>
+                        <li>
+                            <a href="tables.html">Tables</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-users"></i>
+                        User
+                        <i class="fas fa-angle-down fa-pull-right"></i>
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu3">
+                        <li>
+                            <a href="login.html">Login</a>
+                        </li>
+                        <li>
+                            <a href="register.html">Register</a>
+                        </li>
+                        <li>
+                            <a href="forgot.html">Forgot password</a>
+                        </li>
+                    </ul>
+                </li>
+                @if (Session["userId"] != null)
+                {
+                    <li>
+                        <a href="@Url.Action("createPayment", "Payment", new { userId = item.ID}, null)">
+                            <i class="fas fa-registered"></i>
+                            Register service
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("showCard","SendMail", new { name =""})">
+                            <i class="far fa-reply-all"></i>
+                            Yord Sent Card
+                        </a>
+                    </li>
+                }
+                <li>
+                    <a href="@Url.Action("Feedback","User")">FeedBack</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <!-- top-bar -->
+            <nav class="navbar navbar-default mb-xl-5 mb-4">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                    <!-- Search-from -->
+                    <form method="post" class="form-inline mx-auto search-form" enctype="multipart/form-data">
+                        <input class="form-control mr-sm-2" value="@ViewBag.Keyword" name="name" type="search" placeholder="Search" aria-label="Search" required="">
+                        <button class="btn btn-style my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <!--// Search-from -->
+                    <ul class="top-icons-agileits-w3layouts float-right">
+                        @if (Session["userId"] != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <i class="far fa-user"></i>
+                                </a>
+                                <div class="dropdown-menu drop-3">
+                                    <div class="profile d-flex mr-o">
+                                        <div class="profile-l align-self-center">
+                                            <img src="images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
+                                        </div>
+                                        <div class="profile-r align-self-center">
+                                            <h3 class="sub-title-w3-agileits">@item.Username</h3>
+                                            <a href="mailto:info@example.com">@item.Username</a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="dropdown-item mt-3">
+                                        <h4>
+                                            <i class="far fa-user mr-3"></i>My Profile
+                                        </h4>
+                                    </a>
+                                    <a href="#" class="dropdown-item mt-3">
+                                        <h4>
+                                            <i class="fas fa-link mr-3"></i>Activity
+                                        </h4>
+                                    </a>
+                                    <a href="#" class="dropdown-item mt-3">
+                                        <h4>
+                                            <i class="far fa-envelope mr-3"></i>Messages
+                                        </h4>
+                                    </a>
+                                    <a href="#" class="dropdown-item mt-3">
+                                        <h4>
+                                            <i class="far fa-question-circle mr-3"></i>Faq
+                                        </h4>
+                                    </a>
+                                    <a href="#" class="dropdown-item mt-3">
+                                        <h4>
+                                            <i class="far fa-thumbs-up mr-3"></i>Support
+                                        </h4>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="@Url.Action("LogoutUser","Login")">Logout</a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("loginUser","Login")">Login</a></li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+            <!--// top-bar -->
+            <!--content-->
+            <div class="bd-content container">
+                @RenderBody()
+            </div>
+            <!--//content-->
+            <!-- Countdown -->
+            <div class="outer-w3-agile mt-3 outer-w3-agile-bg">
+                <h4 class="tittle-w3-agileits mb-4 text-white">Countdown Timer</h4>
+                <div class="simply-countdown-custom" id="simply-countdown-custom"></div>
+            </div>
+            <!--// Countdown -->
+        </div>
+    </div>
+
+
+    <!-- Required common Js -->
+    <script src='@Url.Content("~/Content/Admin/")js/jquery-2.2.3.min.js'></script>
+    <!-- //Required common Js -->
+    <!-- loading-gif Js -->
+    <script src="@Url.Content("~/Content/Admin/")js/modernizr.js"></script>
+    <script>
+        //paste this code under head tag or in a seperate js file.
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <!--// loading-gif Js -->
+    <!-- Sidebar-nav Js -->
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!-- Bar-chart -->
+    <script src="@Url.Content("~/Content/Admin/")js/rumcaJS.js"></script>
+    <script src="@Url.Content("~/Content/Admin/")js/example.js"></script>
+    <!--// Bar-chart -->
+    <!-- Calender -->
+    <script src="@Url.Content("~/Content/Admin/")js/moment.min.js"></script>
+    <script src="@Url.Content("~/Content/Admin/")js/pignose.calender.js"></script>
+    <script>
+        //<![CDATA[
+        $(function () {
+            $('.calender').pignoseCalender({
+                select: function (date, obj) {
+                    obj.calender.parent().next().show().text('You selected ' +
+                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
+                        '.');
+                }
+            });
+
+            $('.multi-select-calender').pignoseCalender({
+                multiple: true,
+                select: function (date, obj) {
+                    obj.calender.parent().next().show().text('You selected ' +
+                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
+                        '~' +
+                        (date[1] === null ? 'null' : date[1].format('YYYY-MM-DD')) +
+                        '.');
+                }
+            });
+        });
+        //]]>
+    </script>
+    <!--// Calender -->
+    <!-- profile-widget-dropdown js-->
+    <script src="@Url.Content("~/Content/Admin/")js/script.js"></script>
+    <!--// profile-widget-dropdown js-->
+    <!-- Count-down -->
+    <script src="@Url.Content("~/Content/Admin/")js/simplyCountdown.js"></script>
+    <link href="@Url.Content("~/Content/Admin/")css/simplyCountdown.css" rel='stylesheet' type='text/css' />
+    <script>
+        var d = new Date();
+        simplyCountdown('simply-countdown-custom', {
+            year: d.getFullYear(),
+            month: d.getMonth() + 2,
+            day: 25
+        });
+    </script>
+    <!--// Count-down -->
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+    <!-- Js for bootstrap working-->
+    <script src="@Url.Content("~/Content/Admin/")js/bootstrap.min.js"></script>
+    <!-- //Js for bootstrap working -->
+    @RenderSection("scripts", false)
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+</body>
+
+</html>

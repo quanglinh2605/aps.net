@@ -1,0 +1,40 @@
+﻿@model E_Greetings.Models.ModelsView.UserModelView
+
+@{
+    ViewBag.Title = "updateUser";
+    Layout = "~/Views/Shared/Member_LayoutPage.cshtml";
+}
+
+<h2>updateUser</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>UserModelView</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.Password)
+        @Html.HiddenFor(model => model.Username)
+        <div>
+            <input type="checkbox" id="chkActive" @(Model.isSubcrise==true?"checked":"")/> Active
+            <input type="hidden" name="isSubcrise" id="chkValueActive" />
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    @section scripts
+        {
+        <script>
+            $("#chkActive").change(function () {
+                $("#chkActive").is(":checked") ? $("#chkValueActive").val("True") : $("#chkValueActive").val("false")
+            })
+        </script>
+        }
+}
+

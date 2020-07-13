@@ -1,0 +1,77 @@
+﻿@model PagedList.IPagedList<Models.EF.Content>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Danh sach tin tuc";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<Models.EF.Category> ListCate = ViewBag.Cate as List<Models.EF.Category>;
+}
+
+@section header{
+    Danh sach tin tuc
+}
+<br /><br />
+      <div class="card">
+          <div class="card-header">
+              <h3 class="card-title">Danh sach tin tuc</h3>
+              @using (Html.BeginForm("Index", "Content", FormMethod.Get, new { @style = "margin-left:1060px;" }))
+              {
+                  <div class="card-tools">
+                      <div class="input-group input-group-sm" style="width: 150px;">
+                          <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control float-right" placeholder="Search">
+
+                          <div class="input-group-append">
+                              <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                          </div>
+                      </div>
+                  </div>
+              }
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+              <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                          <th>Action</th>
+                          <th>Ten bai</th>
+                          <th>Tieu de</th>
+                          <th>Mo ta</th>
+                          <th>Hinh anh</th>
+                          <th>Danh muc</th>
+                          <th>Chi tiet</th>
+                          <th>Ten tag</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach (var item in Model)
+                      {
+                          <tr>
+                              <td>
+                                  <a href="/Admin/Content/Edit/@item.ID">Sua</a> |
+                                  @Ajax.ActionLink("Xoa", "Delete", new { @id = item.ID }, new AjaxOptions
+                             {
+                                 Confirm = "Ban co muon xoa ban ghi nay?",
+                                 OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                 HttpMethod = "Delete"
+                             })
+                              </td>
+                              <td>@item.Name</td>
+                              <td>@item.MetaTitle</td>
+                              <td>@item.Description</td>
+                              <td>@item.Image</td>
+                              @foreach (var i in ListCate)
+                              {
+                                if(i.ID == @item.CategoryID)
+                                  {
+                              <td>i.Name</td>
+                                  }
+                              }
+                              
+                              <td>@item.Detail</td>
+                              <td>@item.Tags</td>
+                          </tr>
+                      }
+                  </tbody>
+              </table>
+          </div>
+          @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyword = ViewBag.keyword }))
+      </div>

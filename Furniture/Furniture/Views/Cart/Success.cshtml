@@ -1,0 +1,317 @@
+﻿@model Models.EF.Order
+
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cart = (List<Furniture.Models.CartItem>) ViewBag.listcart;
+    decimal? tongtien = 0;
+    decimal? phivc = 0;
+}
+<div class="container">
+    <script src="./Nội Thất Đồ Gỗ Việt, Nội Thất Giá Rẻ Cho Gia Đình, Khách Sạn_files/platform.js.download" gapi_processed="true"></script>
+    <script>
+window.renderOptIn = function() {
+  window.gapi.load("surveyoptin", function() {
+    window.gapi.surveyoptin.render(
+      {
+        "merchant_id": 171105296,
+        "order_id": "202005132F47",
+        "email": "haha@gmail.com",
+        "delivery_country": "VN",
+        "estimated_delivery_date": "2020-05-13"
+      });
+  });
+}
+    </script>
+    <div class="mt10 divdetail" style="padding:10px">
+        <div style="text-align: center;"><span style="font-size:18px;"><span style="color:#FF0000;"><strong>CHÚC MỪNG, BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG!!!</strong></span></span></div>
+
+        <div style="text-align: center;">&nbsp;</div>
+
+        <div style="text-align: center;"><span style="color:#FF0000;"><strong>CHÚNG TÔI SẼ SỚM LIÊN HỆ ĐẾN BẠN ĐỂ XÁC NHẬN ĐƠN HÀNG.</strong></span></div>
+
+        <div style="text-align: center;">&nbsp;</div>
+
+        <div style="text-align: center;"><span style="color:#FF0000;"><strong>CÁM ƠN BẠN ĐÃ CHỌN NỘI THẤT ĐỒ GỖ VIỆT!</strong></span></div>
+        <h4 class="titsuccess">Mã đơn hàng của bạn là: <span>@Model.ID</span></h4>
+        <h4 class="titsuccess" style="font-weight: bold;">Thông tin đặt mua của bạn:</h4>
+        <div class="clear10"></div>
+        <p class="infokh">Họ tên: @Model.ShipName</p>
+        <p class="infokh">Điện thoại: @Model.ShipMobile</p>
+        <p class="infokh">Địa chỉ: @Model.ShipAddress</p>
+        <p class="infokh">Tỉnh thành: Tỉnh Cao Bằng - Quận huyện: Huyện Hòa An</p>
+        <p class="infokh">Nội dung: Web nen co chuc nang huy don hang, ma web lay api cac tinh thanh tu nguon nao vay a</p>
+        <p class="infokh">Ngày mua: @Model.CreateDate</p>
+        <div class="clear"></div>
+        <div class="order-cart">
+            <div class="list-cart">
+                <div class="rhead">
+                    <div class="c1">Hình ảnh</div>
+                    <div class="c2">Sản phẩm</div>
+                    <div class="c6" style="color:#fff">Giá bán</div>
+                    <div class="c3">Số lượng</div>
+                    <div class="c4" style="color:#fff; font-weight:normal">Thành tiền</div>
+                </div>
+                <div class="clear"></div>
+                @foreach (var item in cart)
+                {
+                    <div class="col-sp" id="product-@item.Product.ID">
+                        <div class="c1"><img src="@item.Product.Image" alt="@item.Product.Name"></div>
+                        <div class="c2">@item.Product.Name<br><span style="color:#1382b9">@item.Product.Size</span></div>
+                        <div class="c6">@item.Product.Price<span id="giasp@(item.Product.ID)" style="display:none"></span></div>
+                        <div class="c3"> @item.Quantity </div>
+                        <div class="c4"><span id="thanhtien@(item.Product.ID)">@item.Product.Price</span></div>
+                    </div>
+                    tongtien = tongtien + item.Quantity * item.Product.Price;
+                }
+
+                <input id="giatong" name="texttongthanhtien" type="hidden" value="">
+                <div class="rbottom"><div><span style="float:right; padding-right:10px">Phí vận chuyển: <span>@phivc</span></span></div></div>
+                <div class="rbottom"><div id="tongthanhtien"><span style="float:right; padding-right:10px">Tổng thành tiền: <span id="texttotal">@(phivc + tongtien) đ</span></span></div></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="center"><a href="https://noithatdogoviet.com/" class="success">Quay về trang chủ</a></div>
+    </div>
+    <div class="clear10"></div>
+    <style type="text/css">
+        a.success {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #249fe7;
+            text-align: center;
+            border-radius: 5px;
+            color: #249fe7;
+            font-size: 16px;
+            margin-top: 10px;
+            min-width: 250px
+        }
+
+        p.infokh {
+            margin-bottom: 5px;
+            clear: both;
+        }
+
+        h4.titsuccess {
+            text-transform: uppercase;
+            margin-top: 15px
+        }
+
+            h4.titsuccess span {
+                color: #e60f1e;
+                font-weight: bold;
+            }
+
+        .titlecart {
+            font-size: 20px;
+            font-weight: normal;
+            clear: both;
+            margin-bottom: 20px;
+            text-align: left;
+            color: #ff4e00
+        }
+
+        .order-info {
+        }
+
+        .cart-row {
+            width: 100%;
+            display: inline-block;
+            clear: both;
+            margin-bottom: 8px;
+        }
+
+            .cart-row .cart-label {
+                float: left;
+                width: 16%;
+                text-align: right;
+                font: 14px Arial,Helvetica,sans-serif;
+                color: #888;
+                padding: 11px 0;
+                margin-right: 15px
+            }
+
+            .cart-row .cart-input {
+                border: 1px solid #888;
+                padding: 8px;
+                float: left;
+                width: 68%;
+                border-radius: 5px;
+                font-size: 12px
+            }
+
+            .cart-row input {
+                border: 0;
+                width: 100%;
+                color: #555
+            }
+
+            .cart-row textarea {
+                border: 0;
+                width: 100%;
+                height: 90px
+            }
+
+            .cart-row placeholder {
+                color: #ccc
+            }
+
+        .nutdathang {
+            float: left
+        }
+
+            .nutdathang input {
+                background: #ff4e00;
+                color: #fff;
+                padding: 8px 20px;
+                border-radius: 4px;
+                text-transform: uppercase;
+                font-size: 13px;
+                cursor: pointer
+            }
+
+        .order-cart {
+            margin: 10px 0;
+            text-align: center
+        }
+
+        .list-cart {
+            border: 1px solid #ddd;
+            font-size: 14px
+        }
+
+            .list-cart::after {
+                content: ' ';
+                display: block;
+                clear: both
+            }
+
+            .list-cart .rhead {
+                background: #e67e31;
+                color: #fff;
+                padding: 5px;
+                overflow: hidden
+            }
+
+            .list-cart .c1 {
+                float: left;
+                width: 10%
+            }
+
+                .list-cart .c1 img {
+                    max-width: 100%;
+                    max-height: 50px
+                }
+
+            .list-cart .c2 {
+                float: left;
+                width: 40%
+            }
+
+            .list-cart .c3 {
+                float: left;
+                width: 20%
+            }
+
+            .list-cart .c4 {
+                float: left;
+                width: 15%;
+                color: #ff4e00;
+                font-weight: bold
+            }
+
+            .list-cart .c6 {
+                float: left;
+                width: 10%;
+                text-align: left;
+                color: #ff4e00
+            }
+
+            .list-cart .c5 {
+                float: left;
+                width: 5%;
+                text-align: left
+            }
+
+        .col-sp {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0 0;
+            overflow: hidden
+        }
+
+        input.qtycart {
+            box-sizing: content-box;
+            border: 1px solid #ccc;
+            padding: 4px 10px;
+            width: 18px;
+            color: #03f;
+            text-align: center;
+            float: left
+        }
+
+        input[type="button"].upqty {
+            border: 1px solid #ccc;
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-left: 0;
+            cursor: pointer;
+            float: left
+        }
+
+        input[type="button"].downqty {
+            border: 1px solid #ccc;
+            width: 30px;
+            height: 30px;
+            float: left;
+            border-right: 0;
+            background: #fff;
+            cursor: pointer
+        }
+
+        input.delete {
+            border: 0;
+            padding: 2px 9px;
+            border-radius: 3px;
+            background: #666;
+            color: #fff;
+            font-size: 10px;
+            cursor: pointer
+        }
+
+        .w-quantity {
+            margin: 0 auto;
+            width: 110px
+        }
+
+        .list-cart .rbottom {
+            text-align: left;
+            padding: 10px 0;
+            color: #ff4e00;
+            padding-left: 10px;
+            overflow: hidden;
+            background: #f9f9f9;
+            font-size: 16px
+        }
+
+            .list-cart .rbottom span.textprice {
+                color: #ff4e00;
+                float: right;
+                padding-right: 5px
+            }
+
+        span.vitri {
+            width: 26px;
+            height: 26px;
+            border-radius: 100%;
+            background: #ff4e00;
+            text-align: center;
+            float: left;
+            margin-right: 10px;
+            color: #fff;
+            font-size: 13px;
+            padding-top: 3px
+        }
+    </style>
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model E_Greetings.Models.ModelsView.PaymentView
+
+@{
+    ViewBag.Title = "Payment";  
+    Layout = "~/Views/Shared/Member_LayoutPage.cshtml";
+}
+
+<h2>Payment</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">   
+    @if (ViewBag.check == false)
+    {
+    <h4>You have to pay to send more card</h4>
+    <hr />
+    <input type="hidden" name="IDMem" value="@ViewBag.userId" />
+    <input type="hidden" name="StartDate" value="@DateTime.Today.ToString("MM/dd/yyyy")" />
+    <input type="hidden" name="endDate" value="@DateTime.Today.AddMonths(+1).ToString("MM/dd/yyyy")" />
+    <input type="checkbox" id="checkprice" re /><span>15$</span>
+    <input type="hidden" id="checkvaluePrice" name="Price" />
+    <input type="hidden" value="True" name="status" />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Payment" id="payment" class="btn btn-success" style="margin-top:30px;" />
+        </div>
+    </div>
+    }
+    else
+    {
+        <p>You have paid for our service</p>
+    }
+</div>
+}
+@section scripts
+{
+        <script>
+            $("#checkprice").change(function () {
+                $('#checkprice').is(":checked") ? $("#checkvaluePrice").val("15") : $("#checkvaluePrice").val("");
+            })
+            $("#payment").click(function () {
+                if ($("#checkprice").is(":checked") == false) {
+                    alert("You have to tick on price")
+                }
+            })
+        </script>
+}

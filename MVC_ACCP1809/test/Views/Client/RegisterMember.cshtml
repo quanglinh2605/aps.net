@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "RegisterMember";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<h2>RegisterMember</h2>
+<div class="containter">
+    <div class="">
+        <form class="formMain" action="@Url.Action("RegisterPost")" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" value="" id="Name" name="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Nick">Nick</label>
+                <input type="text" value="" id="Nick" name="Nick" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" value="" id="password" name="pwd" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="UserEmail">Email</label>
+                <input type="email" value="" id="UserEmail" name="email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Avatar">Avatar</label>
+                <input type="file" value="" id="Avatar" name="avatar" class="form-control" />
+            </div>
+            <div class="form-group"><input type="submit" value="Register" name="btnRegister" class="MyButton" /></div>
+        </form>
+    </div>
+</div>

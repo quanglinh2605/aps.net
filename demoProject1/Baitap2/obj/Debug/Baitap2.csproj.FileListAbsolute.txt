@@ -1,0 +1,15 @@
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.csprojAssemblyReference.cache
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.Form1.resources
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.Properties.Resources.resources
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.csproj.GenerateResource.cache
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.csproj.CoreCompileInputs.cache
+C:\myproject\demoProject1\Baitap2\bin\Debug\Baitap2.exe.config
+C:\myproject\demoProject1\Baitap2\bin\Debug\Baitap2.exe
+C:\myproject\demoProject1\Baitap2\bin\Debug\Baitap2.pdb
+C:\myproject\demoProject1\Baitap2\bin\Debug\EntityFramework.dll
+C:\myproject\demoProject1\Baitap2\bin\Debug\EntityFramework.SqlServer.dll
+C:\myproject\demoProject1\Baitap2\bin\Debug\EntityFramework.xml
+C:\myproject\demoProject1\Baitap2\bin\Debug\EntityFramework.SqlServer.xml
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.csproj.CopyComplete
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.exe
+C:\myproject\demoProject1\Baitap2\obj\Debug\Baitap2.pdb

@@ -1,0 +1,128 @@
+﻿@model Models.EF.Feedback
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #mapCanvas {
+        height: 600px;
+    }
+</style>
+
+<style type="text/css">
+    #contact_form {
+        text-shadow: 0 1px 0 #FFF;
+        padding: 0px;
+        width: 50%;
+        float: left
+    }
+
+        #contact_form .title-contact {
+            font-family: 'Roboto Condensed',Arial,Helvetica,sans-serif;
+            font-size: 20px;
+            font-weight: normal;
+            clear: both;
+            margin: 20px 0;
+            text-align: left
+        }
+
+        #contact_form label {
+            cursor: pointer;
+            margin: 4px 0;
+            color: #c21521;
+            display: block;
+            font-weight: 300
+        }
+
+        #contact_form input, #contact_form textarea {
+            display: block;
+            width: 90%;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            color: #000;
+            border: 1px solid #ccc;
+            padding: 8px 10px 8px 10px;
+            margin-bottom: 15px;
+            margin-top: 3px
+        }
+
+        #contact_form .sendButton {
+            cursor: pointer;
+            border: 1px solid #ccc;
+            color: #ffffff;
+            font-size: 14px;
+            width: 25%;
+            background: #c21521
+        }
+
+            #contact_form .sendButton:hover {
+                background: #666
+            }
+
+    #contact_info {
+        width: 50%;
+        float: right;
+        margin-top: 20px;
+        line-height: 24px
+    }
+
+        #contact_info iframe {
+            width: 100% !important
+        }
+</style>
+<div class="breadandfilter">
+    <ul class="breadcrumb"><li typeof="v:Breadcrumb"><a href="" title="Trang chủ" rel="v:url" property="v:title"><img src="~/Assets/Client/images/images/home.png"></a><span>›</span></li><li typeof="v:Breadcrumb"><h2>Thông tin liên hệ</h2></li></ul>
+</div>
+<div class="">
+    <div id="contact_info">
+        <div><span style="font-size:20px;"><span style="color:#FF0000;"><strong>CÔNG&nbsp;TY&nbsp;TNHH&nbsp;SX TM NỘI THẤT ĐỒ GỖ VIỆT</strong></span></span></div>
+
+        <div>
+            <div><strong>Địa chỉ: </strong>Số 3 - 5 Lũy Bán Bích, Phường Tân Thới Hòa, Quận Tân Phú, TP.HCM.</div>
+
+            <div><strong>Xưởng SX:</strong> 26/7K Võ Thị Hồi, Xã Xuân Thới Đông, Huyện Hóc Môn, TP. HCM</div>
+
+            <div><b>Điện thoại: 028 6275 6689</b></div>
+
+            <div><strong>Hotline:&nbsp;<span style="color:#FF0000;">0988 88 7878&nbsp;- 0933 444 788</span></strong></div>
+
+            <div><strong>Email: </strong>lienhe@noithatdogoviet.com</div>
+
+            <div><strong>Website:</strong> <a href="http://noithatdogoviet.com/" target="_blank" title="www.noithatdogoviet.com"><span style="color:#0000CD;">www.noithatdogoviet.com</span></a></div>
+        </div>
+        <div>&nbsp;</div>
+    </div>
+    <div id="contact_form">
+        <div class="title-contact">Gửi thông tin liên hệ với chúng tôi</div>
+        <form name="form1" id="ff" method="post" action="@Url.Action("sendFeedBack","Contact")">
+            <label>
+                <span>Địa chỉ email:</span>
+                <input type="email" placeholder="Nhập địa chỉ email" name="sEmail" required="" autofocus="">
+            </label>
+
+            <label>
+                <span>Họ &amp; tên:</span>
+                <input type="text" placeholder="Nhập họ tên của bạn" name="sTen" required="">
+            </label>
+
+            <label>
+                <span>Điện thoại của bạn:</span>
+                <input type="tel" placeholder="Mời nhập điện thoại" name="sDienthoai" required="">
+            </label>
+
+            <label>
+                <span>Địa chỉ đầy đủ:</span>
+                <input type="text" placeholder="Nhập đầy đủ thông tin địa chỉ" name="sDiachi">
+            </label>
+
+            <label>
+                <span>Nội dung:</span>
+                <textarea placeholder="Nhập nội dung yêu cầu" name="sNoidung" rows="5"></textarea>
+            </label>
+
+            <input class="sendButton" type="submit" value="Gửi tin" name="btnSubmit">
+        </form>
+    </div>
+</div>
+<div class="clear"></div>
+

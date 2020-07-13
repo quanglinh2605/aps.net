@@ -1,0 +1,19 @@
+﻿@model List<Modelclass.EF.Category>
+
+<div class=" h_menu4">
+    <ul class="memenu skyblue">
+
+        @foreach (var item in Model)
+        {
+            <li><a href="/Template/Index/@item.ID">@item.Occasions</a></li>
+        }
+        @if (Session["userId"] != null)
+        {
+            CategoryPJ.Models.ModelsView.UserModelView item = Session["userId"] as CategoryPJ.Models.ModelsView.UserModelView;
+            <li><a href="@Url.Action("showMail", "MailGroup", new { name = "" }, null)">List Mail</a></li>
+            <li><a href="@Url.Action("createPayment", "Payment", new { userId = item.ID }, null)">Register Service</a></li>
+            <li><a href="@Url.Action("showCard","SendMail", new { name =""})">Your Send Card</a></li>
+            <li><a href="@Url.Action("Feedback","User")">FeedBack</a></li>
+        }
+    </ul>
+</div>

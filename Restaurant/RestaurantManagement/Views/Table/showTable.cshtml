@@ -1,0 +1,67 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<RestaurantManagement.Models.TableModelView>
+
+@{
+    ViewBag.Title = "showTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>showTable</h2>
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["Message"]
+    </div>
+}
+<form action="@Url.Action("showTable")" method="get" enctype="multipart/form-data">
+     <input type="hidden" value="@Model.PageNumber" name="page" />
+     <input type="hidden" name="Res_Id" value="@ViewBag.Res_Id" />
+     <input type="text" value="@ViewBag.Tukhoa" name="name" />
+     <input type="submit" value="Search" />
+</form>
+<p>
+    @Html.ActionLink("Create New", "createTable", new { Id = ViewBag.Res_Id })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NumberSeat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.Status == false)
+            {
+                <td>Empty</td>
+            }
+            else
+            {
+                <td>Ordered</td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberSeat)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "editTable", new { name = item.Name, Res_Id = item.Res_ID }) |
+                @Html.ActionLink("Delete", "deleteTable", new { name = item.Name, Res_Id = item.Res_ID })
+            </td>
+        </tr>
+    }
+</table>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("showTable", new { id = ViewBag.Res_Id, page = page }))
+</div>

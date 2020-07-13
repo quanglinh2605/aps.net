@@ -1,0 +1,62 @@
+﻿@model OrderRestaurant.Models.OrderModelView
+
+@{
+    ViewBag.Title = "createOrder";
+}
+
+<h2>createOrder</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>OrderModelView</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.timeStart, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.timeStart, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.timeStart, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" value="True" name="OrderStatus" />
+            <input type="hidden" value="Cancel" name="status" />
+            <input type="hidden" value="@ViewBag.Cus_Id" name="Id_Customer"/>
+            <input type="hidden" value="@ViewBag.Res_Id" name="Id_Res" />
+            <input type="hidden" value="@ViewBag.menu" name="Menu" />
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.numberSeat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numberSeat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.numberSeat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Menu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="hidden" value="" name="Menu" />
+                <a href="@Url.Action("showMenu","Menu", new { Res_Id = ViewBag.Res_Id,Cus_Id = ViewBag.Cus_Id,name =""})" class="btn btn-success btn-group-sm">Choose Menu</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,112 @@
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\DemoWebMVC.dll.config
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\DemoWebMVC.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\DemoWebMVC.pdb
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csc.exe
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csc.exe.config
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csc.rsp
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csi.exe
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csi.rsp
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.AppContext.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\vbc.exe
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\vbc.exe.config
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\vbc.rsp
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\Antlr3.Runtime.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\Newtonsoft.Json.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Helpers.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Mvc.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Optimization.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Razor.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\WebGrease.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Helpers.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Mvc.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Optimization.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Razor.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\Newtonsoft.Json.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\Antlr3.Runtime.pdb
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.csprojAssemblyReference.cache
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.csproj.CoreCompileInputs.cache
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.csproj.CopyComplete
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.dll
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.pdb
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\DemoWebMVC.dll.config
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\DemoWebMVC.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\DemoWebMVC.pdb
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csc.exe
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csc.exe.config
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csc.rsp
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csi.exe
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\csi.rsp
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.AppContext.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.Collections.Immutable.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.IO.FileSystem.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\vbc.exe
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\vbc.exe.config
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\vbc.rsp
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\VBCSCompiler.exe
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\roslyn\VBCSCompiler.exe.config
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\Antlr3.Runtime.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\Newtonsoft.Json.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Helpers.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Mvc.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Optimization.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Razor.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Deployment.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Razor.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\WebGrease.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Helpers.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Mvc.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Optimization.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.Razor.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Deployment.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\System.Web.WebPages.Razor.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\Newtonsoft.Json.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\Antlr3.Runtime.pdb
+C:\myproject\MVC_ACCP1809\DemoWebMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\myproject\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.csprojAssemblyReference.cache
+C:\myproject\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.csproj.CoreCompileInputs.cache
+C:\myproject\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.csproj.CopyComplete
+C:\myproject\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.dll
+C:\myproject\MVC_ACCP1809\DemoWebMVC\obj\Debug\DemoWebMVC.pdb

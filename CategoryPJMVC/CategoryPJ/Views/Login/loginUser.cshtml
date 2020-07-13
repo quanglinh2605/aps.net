@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "loginUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section slide{
+<div class="grow">
+    <div class="container">
+        <h2>Login</h2>
+    </div>
+</div>
+}
+
+@if (ViewBag.Mess != null)
+{
+    <div class="alert alert-danger">@ViewBag.Mess</div>
+}
+
+    <div class="account" style="font-size:12px;">
+        <div class="account-pass">
+            <div class="col-md-8 account-top">
+                <form action="LoginUser" method="post" enctype="multipart/form-data">
+
+                    <div>
+                        <span>Email</span>
+                        <input type="text" name="Username" style="width:50%">
+                    </div>
+                    <div>
+                        <span>Password</span>
+                        <input type="password" name="Password" style="width:50%">
+                    </div>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>

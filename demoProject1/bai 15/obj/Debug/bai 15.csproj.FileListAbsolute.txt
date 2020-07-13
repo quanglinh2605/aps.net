@@ -1,0 +1,7 @@
+C:\myproject\demoProject1\bai 15\bin\Debug\bai 15.exe.config
+C:\myproject\demoProject1\bai 15\bin\Debug\bai 15.exe
+C:\myproject\demoProject1\bai 15\bin\Debug\bai 15.pdb
+C:\myproject\demoProject1\bai 15\obj\Debug\bai 15.exe
+C:\myproject\demoProject1\bai 15\obj\Debug\bai 15.pdb
+C:\myproject\demoProject1\bai 15\obj\Debug\bai 15.csprojAssemblyReference.cache
+C:\myproject\demoProject1\bai 15\obj\Debug\bai 15.csproj.CoreCompileInputs.cache

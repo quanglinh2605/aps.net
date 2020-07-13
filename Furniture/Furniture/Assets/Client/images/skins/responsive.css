@@ -1,0 +1,590 @@
+﻿@charset "utf-8";
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 1024px) {
+    form.search select {
+        display: none
+    }
+
+    .homepage {
+        width: 100%
+    }
+
+    .homepage-right, .col-right {
+        display: none;
+    }
+
+    .col-left {
+        margin-right: 0
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .header-bot {
+        padding: 0px 0
+    }
+
+    .header-top .topmenu {
+        display: none;
+    }
+
+    form.search input[type="text"] {
+        width: 97%
+    }
+
+    form.search input[type="submit"] {
+        position: absolute;
+        right: 0
+    }
+}
+
+@media screen and (max-width: 840px) {
+}
+
+@media screen and (max-width: 768px) {
+
+    .col-right {
+        display: none;
+    }
+
+    .col-left {
+        width: 100%;
+        margin: 0;
+    }
+
+    ul#tinnoibat li {
+        width: 99%
+    }
+
+    .boxnews {
+        width: 50%
+    }
+
+    .boxproduct .grid .images {
+        height: 227px
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .shadowdmx:before {
+        height: 45px;
+        margin-top: -34px;
+    }
+    /* Trang đơn hàng */
+    .order-info, .order-cart {
+        width: 100% !important;
+        float: none !important;
+        padding: 5px !important
+    }
+
+    .cart-row .cart-label {
+        width: 15% !important
+    }
+
+    .cart-row .cart-input {
+        width: 78% !important
+    }
+
+    .cart-right {
+        display: none;
+    }
+
+    #continue {
+        display: block;
+    }
+
+    /* Footer */
+    .footer-col ul li {
+        width: 44%;
+        margin-left: 3%
+    }
+
+    .footer-l {
+        width: 98%;
+        float: none;
+        margin: 0 auto
+    }
+
+    .footer-r {
+        float: none;
+        clear: both;
+        width: 98%;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    #contact_form, #contact_info {
+        width: 100% !important;
+        padding: 0 20px;
+    }
+
+    .newsdiv .title h2 {
+        padding: 10px 15px
+    }
+
+    .newsticker {
+        margin-left: 5px
+    }
+
+    .boxproduct .grid .images {
+        height: 190px
+    }
+
+    .mobileico.showdetail {
+        bottom: 50px;
+    }
+
+        .mobileico.showdetail .hotline-popup {
+            bottom: 50px
+        }
+
+    .mobileico li.imessage {
+        display: flex;
+    }
+
+    .boxorder {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .divdetail iframe {
+        width: 100% !important;
+        height: auto
+    }
+
+    ul#tinnoibat li img {
+        width: 110px;
+        height: 80px
+    }
+
+    ul#tinnoibat li p {
+        display: none;
+    }
+
+    ul#tinnoibat li h3 {
+        font-weight: bold;
+        line-height: 24px;
+        font-size: 14px
+    }
+
+    .boxproduct .grid .setprice {
+        padding: 5px 2px;
+    }
+
+        .boxproduct .grid .setprice p.giaban, .boxproduct .grid del {
+            font-size: 11px;
+        }
+
+    .boxproduct .grid .images {
+        height: 230px
+    }
+    /* Box product */
+    .rowsp {
+        margin-left: 0;
+        margin-right: 0
+    }
+
+    .boxnews {
+        width: 100%
+    }
+
+        .boxnews .grid {
+            height: auto
+        }
+
+            .boxnews .grid .images {
+                height: 250px
+            }
+
+                .boxnews .grid .images img {
+                    max-height: 240px
+                }
+
+    .boxsptin {
+        width: 48%
+    }
+    /* Search & Sales */
+    .divsales {
+        width: 100%
+    }
+    /* Trang sản phẩm */
+    .breadcrumb li:first-child a {
+        padding-left: 4px
+    }
+
+    .row_submenu a {
+        padding: 8px 4px
+    }
+
+    .fastsearch span {
+        padding: 8px 4px
+    }
+
+    span#timnhanh {
+        display: block;
+        font-size: 13px
+    }
+
+    .hideboloc {
+        display: none
+    }
+    /* Trang chi tiết */
+    .picture {
+        width: 100%;
+        margin-bottom: 10px
+    }
+
+    .box-chitiet {
+        padding: 5px
+    }
+
+    .listinfo {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0
+    }
+
+    .support {
+        float: none;
+        clear: both;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .listinfo input.buynow, .listinfo input.intocart {
+        width: 150px
+    }
+
+    .support .textquantity, .support input.soluong {
+        margin-top: 0px
+    }
+
+    .support input.buynow {
+        float: left;
+        margin-left: 0px;
+        margin-top: 10px
+    }
+
+    /* Trang đơn hàng */
+    .order-info {
+        width: 100% !important;
+        float: right !important
+    }
+
+    .order-cart {
+        width: 100% !important;
+        float: left !important;
+        padding: 5px !important
+    }
+
+    .order-info {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .list-cart .c6 {
+        display: none
+    }
+
+    .cart-row .cart-label {
+        width: 97% !important;
+        text-align: left !important;
+        display: none
+    }
+
+    .cart-row .cart-input {
+        width: 100% !important
+    }
+
+    .cart-row {
+        margin-bottom: 4px !important
+    }
+
+    .nutdathang {
+        margin-left: 0px !important
+    }
+
+    .list-cart .rhead {
+        display: none
+    }
+
+    .order-info {
+        padding: 10px 5px !important
+    }
+
+    .list-cart .c1 {
+        width: 23% !important
+    }
+
+        .list-cart .c1 img {
+            max-height: 75px !important
+        }
+
+    .list-cart .c2 {
+        width: 75% !important;
+        text-align: left;
+        height: 43px
+    }
+
+    .list-cart .c3 {
+        width: 30% !important
+    }
+
+    .list-cart .c4 {
+        width: 35% !important
+    }
+
+    #tongthanhtien span.textprice {
+        float: left !important;
+        clear: both;
+        color: #2582be
+    }
+    /* Footer */
+
+    #contact_form, #contact_info {
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    /* Title */
+    .breadcrumb li a, .breadcrumb h2 {
+        font-size: 12px
+    }
+
+    .mobileico {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .boxproduct .grid .images {
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .boxproduct .grid .images {
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    .newsdiv .title {
+        display: none
+    }
+
+    .boxnews .grid {
+        height: auto
+    }
+
+    .boxsptin {
+        width: 98%
+    }
+
+    .boxtin .grid .images {
+        display: none
+    }
+
+    .boxtin .grid .infonews {
+        width: 100%
+    }
+
+    .boxtin {
+        border-bottom: 1px solid #dfdfdf;
+        padding-bottom: 10px
+    }
+}
+
+@media only screen and (max-width : 320px) {
+    /* Header */
+    .header-top h1 {
+        display: none
+    }
+
+    .header-bot .logo {
+        width: 100%;
+        float: none;
+        text-align: center
+    }
+
+    .header-bot .search {
+        width: 100%;
+        float: none;
+        margin-top: 10px;
+        text-align: center
+    }
+
+    .formsearch {
+        margin: 0 auto;
+        width: 99%
+    }
+    /* Box product */
+    .boxproduct {
+        width: 100%;
+    }
+
+    /* Search & Sales */
+    .divsales {
+        width: 100%
+    }
+
+    #cd-menu-trigger .cd-menu-icon {
+        left: 20% !important
+    }
+    /* Trang sản phẩm */
+    .breadcrumb li:first-child a {
+        padding-left: 4px
+    }
+
+    .row_submenu a {
+        padding: 8px 4px
+    }
+
+    .fastsearch span {
+        padding: 8px 4px
+    }
+    /* Trang chi tiết */
+    .picture {
+        width: 100%;
+        margin-bottom: 10px
+    }
+
+    .listinfo {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0
+    }
+
+    .support {
+        float: none;
+        clear: both;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .listinfo input.buynow, .listinfo input.intocart {
+        width: 120px;
+        font-size: 13px
+    }
+
+    .boxnews-l {
+        width: 100%;
+        margin-bottom: 20px;
+        float: none
+    }
+
+    .boxnews-r {
+        width: 100%;
+        float: none;
+        clear: both
+    }
+
+    .boxnews .grid p.mota {
+        display: none
+    }
+
+    .boxnews .grid h3 {
+        font-size: 12px
+    }
+
+    #hotviews li div {
+        font-size: 12px
+    }
+
+    #additional-menu img {
+        width: 50px;
+        height: 30px
+    }
+    /* Trang đơn hàng */
+    .order-info {
+        width: 100% !important;
+        float: right !important
+    }
+
+    .order-cart {
+        width: 100% !important;
+        float: left !important
+    }
+
+    .cart-row .cart-label {
+        width: 97% !important;
+        text-align: left !important;
+        display: none
+    }
+
+    .cart-row .cart-input {
+        width: 100% !important
+    }
+
+    .cart-row {
+        margin-bottom: 4px !important
+    }
+
+    .nutdathang {
+        margin-left: 0px !important
+    }
+
+    .list-cart .rhead {
+        display: none
+    }
+
+    .list-cart .c1 {
+        width: 23% !important
+    }
+
+        .list-cart .c1 img {
+            max-height: 100px !important
+        }
+
+    .list-cart .c2 {
+        width: 75% !important;
+        text-align: left;
+        font-size: 10px;
+        height: 43px
+    }
+
+    .list-cart .c4 {
+        width: 45% !important
+    }
+
+    #tongthanhtien span.textprice {
+        float: left !important;
+        clear: both
+    }
+    /* Footer */
+    .footer-col ul li {
+        width: 97%
+    }
+
+    #contact_form, #contact_info {
+        width: 100% !important;
+        padding: 0 5px !important
+    }
+
+    /* Title */
+    .breadcrumb li {
+        display: none
+    }
+
+        .breadcrumb li:first-child, .breadcrumb li:last-child {
+            display: block
+        }
+}
+
+@media only screen and (max-width : 768px) {
+    .container {
+        width: 99%
+    }
+
+    table {
+        width: 100% !important
+    }
+
+    .slide-item {
+        display: none !important
+    }
+}

@@ -1,0 +1,55 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<E_Greetings.Models.ModelsView.TemplateModelView>
+
+@{
+    ViewBag.Title = "showTemp";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<E_Greetings.Models.ModelsView.CategoryView> lscate = ViewBag.lscate as List<E_Greetings.Models.ModelsView.CategoryView>;
+    int d = 0;
+    int idcate = 0;
+}
+
+<h2>showTemp</h2>
+
+<p>
+    @Html.ActionLink("Create New", "createTemp")
+</p>
+
+@foreach (var product in Model)
+{
+    if (idcate != product.IDCategory) { d = 0; }
+    foreach (var i in lscate)
+    {
+        if (product.IDCategory == i.ID && d == 0)
+        {
+            <div style="clear:both"></div>
+            <h3>@i.Occasions</h3><hr /> idcate = i.ID;
+        }
+    }
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px;float:left;">
+        <div class="thumbnail product-item" style="height:320px">
+            <img class="img-responsive" style="cursor:pointer;height:160px;width:100%" src="~/Content/Uploads/@product.ImagePath" />
+            <div class="caption">
+                <h3>@product.Title</h3>
+                <p>@product.Descriptions</p>
+                <p>
+                    <a href="@Url.Action("updateTemp", new { id = product.ID })" class="btn btn-default btn-group-sm"><i class="fa fa-edit"></i> Edit</a>
+                    <a href="@Url.Action("deleteTemp", new { Id = product.ID })" class="btn btn-danger btn-group-sm"><i class="fa fa-trash-o"> Delete</i></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    d++;
+}
+<div style="clear:both"></div>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="Menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("showTemp", new { name = ViewBag.Keyword, page = page }))
+</div>
+<style>
+    .Menutrang li {
+        display: inline;
+        margin-right: 10px;
+    }
+</style>

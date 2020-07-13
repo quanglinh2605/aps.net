@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebChatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idusr" Type="int" />
+          <Property Name="idfriend" Type="int" />
+          <Property Name="contentpath" Type="varchar" MaxLength="20" />
+          <Property Name="unfriend" Type="bit" />
+        </EntityType>
+        <EntityType Name="GroupChat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="contentpath" Type="varchar" MaxLength="20" />
+          <Property Name="active" Type="bit" />
+          <Property Name="avatar" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WebChat.dbo.groupDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="groupDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDG" Type="int" />
+          <Property Name="IDU" Type="int" />
+        </EntityType>
+        <EntityType Name="UserChat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="nickname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pwd" Type="varchar" MaxLength="150" />
+          <Property Name="active" Type="bit" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="avatar" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Friend__idfriend__1367E606">
+          <End Role="UserChat" Type="Self.UserChat" Multiplicity="0..1" />
+          <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="idfriend" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Friend__idusr__1273C1CD">
+          <End Role="UserChat" Type="Self.UserChat" Multiplicity="0..1" />
+          <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="idusr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groupDetail__IDG__1A14E395">
+          <End Role="GroupChat" Type="Self.GroupChat" Multiplicity="0..1" />
+          <End Role="groupDetail" Type="Self.groupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groupDetail">
+              <PropertyRef Name="IDG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groupDetail__IDU__1B0907CE">
+          <End Role="UserChat" Type="Self.UserChat" Multiplicity="0..1" />
+          <End Role="groupDetail" Type="Self.groupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groupDetail">
+              <PropertyRef Name="IDU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebChatModelStoreContainer">
+          <EntitySet Name="Friend" EntityType="Self.Friend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupChat" EntityType="Self.GroupChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserChat" EntityType="Self.UserChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groupDetail" EntityType="Self.groupDetail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [groupDetail].[id] AS [id], 
+    [groupDetail].[IDG] AS [IDG], 
+    [groupDetail].[IDU] AS [IDU]
+    FROM [dbo].[groupDetail] AS [groupDetail]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Friend__idfriend__1367E606" Association="Self.FK__Friend__idfriend__1367E606">
+            <End Role="UserChat" EntitySet="UserChat" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Friend__idusr__1273C1CD" Association="Self.FK__Friend__idusr__1273C1CD">
+            <End Role="UserChat" EntitySet="UserChat" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groupDetail__IDG__1A14E395" Association="Self.FK__groupDetail__IDG__1A14E395">
+            <End Role="GroupChat" EntitySet="GroupChat" />
+            <End Role="groupDetail" EntitySet="groupDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groupDetail__IDU__1B0907CE" Association="Self.FK__groupDetail__IDU__1B0907CE">
+            <End Role="UserChat" EntitySet="UserChat" />
+            <End Role="groupDetail" EntitySet="groupDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebChatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idusr" Type="Int32" />
+          <Property Name="idfriend" Type="Int32" />
+          <Property Name="contentpath" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="unfriend" Type="Boolean" />
+          <NavigationProperty Name="UserChat" Relationship="WebChatModel.FK__Friend__idfriend__1367E606" FromRole="Friend" ToRole="UserChat" />
+          <NavigationProperty Name="UserChat1" Relationship="WebChatModel.FK__Friend__idusr__1273C1CD" FromRole="Friend" ToRole="UserChat" />
+          </EntityType>
+        <EntityType Name="groupDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDG" Type="Int32" />
+          <Property Name="IDU" Type="Int32" />
+          <NavigationProperty Name="GroupChat" Relationship="WebChatModel.FK__groupDetail__IDG__1A14E395" FromRole="groupDetail" ToRole="GroupChat" />
+          <NavigationProperty Name="UserChat" Relationship="WebChatModel.FK__groupDetail__IDU__1B0907CE" FromRole="groupDetail" ToRole="UserChat" />
+        </EntityType>
+        <EntityContainer Name="WebChatEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Friends" EntityType="Self.Friend" />
+          <EntitySet Name="groupDetails" EntityType="Self.groupDetail" />
+          <EntitySet Name="GroupChats" EntityType="WebChatModel.GroupChat" />
+          <EntitySet Name="UserChats" EntityType="WebChatModel.UserChat" />
+          <AssociationSet Name="FK__Friend__idfriend__1367E606" Association="WebChatModel.FK__Friend__idfriend__1367E606">
+            <End Role="UserChat" EntitySet="UserChats" />
+            <End Role="Friend" EntitySet="Friends" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Friend__idusr__1273C1CD" Association="WebChatModel.FK__Friend__idusr__1273C1CD">
+            <End Role="UserChat" EntitySet="UserChats" />
+            <End Role="Friend" EntitySet="Friends" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groupDetail__IDG__1A14E395" Association="WebChatModel.FK__groupDetail__IDG__1A14E395">
+            <End Role="GroupChat" EntitySet="GroupChats" />
+            <End Role="groupDetail" EntitySet="groupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groupDetail__IDU__1B0907CE" Association="WebChatModel.FK__groupDetail__IDU__1B0907CE">
+            <End Role="UserChat" EntitySet="UserChats" />
+            <End Role="groupDetail" EntitySet="groupDetails" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="GroupChat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contentpath" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="groupDetails" Relationship="WebChatModel.FK__groupDetail__IDG__1A14E395" FromRole="GroupChat" ToRole="groupDetail" />
+        </EntityType>
+        <EntityType Name="UserChat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nickname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Friends" Relationship="WebChatModel.FK__Friend__idfriend__1367E606" FromRole="UserChat" ToRole="Friend" />
+          <NavigationProperty Name="Friends1" Relationship="WebChatModel.FK__Friend__idusr__1273C1CD" FromRole="UserChat" ToRole="Friend" />
+          <NavigationProperty Name="groupDetails" Relationship="WebChatModel.FK__groupDetail__IDU__1B0907CE" FromRole="UserChat" ToRole="groupDetail" />
+        </EntityType>
+        <Association Name="FK__Friend__idfriend__1367E606">
+          <End Type="WebChatModel.UserChat" Role="UserChat" Multiplicity="0..1" />
+          <End Type="WebChatModel.Friend" Role="Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="idfriend" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Friend__idusr__1273C1CD">
+          <End Type="WebChatModel.UserChat" Role="UserChat" Multiplicity="0..1" />
+          <End Type="WebChatModel.Friend" Role="Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="idusr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groupDetail__IDG__1A14E395">
+          <End Type="WebChatModel.GroupChat" Role="GroupChat" Multiplicity="0..1" />
+          <End Type="WebChatModel.groupDetail" Role="groupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groupDetail">
+              <PropertyRef Name="IDG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groupDetail__IDU__1B0907CE">
+          <End Type="WebChatModel.UserChat" Role="UserChat" Multiplicity="0..1" />
+          <End Type="WebChatModel.groupDetail" Role="groupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserChat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groupDetail">
+              <PropertyRef Name="IDU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebChatModelStoreContainer" CdmEntityContainer="WebChatEntities1">
+          <EntitySetMapping Name="Friends">
+            <EntityTypeMapping TypeName="WebChatModel.Friend">
+              <MappingFragment StoreEntitySet="Friend">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idusr" ColumnName="idusr" />
+                <ScalarProperty Name="idfriend" ColumnName="idfriend" />
+                <ScalarProperty Name="contentpath" ColumnName="contentpath" />
+                <ScalarProperty Name="unfriend" ColumnName="unfriend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groupDetails">
+            <EntityTypeMapping TypeName="WebChatModel.groupDetail">
+              <MappingFragment StoreEntitySet="groupDetail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IDG" ColumnName="IDG" />
+                <ScalarProperty Name="IDU" ColumnName="IDU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupChats">
+            <EntityTypeMapping TypeName="WebChatModel.GroupChat">
+              <MappingFragment StoreEntitySet="GroupChat">
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="contentpath" ColumnName="contentpath" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserChats">
+            <EntityTypeMapping TypeName="WebChatModel.UserChat">
+              <MappingFragment StoreEntitySet="UserChat">
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

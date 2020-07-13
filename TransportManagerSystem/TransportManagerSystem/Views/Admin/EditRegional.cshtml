@@ -1,0 +1,19 @@
+﻿@model TransportManagerSystem.Models.ModelsViews.Regional
+@{
+    ViewBag.Title = "EditRegional";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>EditRegional</h2>
+@using (Html.BeginForm())
+{
+<div class="container">
+    <form validate="true">
+        <div class="form-group" style="width: 500px;">
+            <label>Region</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control, required" })
+            <input type="submit" value="Save" class="btn btn-primary" style="margin-top:5px;border:none;border-radius:2px;" />
+        </div>
+    </form>    
+</div>  
+}

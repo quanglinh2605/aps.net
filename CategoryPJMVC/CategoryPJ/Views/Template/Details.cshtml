@@ -1,0 +1,80 @@
+﻿@model Modelclass.EF.Template
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var session = ViewBag.User;
+}
+
+<div class="grow">
+    <div class="container">
+        <h2>Single</h2>
+    </div>
+</div>
+
+<div class="product" style="font-size: 2rem;">
+    <div class="container">
+
+        <div class="product-price1">
+            <div class="top-sing">
+                <div class="col-md-7 single-top">
+                    <div class="flexslider">
+
+                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                            
+                                    <div class="thumb-image"> <img src="@Url.Content(@Model.ImageTem)" data-imagezoom="true" class="img-responsive" draggable="false" height="50%" width="50%"> </div>
+                           
+                        </div>
+
+                        <ul class="flex-direction-nav">
+                        </ul>
+                    </div>
+
+                    <div class="clearfix"> </div>
+                    <!-- slide -->
+                    <!-- FlexSlider -->
+                    <script defer="" src="/Assets/Client/js/jquery.flexslider.js"></script>
+                    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen">
+
+                    <script>
+                        // Can also be used with $(document).ready()
+                        $(window).load(function () {
+                            $('.flexslider').flexslider({
+                                animation: "slide",
+                                controlNav: "thumbnails"
+                            });
+                        });
+                    </script>
+
+
+
+
+
+
+
+                </div>
+                <div class="col-md-5 single-top-in simpleCart_shelfItem">
+                    <div class="single-para ">
+                        <h4>@Model.Title</h4>
+                        <p>
+                            @Model.Descriptions
+                        </p>
+
+                        @if (session != null)
+                        {
+                            <a href="/temp_user/TempDetail/@Model.ID" class="add-cart item_add">ADD TO CART</a>
+                        }
+                        else { 
+                            <p>you have to login first to user this card</p>    
+                        }
+
+                        
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <!---->
+        </div>
+
+        <div class="clearfix"> </div>
+    </div>
+</div>

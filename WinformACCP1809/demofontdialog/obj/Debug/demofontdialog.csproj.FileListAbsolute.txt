@@ -1,0 +1,10 @@
+C:\myproject\WinformACCP1809\demodialog2\bin\Debug\demodialog2.exe.config
+C:\myproject\WinformACCP1809\demodialog2\bin\Debug\demodialog2.exe
+C:\myproject\WinformACCP1809\demodialog2\bin\Debug\demodialog2.pdb
+C:\myproject\WinformACCP1809\demodialog2\obj\Debug\demofontdialog.csprojAssemblyReference.cache
+C:\myproject\WinformACCP1809\demodialog2\obj\Debug\demodialog2.Form1.resources
+C:\myproject\WinformACCP1809\demodialog2\obj\Debug\demodialog2.Properties.Resources.resources
+C:\myproject\WinformACCP1809\demodialog2\obj\Debug\demofontdialog.csproj.GenerateResource.cache
+C:\myproject\WinformACCP1809\demodialog2\obj\Debug\demofontdialog.csproj.CoreCompileInputs.cache
+C:\myproject\WinformACCP1809\demodialog2\obj\Debug\demodialog2.exe
+C:\myproject\WinformACCP1809\demodialog2\obj\Debug\demodialog2.pdb

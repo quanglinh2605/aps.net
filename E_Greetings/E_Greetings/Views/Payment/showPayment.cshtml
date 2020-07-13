@@ -1,0 +1,95 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<E_Greetings.Models.ModelsView.PaymentView>
+
+@{
+    ViewBag.Title = "showPayment";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    int i = 1;
+}
+
+<h2>showPayment</h2>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>STT</th>
+        <th>
+            UserName
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().endDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Price)
+        </th>
+        <th>
+            Active
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(i++)</td>
+            @foreach (var e in ViewBag.lsuser as List<E_Greetings.Models.ModelsView.UserModelView>)
+            {
+                if (e.ID == item.IDMem)
+                {
+                    <td>@e.Username</td>
+                };
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+                @if (item.status == true)
+                {
+                    <td>Paid</td>
+                }
+                else
+                {
+                    <td>Not paid</td>
+                }
+
+                @if (DateTime.Compare(DateTime.Today, Convert.ToDateTime(item.endDate)) > 0)
+                {
+                 <td>Expired</td>   
+                }
+                else
+                {
+                    <td>not expire</td>
+                }
+            <td>
+                <a href="@Url.Action("updateUser","User",new { id = item.IDMem})">Active/Deactive</a>|
+                <a href="@Url.Action("deletePayment","Payment",new { id = item.ID})">Delete</a> |
+                <a href="@Url.Action("updatePayment","Payment",new { id = item.ID})">Update</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div style="clear:both"></div>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="Menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("showMail", new { name = ViewBag.Keyword, page = page }))
+</div>
+<style>
+    .Menutrang li {
+        display: inline;
+        margin-right: 10px;
+    }
+</style>

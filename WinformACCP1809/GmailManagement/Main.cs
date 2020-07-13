@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GmailManagement
+{
+    public partial class Main : Form
+    {
+        public Main()
+        {
+            InitializeComponent();
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGui_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDslh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

@@ -1,0 +1,95 @@
+﻿@using TransportManagerSystem.Models.ModelsViews;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TransportDetail>
+@{
+    ViewBag.Title = "showTransDetail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>showTransDetail</h2>
+<form action="@Url.Action("showTransDetail")" method="get">
+    <input type="text" name="searchString" value="@ViewBag.searchString" />
+    <input type="submit" value="Search" />
+</form>
+<a href="@Url.Action("createTransportDetail")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add New</a>
+@if (Model!=null)
+{
+<div class="table table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Account</th>
+                <th scope="col">Transport</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Transport Type</th>
+                <th scope="col">Licences Plate</th>
+                <th scope="col">Color</th>
+                <th scope="col">Region</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+                List<TransportManagerSystem.Models.ModelsViews.Account> lsacc = ViewBag.lsacc as List<TransportManagerSystem.Models.ModelsViews.Account>;
+                List<TransportManagerSystem.Models.ModelsViews.OwnerDetail> lsowner = ViewBag.lsowner as List<TransportManagerSystem.Models.ModelsViews.OwnerDetail>;
+                List<TransportManagerSystem.Models.ModelsViews.TransportPart> lstranspart = ViewBag.lstranspart as List<TransportManagerSystem.Models.ModelsViews.TransportPart>;
+                List<Regional> lsregion = ViewBag.lsregion as List<TransportManagerSystem.Models.ModelsViews.Regional>;
+                List<TransportManagerSystem.Models.ModelsViews.TransportType> lstype = ViewBag.lstype as List<TransportManagerSystem.Models.ModelsViews.TransportType>;
+            }
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@(i + 1)</td>
+                @foreach (var e in lsacc)
+                {
+                    if (item.Account_id == e.Id)
+                    {
+                        <td>@e.Username</td>
+                    }
+                }
+                @foreach (var e in lstranspart)
+                {
+                    if (item.Transport_id == e.Id)
+                    {
+                        <td>@e.Name</td>
+                    }
+                }
+                @foreach (var e in lsowner)
+                {
+                    if (item.Owner_id == e.Id)
+                    {
+                        <td>@e.Fullname</td>
+                    }
+                }
+                @foreach (var e in lstype)
+                {
+                    if (item.transType_Id == e.Id)
+                    {
+                        <td>@e.Name</td>
+                    }
+                }
+                <td>@item.Number</td>
+                <td>@item.Color</td>
+                @foreach (var e in lsregion)
+                {
+                    if (item.Region_Id == e.Id)
+                    {
+                        <td>@e.Name</td>
+                    }
+                }
+                <td>
+                    <a href="@Url.Action("editTransDetail", new { Id = item.Id})" class="btn btn-default btn-sm" style="margin-right:5px;"><i class="fa fa-pencil"></i> Edit</a>
+                </td>
+            </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("showTransDetail", new { page, searchString = ViewBag.searchString }))
+    </div>
+</div>  
+}

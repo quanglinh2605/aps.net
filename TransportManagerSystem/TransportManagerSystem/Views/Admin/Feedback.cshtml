@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Feedback</h2>
+<form action="@Url.Action("sendFeedback")" method="post">
+    <div class="form-group">
+        <label>Customer Name</label>
+        <input type="text" placeholder="Your Name" value="" name="Name" />
+    </div>
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="text" placeholder="Phone Number" value="" name="PhoneNumber" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="Your Email" name="Email" />
+    </div>
+    <div class="form-group">
+        <label>Feedback content</label>
+        <textarea name="Content"></textarea>
+    </div> 
+    <input type="submit" value="send" />
+</form>
+    
+

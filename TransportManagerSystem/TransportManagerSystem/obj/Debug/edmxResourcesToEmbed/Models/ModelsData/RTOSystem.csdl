@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RegionalTransportOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Regional">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Accounts" Relationship="RegionalTransportOfficeModel.FK__Account__Regiona__25869641" FromRole="Regional" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TransportPart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Type" Type="Int32" />
+    <NavigationProperty Name="TransportType" Relationship="Self.FK__Transport__ID_Ty__49C3F6B7" FromRole="TransportPart" ToRole="TransportType" />
+    <NavigationProperty Name="TransportDetails" Relationship="RegionalTransportOfficeModel.FK__Transport__Trans__5165187F" FromRole="TransportPart" ToRole="TransportDetail" />
+  </EntityType>
+  <EntityType Name="TransportType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TransportParts" Relationship="Self.FK__Transport__ID_Ty__49C3F6B7" FromRole="TransportType" ToRole="TransportPart" />
+  </EntityType>
+  <EntityType Name="Usertype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="RegionalTransportOfficeModel.FK__Account__usertyp__24927208" FromRole="Usertype" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK__Transport__ID_Ty__49C3F6B7">
+    <End Role="TransportType" Type="Self.TransportType" Multiplicity="0..1" />
+    <End Role="TransportPart" Type="Self.TransportPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransportType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransportPart">
+        <PropertyRef Name="ID_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RegionalTransportOfficeEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Regionals" EntityType="Self.Regional" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TransportParts" EntityType="Self.TransportPart" />
+    <EntitySet Name="TransportTypes" EntityType="Self.TransportType" />
+    <EntitySet Name="Usertypes" EntityType="Self.Usertype" />
+    <AssociationSet Name="FK__Transport__ID_Ty__49C3F6B7" Association="Self.FK__Transport__ID_Ty__49C3F6B7">
+      <End Role="TransportType" EntitySet="TransportTypes" />
+      <End Role="TransportPart" EntitySet="TransportParts" />
+    </AssociationSet>
+    <EntitySet Name="ownerDetails" EntityType="RegionalTransportOfficeModel.ownerDetail" />
+    <EntitySet Name="Accounts" EntityType="RegionalTransportOfficeModel.Account" />
+    <AssociationSet Name="FK__Account__Regiona__25869641" Association="RegionalTransportOfficeModel.FK__Account__Regiona__25869641">
+      <End Role="Regional" EntitySet="Regionals" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__usertyp__24927208" Association="RegionalTransportOfficeModel.FK__Account__usertyp__24927208">
+      <End Role="Usertype" EntitySet="Usertypes" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <EntitySet Name="TransportDetails" EntityType="RegionalTransportOfficeModel.TransportDetail" />
+    <AssociationSet Name="FK__Transport__Accou__534D60F1" Association="RegionalTransportOfficeModel.FK__Transport__Accou__534D60F1">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="TransportDetail" EntitySet="TransportDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__Owner__52593CB8" Association="RegionalTransportOfficeModel.FK__Transport__Owner__52593CB8">
+      <End Role="ownerDetail" EntitySet="ownerDetails" />
+      <End Role="TransportDetail" EntitySet="TransportDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__Trans__5165187F" Association="RegionalTransportOfficeModel.FK__Transport__Trans__5165187F">
+      <End Role="TransportPart" EntitySet="TransportParts" />
+      <End Role="TransportDetail" EntitySet="TransportDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ownerDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Card" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TransportDetails" Relationship="RegionalTransportOfficeModel.FK__Transport__Owner__52593CB8" FromRole="ownerDetail" ToRole="TransportDetail" />
+  </EntityType>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fullname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="usertype_id" Type="Int32" />
+    <Property Name="Regional_Id" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Regional" Relationship="RegionalTransportOfficeModel.FK__Account__Regiona__25869641" FromRole="Account" ToRole="Regional" />
+    <NavigationProperty Name="Usertype" Relationship="RegionalTransportOfficeModel.FK__Account__usertyp__24927208" FromRole="Account" ToRole="Usertype" />
+    <NavigationProperty Name="TransportDetails" Relationship="RegionalTransportOfficeModel.FK__Transport__Accou__534D60F1" FromRole="Account" ToRole="TransportDetail" />
+  </EntityType>
+  <Association Name="FK__Account__Regiona__25869641">
+    <End Type="RegionalTransportOfficeModel.Regional" Role="Regional" Multiplicity="0..1" />
+    <End Type="RegionalTransportOfficeModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regional">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Regional_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__usertyp__24927208">
+    <End Type="RegionalTransportOfficeModel.Usertype" Role="Usertype" Multiplicity="0..1" />
+    <End Type="RegionalTransportOfficeModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usertype">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="usertype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TransportDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Transport_id" Type="Int32" />
+    <Property Name="Owner_id" Type="Int32" />
+    <Property Name="Account_id" Type="Int32" />
+    <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Account" Relationship="RegionalTransportOfficeModel.FK__Transport__Accou__534D60F1" FromRole="TransportDetail" ToRole="Account" />
+    <NavigationProperty Name="ownerDetail" Relationship="RegionalTransportOfficeModel.FK__Transport__Owner__52593CB8" FromRole="TransportDetail" ToRole="ownerDetail" />
+    <NavigationProperty Name="TransportPart" Relationship="RegionalTransportOfficeModel.FK__Transport__Trans__5165187F" FromRole="TransportDetail" ToRole="TransportPart" />
+  </EntityType>
+  <Association Name="FK__Transport__Accou__534D60F1">
+    <End Type="RegionalTransportOfficeModel.Account" Role="Account" Multiplicity="0..1" />
+    <End Type="RegionalTransportOfficeModel.TransportDetail" Role="TransportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransportDetail">
+        <PropertyRef Name="Account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__Owner__52593CB8">
+    <End Type="RegionalTransportOfficeModel.ownerDetail" Role="ownerDetail" Multiplicity="0..1" />
+    <End Type="RegionalTransportOfficeModel.TransportDetail" Role="TransportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ownerDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransportDetail">
+        <PropertyRef Name="Owner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__Trans__5165187F">
+    <End Type="RegionalTransportOfficeModel.TransportPart" Role="TransportPart" Multiplicity="0..1" />
+    <End Type="RegionalTransportOfficeModel.TransportDetail" Role="TransportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransportPart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransportDetail">
+        <PropertyRef Name="Transport_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,10 @@
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\bin\Debug\demoWinform.exe.config
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\bin\Debug\demoWinform.exe
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\bin\Debug\demoWinform.pdb
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\obj\Debug\demoWinform.csprojAssemblyReference.cache
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\obj\Debug\demoWinform.Mainfrm.resources
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\obj\Debug\demoWinform.Properties.Resources.resources
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\obj\Debug\demoWinform.csproj.GenerateResource.cache
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\obj\Debug\demoWinform.csproj.CoreCompileInputs.cache
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\obj\Debug\demoWinform.exe
+C:\Users\QuangLinh\Documents\Visual Studio 2017\Projects\WinformACCP1809\demoWinform\obj\Debug\demoWinform.pdb

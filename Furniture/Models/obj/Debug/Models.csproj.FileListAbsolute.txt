@@ -1,0 +1,16 @@
+C:\myproject\Furniture\Models\bin\Debug\Models.dll.config
+C:\myproject\Furniture\Models\bin\Debug\Models.dll
+C:\myproject\Furniture\Models\bin\Debug\Models.pdb
+C:\myproject\Furniture\Models\bin\Debug\EntityFramework.dll
+C:\myproject\Furniture\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\myproject\Furniture\Models\bin\Debug\PagedList.dll
+C:\myproject\Furniture\Models\bin\Debug\PagedList.Mvc.dll
+C:\myproject\Furniture\Models\bin\Debug\EntityFramework.xml
+C:\myproject\Furniture\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\myproject\Furniture\Models\bin\Debug\PagedList.xml
+C:\myproject\Furniture\Models\bin\Debug\PagedList.Mvc.xml
+C:\myproject\Furniture\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\myproject\Furniture\Models\obj\Debug\Models.csproj.CopyComplete
+C:\myproject\Furniture\Models\obj\Debug\Models.dll
+C:\myproject\Furniture\Models\obj\Debug\Models.pdb
+C:\myproject\Furniture\Models\obj\Debug\Models.csprojAssemblyReference.cache

@@ -1,0 +1,99 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Models.EF.Product>
+
+@{
+    ViewBag.Title = "Danh sach san pham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+}
+
+@section header{
+    Danh sach san pham
+}
+@section jsFooter{
+<script src="~/Assets/Admin/js/productController.js"></script>
+}
+<br /><br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Danh sach san pham</h3>
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get, new { @style = "margin-left:1060px;" }))
+        {
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Ten san pham</th>
+                    <th>Hinh anh</th>
+                    <th>Ngay dang</th>
+                    <th>Danh muc</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="#" data-id="@item.ID" class="btn-images">Quan ly anh</a> |
+                            <a href="/Admin/User/Edit/@item.ID">Sua</a> |
+                            @Ajax.ActionLink("Xoa", "Delete", new { @id = item.ID }, new AjaxOptions
+                       {
+                           Confirm = "Ban co muon xoa ban ghi nay?",
+                           OnComplete = "$('#row_" + @item.ID + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                        </td>
+                        <td>@item.Name</td>
+                        <td><img src="@item.Image" width="120" height="100" /></td>
+                        <td>@item.CreateDate</td>
+                        <td>@item.CategoryID</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyword = ViewBag.keyword }))
+</div>
+
+<div class="modal" id="imagesManage">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Quan ly anh</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="imageList" style="margin: 5px;">
+
+                </div>
+                <div class="clear"></div>
+                <input type="button" id="btnChooseImages" class="btn btn-primary" value="Chon anh" />
+                <input type="hidden" id="hidProductID" value="0" />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnsaveImages">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>

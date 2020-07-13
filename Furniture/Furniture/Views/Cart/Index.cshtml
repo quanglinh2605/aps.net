@@ -1,0 +1,491 @@
+﻿@model List<Furniture.Models.CartItem>
+@{
+    Layout = null;
+    int i = 0;
+    Decimal tongtien = 0;
+}
+
+<!doctype html>
+<html lang="vi" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=0">
+    <title>Nội Thất Đồ Gỗ Việt - Thanh toán đơn hàng</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="Thông tin đơn hàng" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <meta name="format-detection" content="telephone=no">
+
+    <style type="text/css">
+.container:before, .container:after{display: table; content: " ";}
+*, *:before, *:after{box-sizing: border-box; outline: none}
+html, body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, font, img, ins, kbd, q, s, samp, small, strike, sup, sub, tt, var, u, center, ul, ol, li, dl, dt, dd, tfoot, caption, form, fieldset, legend, input, button, textarea, select, label, applet, object, audio, video, canvas, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary{font-family: inherit;font-size: 100%; font-weight: inherit; font-style: inherit; line-height: inherit; vertical-align: baseline; border: 0; outline: 0; padding: 0; margin: 0; color:#333; zoom:1}
+body{ font-family: Arial,Helvetica,sans-serif; background:#fff; font-size:14px; color:#333; line-height:20px; min-height:700px; font-weight: 300;}
+html {-webkit-text-size-adjust: none; height: 100%}  li{list-style: none;} a{text-decoration: none} a:hover{color: #c13828}
+.container{margin:0 auto; position:relative; width:99%;max-width:1000px}
+.hide,.hidemenu{display:none} .clear{clear: both; height: 1px} .clear10{clear: both; height: 10px}
+.pad10{padding: 10px} .pad15{padding: 15px}
+input,textarea{-webkit-appearance: none;} .midadv img{max-width: 100%; border: 2px solid #ccc} strong,b{font-weight: 400}
+h1, h2, h3, h4, h5, h6 {font-weight: normal; margin: 0; line-height: 1em; }
+h2{font-size: 1.28571em;}
+
+table {width: 100%; border-collapse: collapse; border-spacing: 0; font-size: 1em; }
+
+.sidebar{padding-top: 40px; width: 40%; padding-left: 20px;  position: fixed; color: #717171; height: 100%; right: 0; padding-right: 5%;}
+.sidebar:after{left: 0; background-position: left top; box-shadow: 1px 0 0 #e1e1e1 inset; content: ""; display: block; width: 300%; position: absolute; top: 0; bottom: 0; background: #fafafa; z-index: -1; border-bottom: 1px solid #e1e1e1; bottom: 0}
+.sidebar h2{color: #323232}
+.sidebar .divproduct{padding: 10px 5px; border-bottom:1px solid #e1e1e1;}
+.divproduct .product .image{width: 64px; height: 64px; border-radius: 8px; position: relative; padding-bottom: 10px}
+.divproduct .product .image img{height: 64px;}
+.divproduct .product .image span{background: rgb(243, 122, 24); width: 23px; height: 23px; position: absolute; right: -4px; top: -4px; color: #fff; font-size: 13px; padding: 2px; text-align: center; border-radius: 100%}
+.divproduct .product .description{padding: 0 20px; ;}
+.divproduct .product .description h3{color: #4b4b4b; font-weight: 500; margin-bottom: 2px; font-size: 14px}
+.divproduct .product .description span{color: #338dbc; font-weight: 400; font-size: 15px}
+.divproduct .product .description a{color: #e73e33; cursor: pointer; display: block;}
+.divproduct .product .price{font-weight: 400; color: #353535; width: 100px; text-align: right;}
+.divproduct .product .price span{display: inline-block; float: right; width: 22px; height: 30px; background: url(../../Assets/Client/images/images/delete-button.svg) no-repeat; background-size: 22px; margin-top: 4px; text-align: center; cursor: pointer;}
+
+.sidebar .total{padding: 20px 0; overflow: hidden;}
+.sidebar .total .fl{color: #4b4b4b; float: left;}
+.sidebar .total .fr{color: #4b4b4b; float: right; font-weight: 400; font-size: 22px}
+.sidebar .total span{color: #e74c3c}
+.sidebar{}
+
+span#texttotal{color: #e74c3c}
+
+.content{width: 55%; padding-left: 4%; padding-top: 40px;}
+.content h3{font-size: 22px; font-weight: 400; text-transform: uppercase;}
+.content h4{font-size: 22px; margin-top: 20px; font-weight: 100; margin-bottom: 8px; }
+
+.fieldset{}
+.fieldset .field{width: 100%; float: left; padding: 5px; box-sizing: border-box;}
+.fieldset .field input[type="text"],.fieldset .field input[type="submit"],.fieldset .field input[type="tel"],.fieldset .field input[type="email"]{box-shadow: 0 0 0 1px #d9d9d9; transition: all 0.2s ease-out; background-color: white; color: #333333; border-radius: 4px; display: block; box-sizing: border-box; width: 100%; padding: 10px 9px; word-break: normal;}
+.fieldset .field textarea{box-shadow: 0 0 0 1px #d9d9d9; transition: all 0.2s ease-out; background-color: white; color: #333333; border-radius: 4px; display: block; box-sizing: border-box; width: 100%; padding: 10px 9px; word-break: normal;}
+.fieldset .field select{box-shadow: 0 0 0 1px #d9d9d9; transition: all 0.2s ease-out; background-color: white; color: #666; border-radius: 4px; display: block; box-sizing: border-box; width: 49%; padding: 10px 9px; word-break: normal; height: 40px; float: left;}
+.fieldset .field select.right{float: right;}
+.fieldset .three{width: 60%}
+.fieldset .one{width: 40%}
+.fieldset .field input[type="radio"]{vertical-align: middle;}
+.chonphuongthuc{margin: 5px; margin-left:0;}
+.chonphuongthuc input{width: auto; margin-right: 10px; float: left;}
+
+.vanchuyen{background: #ecfbf0; padding: 15px; overflow: hidden; border-radius: 5px; color: #2c5236; font-size: 14px; line-height:24px;}
+.vanchuyen li{color:#2c5236;}
+
+.fieldset .field input[type="submit"]{font-size:16px;color:#fff;text-transform:uppercase;border:1px solid #d97f00;border-radius:4px;background:#f89406;background:-webkit-gradient(linear,0 0,0 100%,from(#f76b1c),to(#f89406));background:-webkit-linear-gradient(top,#f89406,#f76b1c);background:-moz-linear-gradient(top,#f89406,#f76b1c);background:-ms-linear-gradient(top,#f89406,#f76b1c);background:-o-linear-gradient(top,#f89406,#f76b1c); text-align: center; font-weight: 400; cursor: pointer;}
+
+.visually-hidden {border: 0; clip: rect(0, 0, 0, 0); clip: rect(0 0 0 0); width: 2px; height: 2px; margin: -2px; overflow: hidden; padding: 0; position: absolute; }
+
+.foot{float: left; margin-top: 10px;}
+.foot a{color: #338dbc; padding-left: 25px; background: url(../../Assets/Client/images/images/come-back.svg) no-repeat 5px; background-size: 15px; font-weight: 400;}
+.support{float: right;}
+.support p{text-align: center; font-weight: 400; margin-top: 10px; color: #666}
+.support p a{color: #ed1d24}
+
+#loading-ico{position: fixed; z-index:9999999999; top: 0; left: 0; height: 100%; width:100%; background: rgba( 255, 255, 255, .8 ) url('../../Assets/Client/images/images/loading-ico.gif') 50% 50% no-repeat; display: none;}
+
+.banner{display: none; padding: 20px; font-size: 20px; text-transform: uppercase;}
+.order-toggle{background: #fafafa; border-bottom: 1px solid #e6e6e6; padding: 14px 10px; width: 100%; display: none; margin-bottom: 0px; overflow: hidden;}
+.order-toggle img{height: 25px; padding-right: 10px; vertical-align: middle;}
+.order-toggle .fl{float: left;}
+.order-toggle .fr{float: right;}
+.order-toggle #hide-order{padding:12px; padding-right: 22px; background: url(../../Assets/Client/images/images/arrow-down.svg) no-repeat right; background-size: 12px; color: #338dbc; font-weight: 400; cursor: pointer;}
+.order-toggle #show-order{padding:12px; padding-right: 22px; background: url(../../Assets/Client/images/images/up-arrow.svg) no-repeat right; background-size: 12px; color: #338dbc; font-weight: 400; display: none; cursor: pointer;}
+
+.order-toggle #totalmb{font-size: 22px; font-weight: 400; color: #353535}
+
+ul.ulsize{margin-bottom: 10px; overflow: hidden;}
+ul.ulsize li{border:1px solid #dadada}
+ul.ulsize li{float:left;margin:5px 5px 0 0;text-align:center;width:35px;height:35px;cursor:pointer;background:#fff;display:flex;align-items:center;justify-content:center}
+ul.ulsize li:hover{border-color:red}
+ul.ulsize li.tick{background:url(../../Assets/Client/images/images/sticked.png) right bottom no-repeat #fff;border-color:red}
+
+@@media screen and (max-width: 768px) {
+.container{}
+.banner,.order-toggle{display: block;} .visually-hidden{display: none;} .order{display: none; margin-top: 5px; overflow: inherit !important}
+.sidebar:after{display: none;}
+.sidebar{position: relative;width: 100%; border-top: 1px solid #e1e1e1; padding-top: 0; padding: 0; background: #fafafa; border-bottom: 1px solid #e1e1e1;}
+.content{width: 100%; padding: 0 1%}
+.content h3{display: none;} .content{padding-top: 20px;} .content h4{margin-top: 0; margin-bottom: 20px;}
+}
+@@media screen and (max-width: 324px) {
+.order-toggle img{padding-right: 3px;}
+.order-toggle #hide-order,.order-toggle #show-order{padding-right: 17px; font-size: 14px}
+.order-toggle #totalmb{font-size: 16px}
+}
+input[type=radio].check{float: right;}
+input[type=radio].center{ margin-bottom: -4px }
+input[type=radio] {width: 18px !important; height: 18px; -webkit-appearance: none; -moz-appearance: none; appearance: none; background:url(../../Assets/Client/images/images/noradio.svg) center center no-repeat; background-size:18px; outline: 0; border: 0; display: inline-block; -webkit-box-shadow: none !important; -moz-box-shadow: none !important; box-shadow: none !important; cursor: pointer; vertical-align: middle;}
+input[type=radio]:focus { outline: none; border: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important; box-shadow: none !important;}
+input[type=radio]:checked {  background:url(../../Assets/Client/images/images/radiochecked.svg) center center no-repeat; background-size:18px; text-align: center; line-height: 15px;}
+/* End Checkbox & Radio */
+#divmethod{display:none; margin-top: 10px; background: #e9fbed; padding:8px 15px; line-height: 24px; border: 1px solid; color:#288ad6; border-radius:4px; text-align:left; font-size: 14px}
+.spanphivc{margin: 0px 0 10px 4px; color: #338dbc; display: none;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="@Url.Action("payment","Cart")" method="post" name="Dtaform" enctype="multipart/form-data" id="form_load" class="">
+            <div class="banner"><h1>Nội Thất Đồ Gỗ Việt</h1></div>
+            <div class="sidebar">
+                @*<div class="order-toggle order-toggle-hide">
+                    <div class="fl">
+                        <span class="togglecart" id="hide-order"><img src="../../Assets/Client/images/images/online-cart.svg"> Hiển thị thông tin đơn hàng</span>
+                        <span class="togglecart" id="show-order"><img src="../../Assets/Client/images/images/online-cart.svg"> Ẩn thông tin đơn hàng</span>
+                    </div>
+                    <div class="fr"><span id="totalmb">33.000.000 đ</span></div>
+                </div>*@
+                <h2 class="visually-hidden">Thông tin đơn hàng</h2>
+                <div class="order">
+                    <div class="divproduct">
+                        <table>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr class="product" id="product-@i">
+                                        <td class="image">
+                                            <img alt="@item.Product.Name" src="@item.Product.Image">
+                                            <span>@item.Quantity</span>
+                                        </td>
+                                        <td class="description">
+                                            <h3>@item.Product.Name</h3>
+                                            <span>( @item.Product.Size )</span><span> ( @item.Product.Color)</span>
+                                        </td>
+                                        <td class="price">
+                                            <p>@item.Product.Price</p>
+                                            <span onclick="remove_this_item(@i);"></span>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                    tongtien = tongtien + (item.Product.Price * item.Quantity).GetValueOrDefault(0);
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="total">
+                        <div class="fl">Phí vận chuyển</div>
+                        <div class="fr"><span class="phivc">0 đ</span></div>
+                        <div class="clear10"></div>
+                        <div class="fl">Tổng cộng</div>
+                        <div class="fr">
+                            <span id="texttotal">@tongtien đ</span>
+                            <input type="hidden" id="tongtienval" value="@tongtien">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <!--<h3>Nội Thất Đồ Gỗ Việt</h3>-->
+                <h4 style="text-transform:uppercase; margin-bottom:10px">Thông tin giao hàng</h4>
+                <div class="fieldset">
+                    <div class="field one">
+                        <input type="tel" placeholder="Số điện thoại" autocapitalize="off" spellcheck="false" maxlength="10" minlength="10" name="sDienthoai" required="">
+                    </div>
+                    <div class="field three">
+                        <input type="email" placeholder="Email" autocapitalize="off" spellcheck="false" name="sEmail">
+                    </div>
+                    <div class="field">
+                        <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" size="30" type="text" name="sTen">
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" name="sDiachi">
+                    </div>
+                    <div class="field">
+                        <div id="divarea">
+                            <select name="cboTinh" onchange="showquan()">
+                                <option value="">Chọn tỉnh thành</option>
+                                <option value="235">Hồ Chí Minh</option>
+
+                                <option value="260">Hà nội</option>
+
+                                <option value="292">Tỉnh Hà Giang</option>
+
+                                <option value="304">Tỉnh Cao Bằng</option>
+
+                                <option value="318">Tỉnh Bắc Kạn</option>
+
+                                <option value="327">Tỉnh Tuyên Quang</option>
+
+                                <option value="335">Tỉnh Lào Cai</option>
+
+                                <option value="345">Tỉnh Điện Biên</option>
+
+                                <option value="356">Tỉnh Lai Châu</option>
+
+                                <option value="365">Tỉnh Sơn La</option>
+
+                                <option value="380">Tỉnh Yên Bái</option>
+
+                                <option value="390">Tỉnh Hoà Bình</option>
+
+                                <option value="402">Tỉnh Thái Nguyên</option>
+
+                                <option value="412">Tỉnh Lạng Sơn</option>
+
+                                <option value="424">Tỉnh Quảng Ninh</option>
+
+                                <option value="439">Tỉnh Bắc Giang</option>
+
+                                <option value="450">Tỉnh Phú Thọ</option>
+
+                                <option value="464">Tỉnh Vĩnh Phúc</option>
+
+                                <option value="474">Tỉnh Bắc Ninh</option>
+
+                                <option value="483">Tỉnh Hải Dương</option>
+
+                                <option value="496">Hải Phòng</option>
+
+                                <option value="512">Tỉnh Hưng Yên</option>
+
+                                <option value="523">Tỉnh Thái Bình</option>
+
+                                <option value="533">Tỉnh Hà Nam</option>
+
+                                <option value="540">Tỉnh Nam Định</option>
+
+                                <option value="551">Tỉnh Ninh Bình</option>
+
+                                <option value="561">Tỉnh Thanh Hoá</option>
+
+                                <option value="589">Tỉnh Nghệ An</option>
+
+                                <option value="611">Tỉnh Hà Tĩnh</option>
+
+                                <option value="625">Tỉnh Quảng Bình</option>
+
+                                <option value="634">Tỉnh Quảng Trị</option>
+
+                                <option value="645">Tỉnh Thừa Thiên Huế</option>
+
+                                <option value="655">Đà Nẵng</option>
+
+                                <option value="664">Tỉnh Quảng Nam</option>
+
+                                <option value="683">Tỉnh Quảng Ngãi</option>
+
+                                <option value="698">Tỉnh Bình Định</option>
+
+                                <option value="710">Tỉnh Phú Yên</option>
+
+                                <option value="720">Tỉnh Khánh Hoà</option>
+
+                                <option value="730">Tỉnh Ninh Thuận</option>
+
+                                <option value="738">Tỉnh Bình Thuận</option>
+
+                                <option value="749">Tỉnh Kon Tum</option>
+
+                                <option value="759">Tỉnh Gia Lai</option>
+
+                                <option value="776">Tỉnh Đắk Lắk</option>
+
+                                <option value="791">Tỉnh Đắk Nông</option>
+
+                                <option value="799">Tỉnh Lâm Đồng</option>
+
+                                <option value="812">Tỉnh Bình Phước</option>
+
+                                <option value="824">Tỉnh Tây Ninh</option>
+
+                                <option value="834">Tỉnh Bình Dương</option>
+
+                                <option value="845">Tỉnh Đồng Nai</option>
+
+                                <option value="857">Tỉnh Bà Rịa - Vũng Tàu</option>
+
+                                <option value="866">Tỉnh Long An</option>
+
+                                <option value="882">Tỉnh Tiền Giang</option>
+
+                                <option value="894">Tỉnh Bến Tre</option>
+
+                                <option value="904">Tỉnh Trà Vinh</option>
+
+                                <option value="914">Tỉnh Vĩnh Long</option>
+
+                                <option value="923">Tỉnh Đồng Tháp</option>
+
+                                <option value="936">Tỉnh An Giang</option>
+
+                                <option value="948">Tỉnh Kiên Giang</option>
+
+                                <option value="964">Thành phố Cần Thơ</option>
+
+                                <option value="977">Tỉnh Hậu Giang</option>
+
+                                <option value="985">Tỉnh Sóc Trăng</option>
+
+                                <option value="997">Tỉnh Bạc Liêu</option>
+
+                                <option value="1005">Tỉnh Cà Mau</option>
+
+                            </select>
+                            <span id="statusquan"></span>
+                        </div>
+                    </div>
+                    <div class="field spanphivc">
+                        Phí vận chuyển: <span class="phivc"></span>
+                    </div>
+                    <div class="field">
+                        <textarea name="sNoidung" rows="5" placeholder="Nhập ghi chú (nếu có)"></textarea>
+                    </div>
+                    <div class="field">
+                        <div class="vanchuyen">
+                            Chi phí giao hàng:
+                            <ul>
+                                <li>- Giao ráp miễn phí tại các quận nội thành tại TPHCM.</li>
+                                <li>- Quận 9, Hóc Môn, Thủ Đức, Củ Chi, Nhà Bè:<strong> 250.000 vnđ/đơn hàng</strong></li>
+                                <li>- Các tỉnh thành khác:&nbsp;<strong>400.000 vnđ/đơn hàng</strong></li>
+                            </ul>
+
+                            <div>Chi phí giao hàng có thể thay đổi tùy theo sản phẩm và tùy trường hợp!!!</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="chonphuongthuc">
+                            <input type="radio" name="sMethod" value="1" id="rad1" checked=""><label for="rad1">Thanh toán khi nhận hàng</label><div class="clear10"></div>
+                            <input type="radio" name="sMethod" value="2" id="rad2"><label for="rad2">Thanh toán chuyển khoản</label>
+                        </div>
+                        <div id="divmethod" class="divmethod">
+                            <div><strong>TÀI KHOẢN NGÂN HÀNG:</strong></div>
+
+                            <div>
+                                <div><strong>VIETCOMBANK: </strong>044 1000 763 091 - NGUYỄN VĂN THẮNG - PGD TÂN HƯƠNG.</div>
+
+                                <div><strong>ACB:</strong> 1414 59 869 - NGUYỄN VĂN THẮNG - PGD TÂN HƯƠNG.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <input type="submit" name="BtnSubmit" value="Hoàn thành đặt hàng">
+                    </div>
+                    <!--<div class="clear"></div>
+                <div class="field"><div id="divmethod" class="divmethod">Phương thức thanh toán và vận chuyển: giao hàng, thu tiền tại nhà trên toàn quốc</div></div>-->
+                    <div class="clear"></div>
+                    <div class="foot">
+                        <a href="javascript:history.go(-1)"> Quay lại trang trước</a>
+                    </div>
+                    <div class="support">
+                        <p>Hỗ trợ: <a href="tel:0933444788">0933 444 788</a></p>
+                    </div>
+                    <input type="hidden" id="sThanhvien" value="0">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="loading-ico"></div>
+    <script src="../../Assets/Client/images/skins/jqueryadmin.js"></script>
+    <script type="text/javascript">
+        function remove_this_item(id) {
+            var dataString = "pid=" + id;
+            $.ajax({
+                type: "POST",
+                url: "/Cart/RemoveItem",
+                data: dataString,
+                success: function (response) {
+                    $("#product-" + id).fadeOut();
+                    $("#texttotal").text(response.total);
+                 }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".field input[name=sDienthoai]").on("keyup change", function () {
+                var str = $(this).val();
+                if (str.length == 10) {
+                    var tongtien = $("input#tongtienval").val();
+                    //alert(str);
+                    var dataString = "dienthoai=" + str + "&tongtien=" + tongtien + "&action=getthanhvien";
+                    $.ajax({
+                        type: "POST",
+                        url: "../action.php",
+                        data: dataString,
+                        success: function (response) {
+                            var getData = $.parseJSON(response);
+                            $("input[name=sTen]").val(getData.Hoten);
+                            $("input[name=sEmail]").val(getData.Email);
+                            $("input[name=sDiachi]").val(getData.Diachi);
+                            $("#divarea").html(getData.Tinhthanh);
+                            $(".phivc").text(getData.Phivc);
+                            $("#texttotal").text(getData.Tongtien);
+                            $(".spanphivc").show();
+                        }
+                    });
+                }
+            });
+            $("form#form_load").submit(function () {
+                var phone = $(".field input[name=sDienthoai]").val();
+                if (phone.length < 10) {
+                    alert('Điện thoại phải 10 số mới đúng');
+                    return false;
+                } else {
+                    $("#loading-ico").show();
+                }
+            });
+            $(".togglecart").click(function () {
+                $(".order").slideToggle();
+                //$(this).toggleClass("togglechange");
+                if ($(this).attr("id") == "hide-order") {
+                    $(this).hide();
+                    $("#show-order").show();
+                } else {
+                    $(this).hide();
+                    $("#hide-order").show();
+                }
+                //$(".subnav").attr("id","ToggleMenu");
+            });
+            $(".chonphuongthuc").on("click", "input[name='sMethod']", function () {
+                var value = $(this).val();
+                $("#divmethod").hide();
+                if (value == 2) {
+                    $('#divmethod').show(1000);
+                }
+            });
+        });
+
+        function showquan() {
+            var value = $("select[name=cboTinh]").val();
+            var tongtien = $("input#tongtienval").val();
+            var dataString = "value=" + value + "&tongtien=" + tongtien + "&action=showquancart";
+            $.ajax({
+                type: "POST",
+                url: "../action.php",
+                data: dataString,
+                success: function (response) {
+                    //$("#statusquan").html(response);
+                    var getData = $.parseJSON(response);
+                    $("#statusquan").html(getData.Quan);
+                    $(".phivc").text(getData.Phivc);
+                    $("#texttotal").text(getData.Tongtien);
+                    $(".spanphivc").show();
+                }
+            });
+        }
+
+        function phivanchuyenquan(id) {
+            var value = id.value;
+            var tongtien = $("input#tongtienval").val();
+            var dataString = "value=" + value + "&tongtien=" + tongtien + "&action=phivcquan";
+            $.ajax({
+                type: "POST",
+                url: "../action.php",
+                data: dataString,
+                success: function (response) {
+                    var getData = $.parseJSON(response);
+                    $(".phivc").text(getData.phivanchuyen);
+                    $("#texttotal").text(getData.tongtien);
+                    $(".spanphivc").show();
+                }
+            });
+
+            //alert(aloc);
+        }
+
+    </script>
+
+</body>
+</html>

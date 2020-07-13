@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<Models.EF.ProductCategory>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Danh sach danh muc con";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<Models.EF.Category> listCate = ViewBag.listCate as List<Models.EF.Category>;
+}
+
+@section header{
+    Danh sach danh muc con
+}
+<br /><br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Danh sach nguoi dung</h3>
+        @using (Html.BeginForm("Index", "ProductCate", FormMethod.Get, new { @style = "margin-left:1060px;" }))
+        {
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Ten danh muc</th>
+                    <th>Title</th>
+                    <th>Danh muc cha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Admin/ProductCate/Edit/@item.ID">Sua</a> |
+                            @Ajax.ActionLink("Xoa", "Delete", new { @id = item.ID }, new AjaxOptions
+                       {
+                           Confirm = "Ban co muon xoa ban ghi nay?",
+                           OnComplete = "$('#row_" + @item.ID + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.MetaTitle</td>
+                        @foreach(var i in listCate)
+                        {
+                            if(item.ParentID == i.ID)
+                            {
+                                <td>@i.Name</td>
+                            }
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyword = ViewBag.keyword }))
+</div>

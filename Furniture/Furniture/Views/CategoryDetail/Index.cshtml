@@ -1,0 +1,180 @@
+﻿@model List<Models.EF.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listProcate = (List<Models.EF.ProductCategory>)ViewBag.listProCate;
+    var boloc = (List<Models.EF.FilterPrice>)ViewBag.listprice;
+    var produce = (Models.EF.Produce)ViewBag.produce;
+    var category = (Models.EF.Category)ViewBag.category;
+    var cateDetail = (Models.EF.CategoryDetail)ViewBag.cateDetail;
+}
+@section filter{
+    <div class="breadandfilter">
+        <ol class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="/" title="Trang chủ" itemprop="item">
+                    <span itemprop="name">Trang chủ</span>
+                </a>
+                <meta itemprop="position" content="1">
+                <span class="rowbr">›</span>
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="/danh-muc/@category.MetaTitle-@category.ID" title="@category.Name" itemprop="item">
+                    <span itemprop="name">@category.Name</span>
+                </a>
+                <meta itemprop="position" content="2">
+                <span class="rowbr">›</span>
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="/danh-muc-con/@cateDetail.MetaTitle-@cateDetail.ID" title="@cateDetail.Name" itemprop="item">
+                    <h2><span itemprop="name">@cateDetail.Name</span></h2>
+                </a>
+                <meta itemprop="position" content="3">
+            </li>
+        </ol>
+    </div>
+    <div class="fastsearch">
+        <span>Từ khóa: </span>
+        <div class="row_submenu">
+            @foreach (var item in listProcate)
+            {
+                <a href="@item.MetaTitle" title="@item.Name" class="menusub">@item.Name</a>
+            }
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="boloc hide" style="display:block">
+        <ul>
+            @if (boloc != null)
+            {
+                foreach (var item in boloc)
+                {
+                    if (item.StartPrice != null && item.EndPrice != null)
+                    {
+                        long? price = (long?)Session["price"];
+                        <li class="@(item.ID == price ? "activebl" : "")"><a href="@Url.Action("Index", "Category", new { cateId = (long)Session["cateId"] ,catedetailId = (long)Session["cateDetailId"], Price = item.ID })" rel="nofollow" title="@item.Name">@item.Name</a></li>
+                    }
+                }
+            }
+        </ul>
+        <div class="sapxepsp">
+            <select class="property" rel="Ban-ghe-go">
+                <option value="0" @(Session["sort"] != null ? "" : "selected='selected'")>Sap Xep</option>
+                @foreach (var item in boloc)
+                {
+                    long selected = 0;
+                    if (Session["sort"] != null)
+                    {
+                        selected = (long)Session["sort"];
+                    }
+                    if (item.StartPrice == null && item.EndPrice == null)
+                    {
+                        <option value="@item.ID" @(selected == item.ID ? "selected='seleted'" : "")>@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+}
+@section jsFooter{
+    <div id="jspage"></div>
+    <script src="~/Assets/Client/images/skins/main.js"></script>
+}
+
+@foreach (var element in listProcate)
+{
+    int i = 0;
+    <div class="title_home">
+        <h2><a href="@element.MetaTitle" title="@element.Name">@element.Name</a></h2>
+    </div>
+    <div class="rowsp tutorial_list@{@element.ID}">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                if (item.ProCateID == element.ID)
+                {
+                    <div class="boxproduct">
+                        <div class="grid">
+                            @if (item.State != null)
+                            {
+                                <div class="icontext">@item.State</div>
+                            }
+                            <span class="discount">- @(Math.Round((decimal)((1 - @item.Price / @item.PromotionPrice)) * 100))%</span>
+                            <div class="images">
+                                <a href="@item.MetaTitle" title="@item.Name"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
+                            </div>
+                            <h3><a href="@item.MetaTitle" title="@item.Name">@item.Name</a></h3>
+                            <div class="setprice">
+                                <p class="code"><span>Mã sp: @item.Code</span></p>
+                                <p class="giaban">@item.Price<sup>đ</sup></p>
+                                <del>@item.PromotionPrice</del>
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                }
+                if (i == 4) { break; }
+            }
+        }
+    </div>
+    <div class="clear"></div>
+    if (i >= 4)
+    {
+        <div class="show_more_main " id="show_more_main">
+            <span class="show_morecat show_more show_more@{@element.ID} " val="4" count="4" id="@element.ID">Xem thêm @element.Name</span>
+        </div>
+    }
+}
+
+<div class="mframe pad10">
+    <div class="divdetail" id="scrollheight" style="overflow: hidden; height: 500px;">
+        <span style="font-size:14px;">
+            <a href="@Url.Action("Index","CategoryDetail", new { cateId = Session["cateId"],catedetailId = Session["cateDetailId"], type = ViewBag.type})" title="@produce.Name">
+                <span style="color:#0000FF;"><strong>@produce.Name</strong></span>
+            </a>@produce.Description.
+        </span>
+        @foreach (var item in listProcate)
+        {
+            if (item.MetaDescriptions != null && item.MetaDescriptions != "")
+            {
+                <h2><strong><a href="@Url.Action("Index", "CategoryDetail")" title="@item.Name"><span style="color:#0000FF;">@item.Name</span></a></strong> @item.SeoTittle</h2>
+
+                <ul>
+                    @if (item.MetaDescriptions != "" && item.MetaDescriptions != null)
+                    {
+                        <li><span style="font-size:14px;">@item.MetaDescriptions</span></li>
+                    }
+                    @if (item.Material != "" && item.Material != null)
+                    {
+                        <li><span style="font-size:14px;"><strong>Chất liệu sản phẩm: </strong>@item.Material</span></li>
+                    }
+                    @if (item.DesignStyle != "" && item.DesignStyle != null)
+                    {
+                        <li><span style="font-size:14px;"><strong>Phong cách thiết kế: </strong>@item.DesignStyle</span></li>
+                    }
+                    @if (item.DesignShape != "" && item.DesignShape != null)
+                    {
+                        <li><span style="font-size:14px;"><strong>Kiểu dáng thiết kế:</strong> @item.DesignShape</span></li>
+                    }
+                    @if (item.Pattern1 != "" && item.Pattern1 != null)
+                    {
+                        <li><span style="font-size:14px;"><strong>Hoa văn sản phẩm:</strong>@item.Pattern1</span></li>
+                    }
+                    @if (item.Size != "" && item.Size != null)
+                    {
+                        <li><span style="font-size:14px;"><strong>Kích thước sản phẩm: </strong>@item.Size</span></li>
+                    }
+                    @if (item.Color != "" && item.Color != null)
+                    {
+                        <li><span style="font-size:14px;"><strong>Màu sắc sản phẩm:</strong>@item.Color</span></li>
+                    }
+                </ul>
+            }
+        }
+        <span style="font-size:14px;">@produce.Description2</span>
+    </div>
+    <div class="clr"></div>
+    <div style="text-align:center"><a class="read-more" style="display: inline-block;">Xem thêm</a></div>
+</div>

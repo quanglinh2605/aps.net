@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="E_GreetingsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Occasions" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDMem" Type="int" Nullable="false" />
+    <Property Name="Text" Type="text" />
+  </EntityType>
+  <EntityType Name="Mailgroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDMem" Type="int" Nullable="false" />
+    <Property Name="Mail" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDMem" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="endDate" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SendMail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDtemp_user" Type="int" Nullable="false" />
+    <Property Name="Sendby" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Receiver" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SendDate" Type="datetime" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Temp_User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TempID" Type="int" />
+    <Property Name="Message" Type="nvarchar" MaxLength="500" />
+    <Property Name="Title" Type="varchar" MaxLength="100" />
+    <Property Name="photo" Type="nvarchar" MaxLength="100" />
+    <Property Name="music" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Templates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCategory" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descriptions" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="isSubcrise" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Mailgroup__IDMem__1273C1CD">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Mailgroup" Type="Self.Mailgroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mailgroup">
+        <PropertyRef Name="IDMem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temp_User__TempI__6477ECF3">
+    <End Role="Templates" Type="Self.Templates" Multiplicity="0..1" />
+    <End Role="Temp_User" Type="Self.Temp_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Templates">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Temp_User">
+        <PropertyRef Name="TempID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temp_User__UserI__6383C8BA">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Temp_User" Type="Self.Temp_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Temp_User">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_category_template">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Templates" Type="Self.Templates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Templates">
+        <PropertyRef Name="IDCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_temp_user">
+    <End Role="Temp_User" Type="Self.Temp_User" Multiplicity="1" />
+    <End Role="SendMail" Type="Self.SendMail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Temp_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SendMail">
+        <PropertyRef Name="IDtemp_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_feedback">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FeedBack">
+        <PropertyRef Name="IDMem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_payment">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="IDMem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="E_GreetingsModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeedBack" EntityType="Self.FeedBack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mailgroup" EntityType="Self.Mailgroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SendMail" EntityType="Self.SendMail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Temp_User" EntityType="Self.Temp_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Templates" EntityType="Self.Templates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Mailgroup__IDMem__1273C1CD" Association="Self.FK__Mailgroup__IDMem__1273C1CD">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Mailgroup" EntitySet="Mailgroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temp_User__TempI__6477ECF3" Association="Self.FK__Temp_User__TempI__6477ECF3">
+      <End Role="Templates" EntitySet="Templates" />
+      <End Role="Temp_User" EntitySet="Temp_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temp_User__UserI__6383C8BA" Association="Self.FK__Temp_User__UserI__6383C8BA">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Temp_User" EntitySet="Temp_User" />
+    </AssociationSet>
+    <AssociationSet Name="fk_category_template" Association="Self.fk_category_template">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Templates" EntitySet="Templates" />
+    </AssociationSet>
+    <AssociationSet Name="fk_temp_user" Association="Self.fk_temp_user">
+      <End Role="Temp_User" EntitySet="Temp_User" />
+      <End Role="SendMail" EntitySet="SendMail" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_feedback" Association="Self.fk_user_feedback">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="FeedBack" EntitySet="FeedBack" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_payment" Association="Self.fk_user_payment">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

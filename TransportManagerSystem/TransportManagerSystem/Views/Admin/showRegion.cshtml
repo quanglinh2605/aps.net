@@ -1,0 +1,48 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList <TransportManagerSystem.Models.ModelsViews.Regional>
+@{
+    ViewBag.Title = "showRegion";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>showRegion</h2>
+<form action="@Url.Action("showRegion")" method="get">
+    <input type="text" name="searchString" value="@ViewBag.searchString" />
+    <input type="submit" value="Search" />
+</form>
+    <a href="@Url.Action("createRegional")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add New</a> 
+    <div class="table table-responsive">
+
+        <table class="table table-hover table-striped table-bordered" style="max-width:500px;text-align:center" id="regionPopup">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col" style="text-align:center;">Name</th>
+                    <th scope="col" style="text-align:center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 0;
+                }
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@(i + 1)</th>
+                            <td scope="row">@item.Name</td>
+                            <td scope="row">
+                                <a href="@Url.Action("EditRegional", new { Id = item.Id, page = Model.PageNumber })" class="btn btn-default btn-sm" style="margin-right:5px;"><i class="fa fa-pencil"></i> Edit</a>
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("deleteRegion", new { Id = item.Id})"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+        <div>
+            @Html.PagedListPager(Model, page => Url.Action("showRegion", new { page, searchString = ViewBag.searchString }))
+        </div>
+    </div>

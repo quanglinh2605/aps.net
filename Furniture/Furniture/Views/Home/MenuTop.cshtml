@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Models.EF.Menu>
+    @{ 
+        List<Models.EF.CategoryDetail> subMenu = null;
+        if (ViewBag.subMenu != null)
+        {
+            subMenu = (List<Models.EF.CategoryDetail>)ViewBag.subMenu;            
+        }
+     }
+<div class="main">
+    <div class="topmenu">
+        <ul class="linemenu">
+            @foreach (var i in Model)
+            {
+            <li>
+                <a href="@i.Link" title="@i.Text">@i.Text</a>
+                @if (ViewBag.subMenu != null)
+                {
+                    foreach (var j in subMenu)
+                    {
+                        if (i.ID == j.CategoryID)
+                        {
+                            <ul>
+                                @foreach (var item in subMenu)
+                                {
+                                    if (i.ID == item.CategoryID)
+                                    {
+                                        <li><a href="/@item.MetaTitle" title="@item.Name">@item.Name</a></li>
+                                    }
+                                }
+                            </ul>
+                        }
+                    }
+                }
+            </li>
+            }
+        </ul>
+    </div>
+</div>

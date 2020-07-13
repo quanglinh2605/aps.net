@@ -1,0 +1,58 @@
+﻿@model CategoryPJ.Models.ModelsView.TemplateModelView
+@{
+    ViewBag.Title = "TempDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    CategoryPJ.Models.ModelsView.template_userView item = null;
+    if (Session["temp_user"] != null) { item = Session["temp_user"] as CategoryPJ.Models.ModelsView.template_userView; }
+}
+@section slide{
+}
+<div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px;float:left;margin-right:50px;">
+    <div class="thumbnail product-item" style="height:280px">
+        <img class="img-responsive" style="cursor:pointer;height:160px;width:100%" src="@Url.Content(@Model.ImagePath)" />
+        <div class="caption">
+            <h3>@Model.Title</h3>
+            <br />
+            <p>@Model.Descriptions</p>
+        </div>
+    </div>
+</div>
+
+    <div>
+        <form action="@Url.Action("TempDetail", "temp_user", new { id = Model.ID, userId = ViewBag.userId })" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="IDTemp" value="@Model.ID" />
+            <input type="hidden" name="IDUser" value="@ViewBag.userID" />
+            <div class="form-group">
+                <label for="Title">Title</label><br />
+                <input type="text" value="@if (Session["temp_user"] != null)
+                { @item.Title }" name="Title" />
+            </div>
+            <div class="form-group">
+                <label for="Message">Your Message</label><br />
+                <textarea name="Message" style="resize:none;width:200px;height:50px;">@if (Session["temp_user"] != null)
+                { @item.Message }</textarea>
+            </div>
+            @if (ViewBag.ResultErrorMessage != null)
+            {
+                <script type="text/javascript">
+
+    window.onload = function () {
+        alert("@ViewBag.ResultErrorMessage");
+       };
+                </script>
+            }
+            <div class="form-group">
+                <lable for="music"><b>Music</b></lable>
+                <input type="file" name="FileMusic" value="@if (Session["temp_user"] != null)
+                { @("~/Content/customerMusic/" + @item.PathMusic) }" />
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" name="FilePhoto" value="@if (Session["temp_user"] != null)
+                { @("~Content/customerPhoto/" + item.PathPhoto) }" />
+            </div>
+            <button type="submit" class="btn btn-success btn-group-sm" value="Save" style="font-size:large;margin-left:387px;">Send</button>
+        </form>
+    </div>
+
+    <div style="clear:both;"></div>

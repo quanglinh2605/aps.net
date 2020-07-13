@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="baitap2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="DeptNo" />
+          </Key>
+          <Property Name="DeptNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DName" Type="nvarchar" MaxLength="50" />
+          <Property Name="loc" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="emp">
+          <Key>
+            <PropertyRef Name="empNo" />
+          </Key>
+          <Property Name="empNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ename" Type="nvarchar" MaxLength="100" />
+          <Property Name="job" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mgr" Type="int" />
+          <Property Name="hireDate" Type="date" />
+          <Property Name="sal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="comm" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DeptNo" Type="int" />
+        </EntityType>
+        <EntityType Name="SalGrade">
+          <Key>
+            <PropertyRef Name="grade" />
+          </Key>
+          <Property Name="grade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="losal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="hisal" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="fk_emp_Dept_DeptNo_DeptNo">
+          <End Role="Dept" Type="Self.Dept" Multiplicity="0..1" />
+          <End Role="emp" Type="Self.emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dept">
+              <PropertyRef Name="DeptNo" />
+            </Principal>
+            <Dependent Role="emp">
+              <PropertyRef Name="DeptNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_emp_Mgr_empNo">
+          <End Role="emp" Type="Self.emp" Multiplicity="0..1" />
+          <End Role="emp1" Type="Self.emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emp">
+              <PropertyRef Name="empNo" />
+            </Principal>
+            <Dependent Role="emp1">
+              <PropertyRef Name="Mgr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="baitap2ModelStoreContainer">
+          <EntitySet Name="Dept" EntityType="Self.Dept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emp" EntityType="Self.emp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalGrade" EntityType="Self.SalGrade" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_emp_Dept_DeptNo_DeptNo" Association="Self.fk_emp_Dept_DeptNo_DeptNo">
+            <End Role="Dept" EntitySet="Dept" />
+            <End Role="emp" EntitySet="emp" />
+          </AssociationSet>
+          <AssociationSet Name="fk_emp_Mgr_empNo" Association="Self.fk_emp_Mgr_empNo">
+            <End Role="emp" EntitySet="emp" />
+            <End Role="emp1" EntitySet="emp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="baitap2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="DeptNo" />
+          </Key>
+          <Property Name="DeptNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="loc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="emps" Relationship="Self.fk_emp_Dept_DeptNo_DeptNo" FromRole="Dept" ToRole="emp" />
+        </EntityType>
+        <EntityType Name="emp">
+          <Key>
+            <PropertyRef Name="empNo" />
+          </Key>
+          <Property Name="empNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ename" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="job" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mgr" Type="Int32" />
+          <Property Name="hireDate" Type="DateTime" Precision="0" />
+          <Property Name="sal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="comm" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DeptNo" Type="Int32" />
+          <NavigationProperty Name="Dept" Relationship="Self.fk_emp_Dept_DeptNo_DeptNo" FromRole="emp" ToRole="Dept" />
+          <NavigationProperty Name="emp1" Relationship="Self.fk_emp_Mgr_empNo" FromRole="emp" ToRole="emp1" />
+          <NavigationProperty Name="emp2" Relationship="Self.fk_emp_Mgr_empNo" FromRole="emp1" ToRole="emp" />
+        </EntityType>
+        <EntityType Name="SalGrade">
+          <Key>
+            <PropertyRef Name="grade" />
+          </Key>
+          <Property Name="grade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="losal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="hisal" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="fk_emp_Dept_DeptNo_DeptNo">
+          <End Role="Dept" Type="Self.Dept" Multiplicity="0..1" />
+          <End Role="emp" Type="Self.emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dept">
+              <PropertyRef Name="DeptNo" />
+            </Principal>
+            <Dependent Role="emp">
+              <PropertyRef Name="DeptNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_emp_Mgr_empNo">
+          <End Role="emp" Type="Self.emp" Multiplicity="0..1" />
+          <End Role="emp1" Type="Self.emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emp">
+              <PropertyRef Name="empNo" />
+            </Principal>
+            <Dependent Role="emp1">
+              <PropertyRef Name="Mgr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="baitap2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Depts" EntityType="Self.Dept" />
+          <EntitySet Name="emps" EntityType="Self.emp" />
+          <EntitySet Name="SalGrades" EntityType="Self.SalGrade" />
+          <AssociationSet Name="fk_emp_Dept_DeptNo_DeptNo" Association="Self.fk_emp_Dept_DeptNo_DeptNo">
+            <End Role="Dept" EntitySet="Depts" />
+            <End Role="emp" EntitySet="emps" />
+          </AssociationSet>
+          <AssociationSet Name="fk_emp_Mgr_empNo" Association="Self.fk_emp_Mgr_empNo">
+            <End Role="emp" EntitySet="emps" />
+            <End Role="emp1" EntitySet="emps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="baitap2ModelStoreContainer" CdmEntityContainer="baitap2Entities">
+          <EntitySetMapping Name="Depts">
+            <EntityTypeMapping TypeName="baitap2Model.Dept">
+              <MappingFragment StoreEntitySet="Dept">
+                <ScalarProperty Name="DeptNo" ColumnName="DeptNo" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+                <ScalarProperty Name="loc" ColumnName="loc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emps">
+            <EntityTypeMapping TypeName="baitap2Model.emp">
+              <MappingFragment StoreEntitySet="emp">
+                <ScalarProperty Name="empNo" ColumnName="empNo" />
+                <ScalarProperty Name="Ename" ColumnName="Ename" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="Mgr" ColumnName="Mgr" />
+                <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+                <ScalarProperty Name="sal" ColumnName="sal" />
+                <ScalarProperty Name="comm" ColumnName="comm" />
+                <ScalarProperty Name="DeptNo" ColumnName="DeptNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalGrades">
+            <EntityTypeMapping TypeName="baitap2Model.SalGrade">
+              <MappingFragment StoreEntitySet="SalGrade">
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="losal" ColumnName="losal" />
+                <ScalarProperty Name="hisal" ColumnName="hisal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,366 @@
+﻿@model Models.EF.Product
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var relatedProduct = (List<Models.EF.Product>)ViewBag.relatedProduct;
+    var category = (Models.EF.Category)ViewBag.category;
+    var cateDetail = (Models.EF.CategoryDetail)ViewBag.cateDetail;
+    var listImage = (List<string>)ViewBag.listImage;
+}
+@section jsFooter{
+    <script src="~/Assets/Client/images/skins/main.js"></script>
+    <div id="jspage"></div>
+    <script type="text/javascript" src="~/Assets/Client/images/skins/mkslider/mkslider.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#slidesp").mkslider({
+                externalNavigator: "#additional-menu"
+            });
+        });
+    </script>
+}
+
+<style type="text/css">
+    input[type=radio].check {
+        float: right;
+    }
+
+    input[type=radio].center {
+        margin-bottom: -4px
+    }
+
+    input[type=radio] {
+        width: 18px !important;
+        height: 18px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url(../../Assets/Client/images/images/noradio.svg) center center no-repeat;
+        background-size: 18px;
+        outline: 0;
+        border: 0;
+        display: inline-block;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+        input[type=radio]:focus {
+            outline: none;
+            border: none !important;
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+
+        input[type=radio]:checked {
+            background: url(../../Assets/Client/images/images/radiochecked.svg) center center no-repeat;
+            background-size: 18px;
+            text-align: center;
+            line-height: 15px;
+        }
+    /* End Checkbox & Radio */
+</style>
+<script type="text/javascript" src="~/Assets/Client/images/skins/highslide/highslide-full.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Assets/Client/images/skins/highslide/highslide.css">
+<script type="text/javascript">
+    hs.graphicsDir = 'skins/highslide/graphics/';
+    hs.align = 'center';
+    hs.transitions = ['expand', 'crossfade'];
+    hs.outlineType = 'rounded-white';
+    hs.fadeInOut = true;
+    hs.numberPosition = 'caption';
+    hs.dimmingOpacity = 0.75;
+
+    // Add the controlbar
+    if (hs.addSlideshow) hs.addSlideshow({
+        //slideshowGroup: 'group1',
+        interval: 5000,
+        repeat: false,
+        useControls: true,
+        fixedControls: 'fit',
+        overlayOptions: {
+            opacity: .75,
+            position: 'bottom center',
+            hideOnMouseOut: true
+        }
+    });
+</script>
+
+<div class="breadandfilter">
+    <ol class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+            <a href="/" title="Trang chủ" itemprop="item"><span itemprop="name">Trang chủ</span></a>
+            <meta itemprop="position" content="1"><span class="rowbr">›</span>
+        </li>
+        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+            <a href="/danh-muc/@category.MetaTitle-@category.ID" title="@category.Name" itemprop="item">
+                <span itemprop="name">@category.Name</span>
+            </a>
+            <meta itemprop="position" content="2"><span class="rowbr">›</span>
+        </li>
+        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+            <a href="/danh-muc-con/@cateDetail.MetaTitle-@category.ID-@cateDetail.ID" title="@cateDetail.Name" itemprop="item">
+                <span itemprop="name">@cateDetail.Name</span>
+            </a><meta itemprop="position" content="3"><span class="rowbr">›</span>
+        </li>
+        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+            <a href="ban-ghe-salon-go" title="Bàn Ghế Salon Gỗ" itemprop="item">
+                <h2><span itemprop="name">Bàn Ghế Salon Gỗ</span></h2>
+            </a><meta itemprop="position" content="4">
+        </li>
+    </ol>
+</div>
+<div class="clear"></div>
+<!---->
+<link rel="stylesheet" href="~/Assets/Client/images/skins/mkslider/mkslider.css" type="text/css">
+<div class="bg-detail">
+    <div class="picture clear">
+        <div id="slidesp">
+            <a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)">
+                <img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" />
+            </a>
+            <a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-1.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-1.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-2.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-2.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-3.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-3.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-4.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-4.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-5.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-5.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-6.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-6.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-7.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-7.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-8.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-8.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-9.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-9.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-10.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-10.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-11.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-11.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-12.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-12.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-13.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-13.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-14.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-14.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-15.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-15.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-16.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-16.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-17.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-17.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-18.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-18.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-19.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-19.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a>
+        </div>
+        <nav id="additional-menu"><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-1.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-2.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-3.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-4.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-5.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-6.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-7.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-8.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-9.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-10.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-11.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-12.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-13.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-14.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-15.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-16.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-17.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-18.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-19.jpg" /></a></nav>
+    </div>
+    <div class="listinfo">
+        <form class="product" name="Order">
+            <h3 class="ten">@Model.Name</h3>
+            <p class="code"><i id="codesp"><span>Mã hàng: </span>@Model.Code</i> | @Model.ViewCount lượt xem</p>
+
+            <div id="setPrice"><p class="price">@Model.Price<sup>đ</sup></p><p class="company">@Model.PromotionPrice</p><p class="phantram">@(Math.Round((decimal)((1 - @Model.Price / @Model.PromotionPrice)) * 100))%</p></div>
+            <div class="clear10"></div>
+            <div id="selectsize">
+                <span>CHỌN MÀU SẮC:</span>
+                @if (Model.Color != null)
+                {
+                    <input type="radio" name="sColor" value="@Model.Color" id="colorid1128" checked="">
+                    <label for="colorid1128">@Model.Color</label>
+                }
+
+
+                <div class="clear10"></div>
+                <span>CHỌN KÍCH THƯỚC:</span>
+                <input type="radio" name="sSize" value="@Model.Size" id="sizeid907" checked="">
+                <label for="sizeid907">@Model.Size</label>
+
+            </div>
+            <div class="soluongsp">
+                <input id="qty" name="quantity" type="text" class="soluong" value="1">
+                <div class="upqty" onclick="updownqty('up');">+</div>
+                <div class="downqty" onclick="updownqty('down');">–</div>
+                <span>(Chọn số lượng)</span>
+            </div>
+            <div class="clear"></div>
+            <input name="sizesp" class="sizesp" type="hidden" value="Tay 10 - 6 món">
+            <input name="colorsp" class="colorsp" type="hidden" value="Tự nhiên">
+            <!-- <input id="qty" name="quantity" type="hidden" class="soluong" value="1"/> -->
+            <input type="hidden" name="giaban" class="giabansp" value="32500000">
+            <input type="hidden" name="giacty" class="giactysp" value="37500000">
+            <input type="hidden" name="product_id" value="@Model.ID">
+            <input type="submit" class="buynow" value="Mua ngay">
+            <input type="submit" class="intocart cd-popup-trigger" value="Thêm vào giỏ">
+            <div class="clear"></div>
+            <div class="khuyenmai">
+                <strong>Chất liệu:</strong>&nbsp;@Model.Material<br>
+                <strong>Tình trạng:</strong>&nbsp;Hàng mới 100%<br>
+                <strong>Trạng thái:&nbsp;</strong>@(Model.Quantity > 0 ? "Con Hang" : "Het Hang")<br>
+                <strong>Phí giao hàng:</strong>
+
+                <ul>
+                    <li>Giao hàng miễn phí toàn thành phố Hồ Chí Minh.</li>
+                </ul>
+
+                <ul>
+                    <li>Giao qua chành xe đối với các khách hàng ở tỉnh xa. (khách hàng chịu phí chành xe)</li>
+                </ul>
+                <strong>Thời gian giao hàng:</strong>&nbsp;Từ 6 giờ đến 10 ngày làm việc.
+            </div>
+            <div class="cd-popup"></div>
+            <div class="clear10"></div>
+            <!-- AddThis Button BEGIN -->
+            <div class="addthis_inline_share_toolbox" data-url="http://noithatdogoviet.com/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.html" data-title="Bàn Ghế Phòng Khách Gỗ Gõ Đỏ Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" data-description="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ," style="clear: both;"><div id="atstbx" class="at-resp-share-element at-style-responsive addthis-smartlayers addthis-animated at4-show" aria-labelledby="at-7296fdb7-db6d-4fe6-9190-ce2c24934256" role="region"><span id="at-7296fdb7-db6d-4fe6-9190-ce2c24934256" class="at4-visually-hidden">AddThis Sharing Buttons</span><div class="at-share-btn-elements"><a role="button" tabindex="0" class="at-icon-wrapper at-share-btn at-svc-facebook" style="background-color: rgb(59, 89, 152); border-radius: 0px;"><span class="at4-visually-hidden">Share to Facebook</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-facebook-1" class="at-icon at-icon-facebook" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-facebook-1">Facebook</title><g><path d="M22 5.16c-.406-.054-1.806-.16-3.43-.16-3.4 0-5.733 1.825-5.733 5.17v2.882H9v3.913h3.837V27h4.604V16.965h3.823l.587-3.913h-4.41v-2.5c0-1.123.347-1.903 2.198-1.903H22V5.16z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Facebook</span></a><a role="button" tabindex="0" class="at-icon-wrapper at-share-btn at-svc-twitter" style="background-color: rgb(29, 161, 242); border-radius: 0px;"><span class="at4-visually-hidden">Share to Twitter</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-twitter-2" class="at-icon at-icon-twitter" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-twitter-2">Twitter</title><g><path d="M27.996 10.116c-.81.36-1.68.602-2.592.71a4.526 4.526 0 0 0 1.984-2.496 9.037 9.037 0 0 1-2.866 1.095 4.513 4.513 0 0 0-7.69 4.116 12.81 12.81 0 0 1-9.3-4.715 4.49 4.49 0 0 0-.612 2.27 4.51 4.51 0 0 0 2.008 3.755 4.495 4.495 0 0 1-2.044-.564v.057a4.515 4.515 0 0 0 3.62 4.425 4.52 4.52 0 0 1-2.04.077 4.517 4.517 0 0 0 4.217 3.134 9.055 9.055 0 0 1-5.604 1.93A9.18 9.18 0 0 1 6 23.85a12.773 12.773 0 0 0 6.918 2.027c8.3 0 12.84-6.876 12.84-12.84 0-.195-.005-.39-.014-.583a9.172 9.172 0 0 0 2.252-2.336" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Twitter</span></a><a role="button" tabindex="0" class="at-icon-wrapper at-share-btn at-svc-email" style="background-color: rgb(132, 132, 132); border-radius: 0px;"><span class="at4-visually-hidden">Share to Email</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-email-3" class="at-icon at-icon-email" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-email-3">Email</title><g><g fill-rule="evenodd"></g><path d="M27 22.757c0 1.24-.988 2.243-2.19 2.243H7.19C5.98 25 5 23.994 5 22.757V13.67c0-.556.39-.773.855-.496l8.78 5.238c.782.467 1.95.467 2.73 0l8.78-5.238c.472-.28.855-.063.855.495v9.087z"></path><path d="M27 9.243C27 8.006 26.02 7 24.81 7H7.19C5.988 7 5 8.004 5 9.243v.465c0 .554.385 1.232.857 1.514l9.61 5.733c.267.16.8.16 1.067 0l9.61-5.733c.473-.283.856-.96.856-1.514v-.465z"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Email</span></a><a role="button" tabindex="0" class="at-icon-wrapper at-share-btn at-svc-pinterest_share" style="background-color: rgb(203, 32, 39); border-radius: 0px;"><span class="at4-visually-hidden">Share to Pinterest</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-pinterest_share-4" class="at-icon at-icon-pinterest_share" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-pinterest_share-4">Pinterest</title><g><path d="M7 13.252c0 1.81.772 4.45 2.895 5.045.074.014.178.04.252.04.49 0 .772-1.27.772-1.63 0-.428-1.174-1.34-1.174-3.123 0-3.705 3.028-6.33 6.947-6.33 3.37 0 5.863 1.782 5.863 5.058 0 2.446-1.054 7.035-4.468 7.035-1.232 0-2.286-.83-2.286-2.018 0-1.742 1.307-3.43 1.307-5.225 0-1.092-.67-1.977-1.916-1.977-1.692 0-2.732 1.77-2.732 3.165 0 .774.104 1.63.476 2.336-.683 2.736-2.08 6.814-2.08 9.633 0 .87.135 1.728.224 2.6l.134.137.207-.07c2.494-3.178 2.405-3.8 3.533-7.96.61 1.077 2.182 1.658 3.43 1.658 5.254 0 7.614-4.77 7.614-9.067C26 7.987 21.755 5 17.094 5 12.017 5 7 8.15 7 13.252z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Pinterest</span></a><a role="button" tabindex="0" class="at-icon-wrapper at-share-btn at-svc-compact" style="background-color: rgb(255, 101, 80); border-radius: 0px;"><span class="at4-visually-hidden">Share to More</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-addthis-5" class="at-icon at-icon-addthis" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-addthis-5">AddThis</title><g><path d="M18 14V8h-4v6H8v4h6v6h4v-6h6v-4h-6z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">More</span></a><a role="button" tabindex="0" class="at-icon-wrapper at-share-btn at-svc-messenger" style="background-color: rgb(0, 132, 255); border-radius: 0px;"><span class="at4-visually-hidden">Share to Messenger</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-messenger-6" class="at-icon at-icon-messenger" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-messenger-6">Messenger</title><g><path d="M16 6C9.925 6 5 10.56 5 16.185c0 3.205 1.6 6.065 4.1 7.932V28l3.745-2.056c1 .277 2.058.426 3.155.426 6.075 0 11-4.56 11-10.185C27 10.56 22.075 6 16 6zm1.093 13.716l-2.8-2.988-5.467 2.988 6.013-6.383 2.868 2.988 5.398-2.987-6.013 6.383z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Messenger</span></a></div></div></div>
+            <!-- AddThis Button END -->
+            <div class="clear10"></div>
+        </form>
+    </div>
+    <div class="clear10"></div>
+    <div class="divmcat">
+        <p><a href="/@category.MetaTitle-@category.ID" title="@category.Name" rel="nofollow">@category.Name</a>:</p>
+        <ul>
+            <li><a href="ban-ghe-go" title="@cateDetail.Name" rel="nofollow">@cateDetail.Name</a></li>
+        </ul>
+        <div class="clear5"></div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="tit-chitiet"><div style="font-size: 17px; color: #e60f1e; line-height: 40px; margin-left: 10px; font-weight: bold; text-transform: uppercase;">Mô tả chi tiết</div></div>
+    <div class="box-chitiet" id="tut_detail">
+        <div class="divdetail entry-content">
+            <div id="scrollheight" style="overflow: hidden; height: 500px;">
+                <p>
+                    <span style="font-size:14px;">
+                        @Model.Description
+                    </span>
+                </p>
+
+                <h2>Kích thước bộ sản phẩm</h2>
+
+                <ul>
+                    <li><span style="font-size:14px;">Băng dài: Cao phủ bì 185cm, lọt lòng 167cm, sâu phủ bì 50cm, lọt lòng 46cm, cao 111cm, lưng ghế 73cm, cao mặt ngồi 37cm.</span></li>
+                    <li><span style="font-size:14px;">Ghế đơn: Cao 111cm, lưng 70cm, cao mặt ngồi 40cm, ngang phủ bì 75cm, lọt lòng 56cm.</span></li>
+                    <li><span style="font-size:14px;">Bàn: Ngang 120cm, rộng 50cm, cao 54cm.</span></li>
+                    <li><span style="font-size:14px;">Đôn: Cao 55cm, ngang 45cm, rộng 35cm.</span></li>
+                    <li><span style="font-size:14px;">Kích thước bộ <a href="https://noithatdogoviet.com/ban-ghe-salon-go" target="_blank" title="ghế sa lông gỗ"><span style="color:#0000FF;"><strong>ghế sa lông gỗ</strong></span></a> được đánh giá là khá vừa và phù hợp với các căn phòng có diện tích nhỏ và trung bình. Từ băng dài, bàn, đôn và ghế đơn đều khá nhỏ và gọn cơ bản của một mẫu tay 10 thường gặp trên thị trường. Diện tích mặt ngồi từ 40 - 56 cm tiện lợi trong việc sử dụng, đáp ứng được yêu cầu lớn của gia đình từ 4 - 8 người. Khoảng cách giữa 2 chân và mặt dưới được làm khá rộng tiện lợi và dễ dàng hơn trong việc vệ sinh và lau chùi sản phẩm.</span></li>
+                </ul>
+
+                <h2>Họa tiết đẹp với nhiều hoa văn ý nghĩa</h2>
+
+                <ul>
+                    <li><span style="font-size: 14px;">Đối với người Việt Nam mỗi biểu tượng, hoa văn được chạm trổ lên đồ dùng nội thất đều mang một ý nghĩa và mong ước nào đó của gia chủ. Với bộ salon này họa tiết chủ đạo được lựa chọn chính là hình con voi, hình ảnh này khá quen thuộc trong văn hóa Việt Nam với câu nói quen thuộc trăm voi chầu về đất Tổ. Biểu tượng đó được làm cách điệu thêm hình cõng đĩnh bạc tượng trưng cho tài lộc và sự phú quý.</span></li>
+                    <li><span style="font-size: 14px;">Phần đỉnh ghế chạm mặt trời âm là đại diện cho sự cân bằng và hòa hợp, kế đó là hình lưỡng voi chầu đỉnh thể hiện sự tuân phục, tăng thêm vị thế cho người chủ gia đình. Lưng ghế chạm hình voi cõng đĩnh bạc , ngũ thử tài lộc ngậm đồng tiền tăng thêm tiền tài cho gia chủ. Tay ghế chạm hình voi phục đối xứng 2 bên, chân ghế chạm mặt nghê cách điệu, các họa tiết trên mặt trước chạm hình lá cách điệu khá quen thuộc trên các đồ nội thất cổ điển.</span></li>
+                    <li><span style="font-size:14px;">Đôn ghế và bàn được chạm họa tiết khá đơn giản với các hình bông hoa nở, cánh hoa cách điệu đối xứng với nhau, phần chân chạm mặt nghê đơn giản. Hướng tới sự đơn giản nhiều hơn so với các băng ghế dài và ghế đơn để cân bằng một cách hài hòa hơn cho họa tiết trên sản phẩm.</span></li>
+                </ul>
+                <span style="font-size:14px;">Là một sản phẩm mới 100% được chế tác hoàn toàn thủ công bằng những thợ thủ công giỏi nhất của Đồ Gỗ Việt. Mẫu bàn ghế này sẽ là lựa chọn cực tốt được đánh giá cao về cả chất lượng và kiểu dáng dành cho khách hàng. Người tiêu dùng còn băn khoăn có thể đến trực tiếp cửa hàng của chúng tôi tại số 1 đường Lũy Bán Bích để xem và cảm nhận chính xác nhất về chất lượng. Hoặc liên hệ qua <span style="color:#FF0000;"><strong>Hotline 09 8888 7878 - 09 4444 2288</strong></span> để được tư vấn, hỗ trợ và giải đáp tốt nhất bạn nhé.</span>
+                <div class="clear10"></div>
+                <a href="ban-ghe-salon-go" title="Tham khảo thêm các mẫu Bàn Ghế Salon Gỗ" target="_self" rel="nofollow" class="next-category">Xem thêm các mẫu Bàn Ghế Salon Gỗ</a>
+            </div>
+            <div class="clear"></div>
+            <div style="text-align: center; display: block;" class="shadowdmx"><a class="read-more" style="display: inline-block;">Xem thêm</a></div>
+            <div class="clear10"></div>
+            <div style="text-align: center;">
+                <em>Cám ơn quý khách đã ghé thăm website của chúng tôi, hy vọng quý khách sẽ sớm tìm được món hàng ưng ý tại Noithatdogoviet.com!</em><br>
+                &nbsp;<br>
+                <span style="color:#FF0000;">
+                    <strong>&gt;&gt; TẤT CẢ CÁC SẢN PHẨM KHÔNG BAO GỒM THUẾ VAT 10%.&nbsp;</strong><br>
+                    <strong>(Quý khách muốn lấy hóa đơn VAT chúng tôi sẽ cộng thêm vào 10% giá trị đơn hàng)</strong><br>
+                    &nbsp;<br>
+                    <b>&gt;&gt; Tất cả sản phẩm đều được giao hàng và lắp ráp miễn phí tại TPHCM</b><br>
+                    <b>&gt;&gt; Đối với khách tỉnh vui lòng chuyển khoản trước 100% giá trị đơn hàng (LH để lấy số TK chuyển khoản)</b>
+                </span>
+            </div>
+
+            <div style="text-align: center;">&nbsp;</div>
+
+            <div style="text-align: center;">
+                <div style="text-align: left;"><u><strong>Thông tin bảo hành:</strong></u></div>
+
+                <ul>
+                    <li style="text-align: left;">Sản phẩm bằng gỗ công nghiệp MDF/MFC:&nbsp;<strong>2 năm</strong></li>
+                    <li style="text-align: left;">Sản phẩm bằng gỗ tự nhiên:&nbsp;<strong>5 năm</strong></li>
+                    <li style="text-align: left;">Sản phẩm bằng&nbsp;gỗ cao cấp:&nbsp;<strong>10 năm</strong></li>
+                    <li style="text-align: left;">Bảo hành ghế sofa nệm:&nbsp;<strong>BH xẹp lún mousse ngồi: 10 năm, khung gỗ: 05 năm, lò xo và vải bọc: 02 năm</strong></li>
+                </ul>
+
+                <div style="text-align: left;">
+                    -------------------------------------------<br>
+                    <strong>NỘI THẤT ĐỒ GỖ VIỆT</strong><br>
+                    <strong>Địa chỉ:&nbsp;</strong>Số 3-5 Lũy Bán Bích, Phường Tân Thới Hòa, Quận Tân Phú, TP.HCM.<br>
+                    <strong>Xưởng SX:</strong>&nbsp;26/7K Võ Thị Hồi, Xã Xuân Thới Đông, Huyện Hóc Môn, TP. HCM<br>
+                    <b>Điện thoại: 028 6275 6689</b><br>
+                    <strong>Hotline:&nbsp;0933 444 788 - 0988 88 7878</strong><br>
+                    <strong>Email:&nbsp;</strong>lienhe@noithatdogoviet.com<br>
+                    <strong>Website:</strong>&nbsp;<a href="http://noithatdogoviet.com/" target="_blank" title="www.noithatdogoviet.com">www.noithatdogoviet.com</a><br>
+                    &nbsp;
+                </div>
+            </div>
+            <div class="clear10"></div>
+            <div class="fb-comments" data-href="http://noithatdogoviet.com/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.html" data-numposts="5" data-width="100%"></div>
+        </div>
+    </div>
+    <div class="tit-chitiet"><h2>Sản phẩm liên quan</h2></div>
+    <div class="rowsp tutorial_list">
+        @foreach (var item in relatedProduct)
+        {
+            <div class="boxproduct">
+                <div class="grid">
+                    @if (Model.CreateDate >= DateTime.Now.AddDays(-60))
+                    {
+                        <div class="new-item">
+                            <img src="~/Assets/Client/images/images/new.png" alt="Sản phẩm mới">
+                        </div>
+                    }
+                    <span class="discount">- @(Math.Round((decimal)((1 - @item.Price / @item.PromotionPrice)) * 100))%</span>
+                    <div class="images">
+                        <a href="ban-ghe-go-xoan-dao-trien-tay-12-6-mon-dep-gia-re.html" title="@item.MetaTitle">
+                            <img src="@item.Image" alt="@Model.Name" class="lazyload" style="display: inline;">
+                        </a>
+                    </div>
+                    <h3><a href="ban-ghe-go-xoan-dao-trien-tay-12-6-mon-dep-gia-re.html" title="@item.Name">@item.Name</a></h3>
+                    <div class="setprice">
+                        <p class="code"><span>Mã sp: @item.Code</span></p>
+                        <p class="giaban">@item.Price<sup>đ</sup></p>
+                        <del>@item.PromotionPrice</del>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+    </div>
+    <div class="show_more_main" id="show_more_main">
+        <span id="@Model.ID" count="2" class="showmore_khac show_more" title="Xem thêm sản phẩm">Xem thêm sản phẩm cùng loại</span>
+    </div>
+</div>
+<div class="boxorder">
+    <p class="pricecty"></p><p class="company">37.500.000</p><p></p>
+    <p class="priceban">32.500.000<sup>đ</sup></p>
+    <a title="Đặt mua" onclick="scrollbuy();">Đặt mua</a>
+</div>
+
+
+
+<span id="reloadcomment"></span>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#selectsize").on("click", "input[name='sSize']", function () {
+            var val = $(this).val();
+            var color = $("input[name='sColor']:checked").val();
+            var id = 169;
+            if (val != '') {
+                var dataString = "idkichthuoc=" + val + "&idcolor=" + color + "&masp=" + id;
+                $.ajax({
+                    type: "POST",
+                    url: "kichthuoc.php",
+                    data: dataString,
+                    success: function (response) {
+                        var getData = $.parseJSON(response);
+                        $('.giabansp').val(getData.sGiaban);
+                        $('.giactysp').val(getData.sGiacty);
+                        $('.sizesp').val(val);
+                        $('.colorsp').val(color);
+                        $("#codesp").html(getData.sCode);
+                        $("#setPrice").html(getData.sPrice);
+                    }
+                });
+            }
+        });
+        $("#selectsize").on("click", "input[name='sColor']", function () {
+            var val = $(this).val();
+            var size = $("input[name='sSize']:checked").val();
+            var id = 169;
+            if (val != '') {
+                var dataString = "idkichthuoc=" + size + "&idcolor=" + val + "&masp=" + id;
+                $.ajax({
+                    type: "POST",
+                    url: "kichthuoc.php",
+                    data: dataString,
+                    success: function (response) {
+                        var getData = $.parseJSON(response);
+                        $('.giabansp').val(getData.sGiaban);
+                        $('.giactysp').val(getData.sGiacty);
+                        $('.colorsp').val(val);
+                        $("#codesp").html(getData.sCode);
+                        $("#setPrice").html(getData.sPrice);
+                    }
+                });
+            }
+        });
+    });
+
+</script>
+<span id="element_action"></span>

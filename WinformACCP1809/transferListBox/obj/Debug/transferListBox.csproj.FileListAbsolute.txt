@@ -1,0 +1,10 @@
+C:\myproject\WinformACCP1809\transferListBox\obj\Debug\transferListBox.csprojAssemblyReference.cache
+C:\myproject\WinformACCP1809\transferListBox\obj\Debug\transferListBox.Form1.resources
+C:\myproject\WinformACCP1809\transferListBox\obj\Debug\transferListBox.Properties.Resources.resources
+C:\myproject\WinformACCP1809\transferListBox\obj\Debug\transferListBox.csproj.GenerateResource.cache
+C:\myproject\WinformACCP1809\transferListBox\obj\Debug\transferListBox.csproj.CoreCompileInputs.cache
+C:\myproject\WinformACCP1809\transferListBox\bin\Debug\transferListBox.exe.config
+C:\myproject\WinformACCP1809\transferListBox\bin\Debug\transferListBox.exe
+C:\myproject\WinformACCP1809\transferListBox\bin\Debug\transferListBox.pdb
+C:\myproject\WinformACCP1809\transferListBox\obj\Debug\transferListBox.exe
+C:\myproject\WinformACCP1809\transferListBox\obj\Debug\transferListBox.pdb

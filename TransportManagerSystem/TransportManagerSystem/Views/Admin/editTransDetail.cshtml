@@ -1,0 +1,89 @@
+﻿@model TransportManagerSystem.Models.ModelsViews.TransportDetail
+@{
+    ViewBag.Title = "editTransDetail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<TransportManagerSystem.Models.ModelsViews.Account> lsacc = ViewBag.lsacc as List<TransportManagerSystem.Models.ModelsViews.Account>;
+    List<TransportManagerSystem.Models.ModelsViews.OwnerDetail> lsowner = ViewBag.lsowner as List<TransportManagerSystem.Models.ModelsViews.OwnerDetail>;
+    List<TransportManagerSystem.Models.ModelsViews.TransportPart> lstranspart = ViewBag.lstranspart as List<TransportManagerSystem.Models.ModelsViews.TransportPart>;
+}
+
+<h2>editTransDetail</h2>
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="form-group" style="width:500px;">
+            <label>Account</label>
+            <select name="Account_id" id="">
+                <option value="-1">Choose Account</option>
+                @foreach (var item in lsacc)
+                {
+                    if (Model.Account_id == item.Id)
+                    {
+                        <option value="@item.Id" selected>@item.Username</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Username</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group" style="width:500px;">
+            <label>Transport</label>
+            <select name="Transport_id" id="">
+                <option value="-1">Choose Transport</option>
+                @foreach (var item in lstranspart)
+                {
+                    if (Model.Transport_id == item.Id)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group" style="width:500px;">
+            <label>Owner</label>
+            <select name="Owner_id" id="">
+                <option value="-1">Choose Owner</option>
+                @foreach (var item in lsowner)
+                {
+                    if (Model.Owner_id == item.Id)
+                    {
+                        <option value="@item.Id" selected>@item.Fullname</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Fullname</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group" style="width:500px;">
+            <lable>Number</lable>
+            @Html.TextBoxFor(x => x.Number, new { @class = "form-control" })
+        </div>
+        <div class="form-group" style="width:500px;">
+            <lable>Color</lable>
+            @Html.TextBoxFor(x => x.Color, new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Active</label>
+            <input type="checkbox" id="chkActive" @(Model.Status==true?"checked":"")/>
+            <input type="hidden" name="Status" id="chkActiveValue"  value="" />
+        </div>
+        <div>
+            <input type="submit" value="Save" name="btnSave" />
+        </div>
+    </div>       
+@section scripts{
+    <script>
+        $("#chkActive").change(function () {
+            $("#chkActive").is(":checked") ? $("#chkActiveValue").val("True") : $("#chkActiveValue").val("False");
+        })
+    </script>
+    }
+}

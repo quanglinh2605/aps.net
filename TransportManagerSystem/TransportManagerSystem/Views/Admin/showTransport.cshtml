@@ -1,0 +1,54 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<TransportManagerSystem.Models.ModelsViews.TransportPart>
+@{
+    ViewBag.Title = "showTransport";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>showTransport</h2>
+<form action="@Url.Action("showTransport")" method="get">
+    <input type="text" name="searchString" value="@ViewBag.searchString" />
+    <input type="submit" value="Search" />
+</form>
+<a href="@Url.Action("createTransport")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add New</a>
+@if (Model != null)
+{
+<div class="table table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Two Wheels number</th>
+                <th scope="col">Four Wheels number</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+                List<TransportManagerSystem.Models.ModelsViews.TransportType> lstypes = ViewBag.lsTypes as List<TransportManagerSystem.Models.ModelsViews.TransportType>;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@item.Name</td>
+                    <td>@item.TwoWheelNumber</td>
+                    <td>@item.fourWheelNumber</td>
+                    <td scope="row">
+                        <a href="@Url.Action("editTrans", new { Id = item.Id })" class="btn btn-default btn-sm" style="margin-right:5px;"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="@Url.Action("deleteTrans", new { Id = item.Id})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                        <a href="@Url.Action("showTransDetail","Admin", new {Id = item.Id })" class="btn btn-default btn-sm"><i class="fa fa-search"></i> Detail</a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("showTransport", new { page, searchString = ViewBag.searchString }))
+    </div>
+</div> 
+}

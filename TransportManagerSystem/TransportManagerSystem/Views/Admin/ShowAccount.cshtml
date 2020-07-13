@@ -1,0 +1,84 @@
+﻿@using TransportManagerSystem.Models.ModelsViews;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Account>
+@{
+    ViewBag.Title = "ShowAccount";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ShowAccount</h2>
+<form action="@Url.Action("ShowAccount")" method="get">
+    <input type="text" name="searchString" value="@ViewBag.searchString" />
+    <input type="submit" value="Search" />
+</form>
+<div>
+@if (TempData["mess"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        Reset Successful
+    </div>
+}
+</div>
+<div>
+    <a href="@Url.Action("CreateAccount")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add New</a>
+</div>
+@if (Model != null)
+{
+    <div class="table table-responsive">
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Fullname</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">User type</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 0;
+                    List<TransportManagerSystem.Models.ModelsViews.user> lsuser = ViewBag.lsusertype as List<TransportManagerSystem.Models.ModelsViews.user>;
+                    List<TransportManagerSystem.Models.ModelsViews.Regional> lsregion = ViewBag.lsRegion as List<TransportManagerSystem.Models.ModelsViews.Regional>;
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">@(i + 1)</td>
+                        <td>@item.Username</td>
+                        <td>@item.Password</td>
+                        <td>@item.Fullname</td>
+                        <td>@item.PhoneNumber</td>
+                        @foreach (var it in lsuser)
+                        {
+                            if (item.usertype_id == it.Id)
+                            {
+                                <td>@it.Name</td>
+                            }
+                        }
+                        @foreach (var e in lsregion)
+                        {
+                            if (item.Regional_Id == e.Id)
+                            {
+                                <td>@e.Name</td>
+                            }
+                        }
+                        <td>
+                            <a href="@Url.Action("editAccount", new { Id = item.Id })" class="btn btn-default btn-sm" style="margin-right:5px;"><i class="fa fa-pencil"></i> Edit</a>
+                            <a href="@Url.Action("resetAccount", new {Id = item.Id})" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Reset</a>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+        <div>
+            @Html.PagedListPager(Model, page => Url.Action("showAccount", new { page, searchString = ViewBag.searchString }))
+        </div>
+    </div>
+}
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6155c6ba1210435db4ece0d571db67a1" Name="Diagram1">
+        <EntityTypeShape EntityType="RESTAURANTModel.checkOrder" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESTAURANTModel.Menu" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESTAURANTModel.Restaurant" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="RESTAURANTModel.FK__checkOrde__Id_Re__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="RESTAURANTModel.FK__Menu__Res_Id__1273C1CD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RESTAURANTModel.customer" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="RESTAURANTModel.FK__checkOrde__Id_Cu__35BCFE0A1" />
+        <EntityTypeShape EntityType="RESTAURANTModel.tablenumber" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="RESTAURANTModel.FK__tablenumb__Res_I__5CD6CB2B" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

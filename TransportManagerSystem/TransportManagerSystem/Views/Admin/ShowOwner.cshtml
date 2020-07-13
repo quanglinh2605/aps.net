@@ -1,0 +1,58 @@
+﻿@using TransportManagerSystem.Models.ModelsViews
+@using PagedList.Mvc;
+@model PagedList.IPagedList<OwnerDetail>
+@{
+    ViewBag.Title = "ShowOwner";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ShowOwner</h2>
+<form action="@Url.Action("ShowOwner")" method="get">
+    <input type="text" name="searchString" value="@ViewBag.searchString" />
+    <input type="submit" value="Search" />
+</form>
+<a href="@Url.Action("RegisterOwner")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add New</a>
+@if (Model != null)
+{
+<div class="table table-responsive">
+    <table class="table table-hover table-triped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Address</th>
+                <th scope="col">BirthDay</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">ID_Card</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+                List<TransportManagerSystem.Models.ModelsViews.OwnerDetail> ls = ViewBag.lsOwner as List<TransportManagerSystem.Models.ModelsViews.OwnerDetail>;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@(i + 1)</th>
+                    <td>@item.Fullname</td>
+                    <td>@item.Address</td>
+                    <td>@item.Birthday</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Id_Card</td>                    
+                    <td scope="row">
+                        <a href="@Url.Action("EditOwner", new { Id = item.Id })" class="btn btn-default btn-sm" style="margin-right:5px;"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="@Url.Action("deleteOwner", new { Id = item.Id})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("showOwner", new { page, searchString = ViewBag.searchString }))
+    </div>
+</div>
+}

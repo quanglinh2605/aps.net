@@ -1,0 +1,12 @@
+﻿@model List<Modelclass.EF.Category>
+
+<div class=" h_menu4">
+    <ul class="memenu skyblue">
+        @foreach (var item in Model)
+        {
+            <li><a href="/Template/@item.ID">@item.Occasions</a></li>
+        }
+
+    </ul>
+</div>
+

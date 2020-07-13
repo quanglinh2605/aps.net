@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bdfbc47471664bb49650438fcd5c82aa" Name="Diagram1">
+        <EntityTypeShape EntityType="WebChatModel.Friend" Width="1.5" PointX="7.125" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebChatModel.groupDetail" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebChatModel.GroupChat" Width="1.5" PointX="2.625" PointY="4.875" />
+        <EntityTypeShape EntityType="WebChatModel.UserChat" Width="1.5" PointX="5" PointY="2.625" />
+        <AssociationConnector Association="WebChatModel.FK__Friend__idfriend__1367E606" />
+        <AssociationConnector Association="WebChatModel.FK__Friend__idusr__1273C1CD" />
+        <AssociationConnector Association="WebChatModel.FK__groupDetail__IDG__1A14E395" />
+        <AssociationConnector Association="WebChatModel.FK__groupDetail__IDU__1B0907CE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

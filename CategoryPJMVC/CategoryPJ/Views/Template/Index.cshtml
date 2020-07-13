@@ -1,0 +1,38 @@
+﻿@model List<Modelclass.EF.Template>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+@section slide{
+    <div class="grow">
+        <div class="container">
+            <h2>Category</h2>
+        </div>
+    </div>
+}
+<div class="pro-du">
+    <div class="container">
+        <div class="col-md-12 product1">
+            <div class=" bottom-product">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-6 bottom-cd simpleCart_shelfItem">
+                        <div class="product-at ">
+                            <a href="/Template/Details/@item.ID">
+                                <img  src="@Url.Content(item.ImageTem)" alt="@item.Title" width="460" height="460">
+                                <div class="pro-grid">
+                                    <span class="buy-in">Details</span>
+                                </div>
+                            </a>
+                        </div>
+                        <p class="tun"><span>@item.Title</span><br>@item.Descriptions</p>
+                        <div class="clearfix"></div>
+                    </div>
+                }
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

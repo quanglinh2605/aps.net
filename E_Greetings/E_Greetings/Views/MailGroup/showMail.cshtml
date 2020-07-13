@@ -1,0 +1,51 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<E_Greetings.Models.ModelsView.MailGroupView>
+
+@{
+    ViewBag.Title = "showMail";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+    int i = 1;
+}
+
+<p>
+    @Html.ActionLink("Add new", "AddMail", new { id = ViewBag.MemId})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(i++)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "updateMail", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "deleteMail", new { id = item.ID, MemId = ViewBag.MemId })
+            </td>
+        </tr>
+    }
+</table>
+<div style="clear:both"></div>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="Menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("showMail", new { name = ViewBag.Keyword, page = page }))
+</div>
+<style>
+    .Menutrang li {
+        display: inline;
+        margin-right: 10px;
+    }
+</style>

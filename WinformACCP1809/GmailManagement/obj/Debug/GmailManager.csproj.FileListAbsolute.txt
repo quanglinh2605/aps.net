@@ -1,0 +1,11 @@
+C:\myproject\WinformACCP1809\GmailManagement\bin\Debug\GmailManagement.exe.config
+C:\myproject\WinformACCP1809\GmailManagement\bin\Debug\GmailManagement.exe
+C:\myproject\WinformACCP1809\GmailManagement\bin\Debug\GmailManagement.pdb
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManager.csprojAssemblyReference.cache
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManagement.Main.resources
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManagement.Nhap.resources
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManagement.Properties.Resources.resources
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManager.csproj.GenerateResource.cache
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManager.csproj.CoreCompileInputs.cache
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManagement.exe
+C:\myproject\WinformACCP1809\GmailManagement\obj\Debug\GmailManagement.pdb

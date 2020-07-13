@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="baitap2ModelStoreContainer" CdmEntityContainer="baitap2Entities">
+    <EntitySetMapping Name="Depts">
+      <EntityTypeMapping TypeName="baitap2Model.Dept">
+        <MappingFragment StoreEntitySet="Dept">
+          <ScalarProperty Name="DeptNo" ColumnName="DeptNo" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="loc" ColumnName="loc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="emps">
+      <EntityTypeMapping TypeName="baitap2Model.emp">
+        <MappingFragment StoreEntitySet="emp">
+          <ScalarProperty Name="empNo" ColumnName="empNo" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="job" ColumnName="job" />
+          <ScalarProperty Name="Mgr" ColumnName="Mgr" />
+          <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+          <ScalarProperty Name="sal" ColumnName="sal" />
+          <ScalarProperty Name="comm" ColumnName="comm" />
+          <ScalarProperty Name="DeptNo" ColumnName="DeptNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalGrades">
+      <EntityTypeMapping TypeName="baitap2Model.SalGrade">
+        <MappingFragment StoreEntitySet="SalGrade">
+          <ScalarProperty Name="grade" ColumnName="grade" />
+          <ScalarProperty Name="losal" ColumnName="losal" />
+          <ScalarProperty Name="hisal" ColumnName="hisal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebChatModelStoreContainer" CdmEntityContainer="WebChatEntities1">
+    <EntitySetMapping Name="Friends">
+      <EntityTypeMapping TypeName="WebChatModel.Friend">
+        <MappingFragment StoreEntitySet="Friend">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idusr" ColumnName="idusr" />
+          <ScalarProperty Name="idfriend" ColumnName="idfriend" />
+          <ScalarProperty Name="contentpath" ColumnName="contentpath" />
+          <ScalarProperty Name="unfriend" ColumnName="unfriend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groupDetails">
+      <EntityTypeMapping TypeName="WebChatModel.groupDetail">
+        <MappingFragment StoreEntitySet="groupDetail">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="IDG" ColumnName="IDG" />
+          <ScalarProperty Name="IDU" ColumnName="IDU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupChats">
+      <EntityTypeMapping TypeName="WebChatModel.GroupChat">
+        <MappingFragment StoreEntitySet="GroupChat">
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="contentpath" ColumnName="contentpath" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserChats">
+      <EntityTypeMapping TypeName="WebChatModel.UserChat">
+        <MappingFragment StoreEntitySet="UserChat">
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

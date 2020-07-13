@@ -1,0 +1,6 @@
+C:\myproject\demoProject1\demoProject1\bin\Release\demoProject1.exe.config
+C:\myproject\demoProject1\demoProject1\bin\Release\demoProject1.exe
+C:\myproject\demoProject1\demoProject1\bin\Release\demoProject1.pdb
+C:\myproject\demoProject1\demoProject1\obj\Release\demoProject1.exe
+C:\myproject\demoProject1\demoProject1\obj\Release\demoProject1.pdb
+C:\myproject\demoProject1\demoProject1\obj\Release\demoProject1.csprojResolveAssemblyReference.cache

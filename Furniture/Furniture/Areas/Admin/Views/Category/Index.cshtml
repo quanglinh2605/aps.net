@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<Models.EF.Category>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Danh sach danh muc";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<Models.EF.Category> ListCate = ViewBag.Cate as List<Models.EF.Category>;
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+}
+
+@section header{
+    Danh sach danh muc
+}
+<br /><br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Danh sach tin tuc</h3>
+        @using (Html.BeginForm("Index", "Category", FormMethod.Get, new { @style = "margin-left:1060px;" }))
+        {
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Ten danh muc</th>
+                    <th>Tieu de</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Admin/Category/Edit/@item.ID">Sua</a> |
+                            @Ajax.ActionLink("Xoa", "Delete", new { @id = item.ID }, new AjaxOptions
+                       {
+                           Confirm = "Ban co muon xoa ban ghi nay?",
+                           OnComplete = "$('#row_" + @item.ID + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.MetaTitle</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyword = ViewBag.keyword }))
+</div>

@@ -1,0 +1,211 @@
+﻿@model IEnumerable<Models.EF.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var category = (Models.EF.Category)ViewBag.category;
+    var categoryDetai = (Models.EF.CategoryDetail)ViewBag.categoryDetail;
+    var proCate = (Models.EF.ProductCategory)ViewBag.proCate;
+    var produce = (Models.EF.Produce)ViewBag.produce;
+    var boloc = (List<Models.EF.FilterPrice>)ViewBag.listprice;
+    var listProCate = (List<Models.EF.ProductCategory>)ViewBag.listProCate;
+    var listProduce = (List<Models.EF.ProduceDetail>)ViewBag.listProduce;
+}
+@section filter{
+    <div class="breadandfilter">
+        <ol class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="./" title="Trang chủ" itemprop="item">
+                    <span itemprop="name">Trang chủ</span>
+                </a>
+                <meta itemprop="position" content="1">
+                <span class="rowbr">›</span>
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="/danh-muc/@category.MetaTitle-@category.ID" title="@category.Name" itemprop="item">
+                    <span itemprop="name">@category.Name</span>
+                </a>
+                <meta itemprop="position" content="2">
+                <span class="rowbr">›</span>
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="/danh-muc-con/@categoryDetai.MetaTitle-@category.ID-@categoryDetai.ID" title="@categoryDetai.Name" itemprop="item">
+                    <span itemprop="name">@categoryDetai.Name</span>
+                </a>
+                <meta itemprop="position" content="3">
+                <span class="rowbr">›</span>
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="@Url.Action("Index","ProductCate", new { id = Session["cateId"], type = proCate.TypeID})" title="@proCate.Name" itemprop="item">
+                    <h2><span itemprop="name">@proCate.Name</span></h2>
+                </a>
+                <meta itemprop="position" content="4">
+            </li>
+        </ol>
+    </div>
+    <div class="fastsearch">
+        <span>Từ khóa: </span>
+        <div class="row_submenu">
+            @foreach (var i in listProCate)
+            {
+                <a href="@i.MetaTitle" title="@i.Name" class="menusub">@i.Name</a>
+            }
+
+            <div class="clear"></div>
+            <div class="boloc hide" style="display:block">
+                <ul>
+                    @if (boloc != null)
+                    {
+                        foreach (var item in boloc)
+                        {
+                            if (item.StartPrice != null && item.EndPrice != null)
+                            {
+                                long? price = (long?)Session["price"];
+                                <li class="@(item.ID == price ? "activebl" : "")"><a href="@Url.Action("Index", "Category", new { cateId = category.ID, Price = item.ID })" rel="nofollow" title="@item.Name">@item.Name</a></li>
+                            }
+                        }
+                    }
+                </ul>
+                <div class="sapxepsp">
+                    <select class="property" rel="noi-that-phong-khach">
+                        <option value="0" @(Session["sort"] != null ? "" : "selected='selected'")>Sap Xep</option>
+                        @foreach (var item in boloc)
+                        {
+                            long selected = 0;
+                            if (Session["sort"] != null)
+                            {
+                                selected = (long)Session["sort"];
+                            }
+                            if (item.StartPrice == null && item.EndPrice == null)
+                            {
+                                <option value="@item.ID" @(selected == item.ID ? "selected='seleted'" : "")>@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section jsFooter{
+    <div id="jspage"></div>
+    <script src="~/Assets/Client/images/skins/main.js"></script>
+}
+<div class="title_home">
+    <h2><a href="@proCate.MetaTitle" title="@proCate.Name">@proCate.Name</a></h2>
+</div>
+<div class="rowsp tutorial_list@{@proCate.ID}">
+    @{ int j = 0;}
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            if (item.ProCateID == proCate.ID)
+            {
+                <div class="boxproduct">
+                    <div class="grid">
+                        @if (item.State != null)
+                        {
+                            <div class="icontext">@item.State</div>
+                        }
+                        <span class="discount">- @(Math.Round((decimal)((1 - @item.Price / @item.PromotionPrice)) * 100))%</span>
+                        <div class="images">
+                            <a href="@item.MetaTitle" title="@item.Name"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
+                        </div>
+                        <h3><a href="@item.MetaTitle" title="@item.Name">@item.Name</a></h3>
+                        <div class="setprice">
+                            <p class="code"><span>Mã sp: @item.Code</span></p>
+                            <p class="giaban">@item.Price<sup>đ</sup></p>
+                            <del>@item.PromotionPrice</del>
+                        </div>
+                    </div>
+                </div>
+                j++;
+            }
+            if (j == 4) { break; }
+        }
+    }
+</div>
+<div class="clear"></div>
+    @if (j >= 4)
+    {
+<div class="show_more_main " id="show_more_main">
+    <span class="show_morecat show_more show_more@{@proCate.ID} " val="4" count="4" id="@proCate.ID">Xem thêm @proCate.Name</span>
+</div>
+    }
+<div class="mframe pad10">
+    <div class="divdetail" id="scrollheight" style="overflow: hidden; height: 500px;">
+        <span style="font-size:14px;">
+            <a href="@Url.Action("Index","ProductCate", new { id = proCate.ID, type = proCate.TypeID})" title="@produce.Name">
+                <span style="color:#0000FF;"><strong>@produce.Name</strong></span>
+            </a>@produce.Description.
+        </span>
+        @foreach (var item in listProduce)
+        {
+            <h2>@item.Name</h2>
+            <ul>
+                @if (item.Description != null && item.Description != "")
+                {
+                    <li><span style="font-size:14px;">@item.Description</span></li>
+                }
+                @if (item.Description1 != null && item.Description1 != "")
+                {
+                    <li><span style="font-size:14px;">@item.Description1</span></li>
+                }
+                @if (item.Description2 != null && item.Description2 != "")
+                {
+                    <li><span style="font-size:14px;">@item.Description2</span></li>
+                }
+                @if (item.Description3 != null && item.Description3 != "")
+                {
+                    <li><span style="font-size:14px;">@item.Description3</span></li>
+                }
+                @if (item.Description4 != null && item.Description4 != "")
+                {
+                    <li><span style="font-size:14px;">@item.Description4</span></li>
+                }
+            </ul>
+            if (item.Name == null)
+            {
+                if (proCate.MetaDescriptions != null && proCate.MetaDescriptions != "")
+                {
+                    <h2><strong><a href="@Url.Action("Index", "CategoryDetail")" title="@proCate.Name"><span style="color:#0000FF;">@proCate.Name</span></a></strong> @proCate.SeoTittle</h2>
+
+                    <ul>
+                        @if (proCate.MetaDescriptions != "" && proCate.MetaDescriptions != null)
+                        {
+                            <li><span style="font-size:14px;">@proCate.MetaDescriptions</span></li>
+                        }
+                        @if (proCate.Material != "" && proCate.Material != null)
+                        {
+                            <li><span style="font-size:14px;"><strong>Chất liệu sản phẩm: </strong>@proCate.Material</span></li>
+                        }
+                        @if (proCate.DesignStyle != "" && proCate.DesignStyle != null)
+                        {
+                            <li><span style="font-size:14px;"><strong>Phong cách thiết kế: </strong>@proCate.DesignStyle</span></li>
+                        }
+                        @if (proCate.DesignShape != "" && proCate.DesignShape != null)
+                        {
+                            <li><span style="font-size:14px;"><strong>Kiểu dáng thiết kế:</strong> @proCate.DesignShape</span></li>
+                        }
+                        @if (proCate.Pattern1 != "" && proCate.Pattern1 != null)
+                        {
+                            <li><span style="font-size:14px;"><strong>Hoa văn sản phẩm:</strong>@proCate.Pattern1</span></li>
+                        }
+                        @if (proCate.Size != "" && proCate.Size != null)
+                        {
+                            <li><span style="font-size:14px;"><strong>Kích thước sản phẩm: </strong>@proCate.Size</span></li>
+                        }
+                        @if (proCate.Color != "" && proCate.Color != null)
+                        {
+                            <li><span style="font-size:14px;"><strong>Màu sắc sản phẩm:</strong>@proCate.Color</span></li>
+                        }
+                    </ul>
+                }
+            }
+        }
+        <span style="font-size:14px;">@produce.Description2</span>
+    </div>
+    <div class="clr"></div>
+    <div style="text-align:center"><a class="read-more" style="display: inline-block;">Xem thêm</a></div>
+</div>

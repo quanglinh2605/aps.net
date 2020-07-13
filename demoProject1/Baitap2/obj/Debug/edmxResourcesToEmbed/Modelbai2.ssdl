@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="baitap2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dept">
+    <Key>
+      <PropertyRef Name="DeptNo" />
+    </Key>
+    <Property Name="DeptNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DName" Type="nvarchar" MaxLength="50" />
+    <Property Name="loc" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="emp">
+    <Key>
+      <PropertyRef Name="empNo" />
+    </Key>
+    <Property Name="empNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ename" Type="nvarchar" MaxLength="100" />
+    <Property Name="job" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mgr" Type="int" />
+    <Property Name="hireDate" Type="date" />
+    <Property Name="sal" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="comm" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DeptNo" Type="int" />
+  </EntityType>
+  <EntityType Name="SalGrade">
+    <Key>
+      <PropertyRef Name="grade" />
+    </Key>
+    <Property Name="grade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="losal" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="hisal" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="fk_emp_Dept_DeptNo_DeptNo">
+    <End Role="Dept" Type="Self.Dept" Multiplicity="0..1" />
+    <End Role="emp" Type="Self.emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DeptNo" />
+      </Principal>
+      <Dependent Role="emp">
+        <PropertyRef Name="DeptNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_emp_Mgr_empNo">
+    <End Role="emp" Type="Self.emp" Multiplicity="0..1" />
+    <End Role="emp1" Type="Self.emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="emp">
+        <PropertyRef Name="empNo" />
+      </Principal>
+      <Dependent Role="emp1">
+        <PropertyRef Name="Mgr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="baitap2ModelStoreContainer">
+    <EntitySet Name="Dept" EntityType="Self.Dept" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="emp" EntityType="Self.emp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalGrade" EntityType="Self.SalGrade" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_emp_Dept_DeptNo_DeptNo" Association="Self.fk_emp_Dept_DeptNo_DeptNo">
+      <End Role="Dept" EntitySet="Dept" />
+      <End Role="emp" EntitySet="emp" />
+    </AssociationSet>
+    <AssociationSet Name="fk_emp_Mgr_empNo" Association="Self.fk_emp_Mgr_empNo">
+      <End Role="emp" EntitySet="emp" />
+      <End Role="emp1" EntitySet="emp" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

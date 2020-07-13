@@ -1,0 +1,6 @@
+C:\myproject\demoProject1\ConsoleApp1\bin\Release\ConsoleApp1.exe.config
+C:\myproject\demoProject1\ConsoleApp1\bin\Release\ConsoleApp1.exe
+C:\myproject\demoProject1\ConsoleApp1\bin\Release\ConsoleApp1.pdb
+C:\myproject\demoProject1\ConsoleApp1\obj\Release\bai.csprojResolveAssemblyReference.cache
+C:\myproject\demoProject1\ConsoleApp1\obj\Release\ConsoleApp1.exe
+C:\myproject\demoProject1\ConsoleApp1\obj\Release\ConsoleApp1.pdb

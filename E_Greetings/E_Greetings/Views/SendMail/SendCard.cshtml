@@ -1,0 +1,69 @@
+﻿@model E_Greetings.Models.ModelsView.SendMailView
+
+@{
+    ViewBag.Title = "SendCard";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+    List<E_Greetings.Models.ModelsView.MailGroupView> lsmail = ViewBag.lsMail as List<E_Greetings.Models.ModelsView.MailGroupView>;
+}
+<h2>SendCard</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>SendMailView</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input type="hidden" value="@ViewBag.tu_Id" name="IDtemp_user" />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sendby, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sendby, new { htmlAttributes = new { @class = "form-control",style="width:150px;" } })
+                @Html.ValidationMessageFor(model => model.Sendby, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receiver, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Receiver,
+            lsmail.Select(x => new SelectListItem { Text = x.Email, Value = x.ID.ToString()}), new { @class = "form-control", @multiple = "true", id="chosen_select",style="width:200px;" } )
+            </div>
+        </div>
+
+       <input type="hidden" name="SendDate"  value="@DateTime.Today.ToShortDateString()"/>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, htmlAttributes : new { @class = "form-control",style= "resize:none;height:100px;width:200px;" } )
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" width="20" />
+            </div>
+        </div>
+    </div>
+}
+@if (ViewBag.Mess != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var result = confirm("@ViewBag.Mess");
+            if (result == true) {
+                location.assign("@Url.Action("createPayment","Payment", new { userId = ViewBag.userId})")
+            }
+        };
+    </script>
+}
+@section scripts{
+    <script>
+        $(function () {
+            $("#chosen_select").chosen({
+                width: "100%",
+                no_result_texts: "No result",
+            });
+        });
+    </script>
+}

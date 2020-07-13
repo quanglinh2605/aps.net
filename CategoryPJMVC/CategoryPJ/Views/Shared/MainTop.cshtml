@@ -1,0 +1,23 @@
+﻿@model List<Modelclass.EF.Category>
+
+    <div class="cart box_1">
+
+
+        @{
+            var session = (CurrentUser)Session[CategoryPJ.Commont.CommontConst.USER_SECCION];
+        }
+        @if (session == null)
+        {
+            <h2 style="display: inline;"><a class="color4 btn btn-info" href="/Login/loginUser">Login</a></h2>
+            <h3><a href="/User/Register" class="btn btn-primary">Register here</a></h3>
+        }
+        else
+        {
+            <h3>Hello @session.Username Wellcome back</h3>
+            <p><a href="/Login/changePassword" class="simpleCart_empty" style="font-size:larger;">Settings Account</a></p>
+            <h3><a href="@Url.Action("LogoutUser", "Login", new {name= ""} )" class="btn btn-primary">Logout</a></h3>
+        }
+
+
+
+    </div>

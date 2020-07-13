@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="heheModelStoreContainer" CdmEntityContainer="heheEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="heheModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Occasions" ColumnName="Occasions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Templates">
+      <EntityTypeMapping TypeName="heheModel.Template">
+        <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

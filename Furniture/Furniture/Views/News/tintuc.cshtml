@@ -1,0 +1,17 @@
+﻿@model List<Models.EF.News>
+@if (Model != null)
+{
+    <ul id="tinnoibat">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@item.MetaTitle" title="@item.Name">
+                    <img src="@item.Image" alt="@item.Name">
+                    <h3>@item.Name</h3>
+                    <p><span style="font-size:14px;">@item.Description</span></p>
+                </a>
+            </li>
+        }
+
+    </ul>
+}

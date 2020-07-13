@@ -1,0 +1,72 @@
+﻿@model E_Greetings.Models.ModelsView.TemplateModelView
+@{
+    ViewBag.Title = "TempDetail";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+    E_Greetings.Models.ModelsView.template_userView item = null;
+    if (Session["temp_user"] != null) { item = Session["temp_user"] as E_Greetings.Models.ModelsView.template_userView; }
+}
+<div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px;float:left;margin-right:100px;">
+    <div class="thumbnail product-item" style="height:280px">
+        <img class="img-responsive" style="cursor:pointer;height:160px;width:100%" src="~/Content/Uploads/@Model.ImagePath" />
+        <div class="caption">
+            <br />
+            <h3>@Model.Title</h3>
+            <br />
+            <p>@Model.Descriptions</p>
+
+        </div>
+    </div>
+</div>
+@if (ViewBag.userId == null)
+{
+    <div class="form-body-w3-agile text-center" style="float:right;margin-right:300px;">
+        <form action="@Url.Action("TempDetailAction", new { id = Model.ID})" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="Username">Email address</label>
+                <input type="email" class="form-control" name="Username" value="" required />
+            </div>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" name="Password" value="" required />
+            </div>
+            <button type="submit" class="btn btn-primary error-w3l-btn mt-sm-5 mt-3 px-4">Login</button>
+        </form>
+    </div>
+}
+@if (ViewBag.userId != null)
+{
+    <div>
+        <form action="@Url.Action("TempDetail","temp_user", new { id = Model.ID, userId = ViewBag.userId})" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="IDTemp" value="@Model.ID" />
+            <input type="hidden" name="IDUser" value="@ViewBag.userID" />
+            <div class="form-group">
+                <label for="Title">Title</label><br />
+                <input type="text" value="@if (Session["temp_user"] != null) { @item.Title }" name="Title" />
+            </div>
+            <div class="form-group">
+                <label for="Message">Your Message</label><br />
+                <textarea name="Message" style="resize:none;width:200px;height:50px;">@if (Session["temp_user"] != null) { @item.Message }</textarea>
+            </div>
+            @if (ViewBag.ResultErrorMessage != null)
+            {
+                <script type="text/javascript">
+
+    window.onload = function () {
+        alert("@ViewBag.ResultErrorMessage");
+       };
+                </script>
+            }
+            <div class="form-group">
+                <lable for="music"><b>Music</b></lable>
+                <input type="file" name="FileMusic" value="@if (Session["temp_user"] != null) { @("~/Content/customerMusic/"+ @item.PathMusic) }" />
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" name="FilePhoto" value="@if (Session["temp_user"] != null) { @("~Content/customerPhoto/" + item.PathPhoto) }" />
+            </div>
+            <button type="submit" class="btn btn-success btn-group-sm" value="Save">Send</button>
+        </form>
+    </div>
+}
+<div style="clear:both;"></div>
+

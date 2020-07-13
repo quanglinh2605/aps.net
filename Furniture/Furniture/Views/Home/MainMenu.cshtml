@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Models.EF.Menu>
+
+<nav id="menu" class="menu">
+    <ul class="dropdown">
+        @{ int i = 1;}
+        @foreach(var item in Model)
+        {
+        <li>
+            <a href="@item.Link" title="@item.Text">@item.Text</a>
+            @if (ViewData["menucate" + i] != null)
+            {
+                var menucate = (List<Models.EF.CategoryDetail>)ViewData["menucate" + i];
+                <ul>
+                    @foreach (var e in menucate)
+                    {
+                        <li><a href="/danh-muc/@e.MetaTitle-@e.ID" title="@e.Name">@e.Name</a></li>
+                    }
+                </ul>
+            }
+            @if (ViewData["menupro" + i] != null)
+            {
+                var menupro = (List<Models.EF.ProductCategory>)ViewData["menupro" + i];
+                <ul>
+                    @foreach (var e in menupro)
+                    {
+                        <li><a href="/danh-muc-con/@e.MetaTitle-@e.ID" title="@e.Name">@e.Name</a></li>
+                    }
+                </ul>
+            }
+        </li>
+            i++;
+        }
+    </ul>
+</nav>

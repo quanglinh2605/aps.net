@@ -1,0 +1,74 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Models.EF.News>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var category = (Models.EF.Category)ViewBag.category;
+    var listCateDetail = (List<Models.EF.CategoryDetail>)ViewBag.listCateDetail;
+}
+@section filter{
+    <div class="breadandfilter">
+        <ol class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="./" title="Trang chủ" itemprop="item">
+                    <span itemprop="name">Trang chủ</span>
+                </a>
+                <meta itemprop="position" content="1">
+                <span class="rowbr">›</span>
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="@Url.Action("Index","Category", new { id = category.ID })" title="@category.Name" itemprop="item">
+                    <h2><span itemprop="name">@category.Name</span></h2>
+                </a>
+                <meta itemprop="position" content="2">
+            </li>
+        </ol>
+    </div>
+    <div class="fastsearch">
+        <span>Từ khóa: </span>
+        <div class="row_submenu">
+            @foreach (var i in listCateDetail)
+            {
+                <a href="@Url.Action("Title","News", new { id = category.ID, titleID = i.ID})" title="@i.Name" class="menusub">@i.Name</a>
+            }
+            <div class="clear"></div>
+        </div>
+    </div>
+}
+<link href="~/Assets/Client/skins/paging/paging.css" rel="stylesheet">
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+<div class="rowsp pad10">
+    @if (Model != null)
+    {
+        <ul id="tinnoibat">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@item.MetaTitle" title="@item.Name">
+                        <img src="@item.Image" alt="@item.Name">
+                        <h3>@item.Name</h3>
+                        <p><span style="font-size:14px;">@item.Description</span></p>
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="clear10"></div>
+            <div id="paginatio">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { id = category.ID, page }))
+            </div>
+        <div class="clear10"></div>        
+    }
+    @*<script src="~/Assets/Client/skins/paging/jquery.easyPaginate.js" type="text/javascript"></script>
+        <script>
+                $("#paginatio").easyPaginate({
+                    items: 6, // Tổng số tin
+                    itemsOnPage: 2, // Số tin 1 trang
+                    edges: 2, // số lượng trang load
+                    currentPage: 1,
+                    onClickcallback: function (page) {
+                        window.location.href = "id=@ViewBag.id?page=" + page;
+                    },
+                });
+            </script>*@
+</div>

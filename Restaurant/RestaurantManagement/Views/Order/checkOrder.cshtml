@@ -1,0 +1,60 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IEnumerable<RestaurantManagement.Models.OrderModelView>
+
+@{
+    ViewBag.Title = "checkOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>checkOrder</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.timeStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Menu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.choosetable)
+        </th>     
+        <th>
+            @Html.DisplayNameFor(model => model.numberSeat)
+        </th>    
+        <th>Name</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.timeStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Menu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.choosetable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numberSeat)
+        </td>        
+            @{List<RestaurantManagement.Models.CustomerModelView> lsCus = ViewBag.lscus as List<RestaurantManagement.Models.CustomerModelView>; }
+            @foreach(var it in lsCus)
+            {
+                if(it.Id == item.Id_Customer)
+                {
+                   <td>@it.Fullname</td> 
+                }
+            }              
+        <td>
+            @Html.ActionLink("Edit", "editOrder", "Order", new { Id = item.Id, Res_Id = item.Id_Res, status = false }, null)           
+            @Html.ActionLink("Cancel", "deleteOrder", "Order", new { id = item.Id, Res_Id = item.Id_Res, status = item.status }, null)                       
+        </td>
+    </tr>
+}
+
+</table>

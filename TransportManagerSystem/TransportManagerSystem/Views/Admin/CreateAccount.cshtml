@@ -1,0 +1,87 @@
+﻿@model TransportManagerSystem.Models.ModelsViews.Account
+@{
+    ViewBag.Title = "CreateAccount";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content-wrapper" style="margin-right:40%">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Create New Account</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        @if (TempData["Warn"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                This Account has existed
+            </div>
+        }
+        <form action="@Url.Action("CreateAccountDB")" method="post" role="form" validate="true">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="Username" id="" value="" class="form-control" required maxlength="50" minlength="10"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="Password" id="" value="" class="form-control" required minlength="8" />
+                </div>
+                <div class="form-group">
+                    <label for="fullname">FullName</label>
+                    <input type="text" name="Fullname" id="" value="" class="form-control" maxlength="50" minlength="10"/>
+                </div>
+                <div class="form-group">
+                    <label for="fullname">PhoneNumber</label>
+                    <input type="number" name="PhoneNumber" id="" value="" class="form-control" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Select UserType</label>
+                    <select name="usertype_id" id="" class="form-control" required>
+                        <option value="">Choose user type</option>
+                        @if (ViewBag.lsusertype != null)
+                        {
+                            List<TransportManagerSystem.Models.ModelsViews.user> lsuser = ViewBag.lsusertype as List<TransportManagerSystem.Models.ModelsViews.user>;
+                            foreach (var item in lsuser)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Regional</label>
+                    <select name="Regional_Id" id="" class="form-control" required>
+                        <option value="">Choose Region</option>
+                        @if (ViewBag.lsRegional != null)
+                        {
+                            List<TransportManagerSystem.Models.ModelsViews.Regional> lsRegion = ViewBag.lsRegional as List<TransportManagerSystem.Models.ModelsViews.Regional>;
+                            foreach (var item in lsRegion)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="chkActive"> Active
+                    </label>
+                    <input type="hidden" name="Status" id="chkActiveValue" value="" />
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary"> Save </button>
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $("#chkActive").change(function () {
+            $("#chkActive").is(":checked") ? $("#chkActiveValue").val("True") : $("#chkActiveValue").val("False");
+        })
+    </script>
+}
+

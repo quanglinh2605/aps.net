@@ -1,0 +1,12 @@
+C:\myproject\demoProject1\demoProject1\bin\Debug\demoProject1.exe.config
+C:\myproject\demoProject1\demoProject1\bin\Debug\demoProject1.exe
+C:\myproject\demoProject1\demoProject1\bin\Debug\demoProject1.pdb
+C:\myproject\demoProject1\demoProject1\obj\Debug\demoProject1.exe
+C:\myproject\demoProject1\demoProject1\obj\Debug\demoProject1.pdb
+C:\myproject\demoProject1\demoProject1\bin\Debug\EntityFramework.dll
+C:\myproject\demoProject1\demoProject1\bin\Debug\EntityFramework.SqlServer.dll
+C:\myproject\demoProject1\demoProject1\bin\Debug\EntityFramework.xml
+C:\myproject\demoProject1\demoProject1\bin\Debug\EntityFramework.SqlServer.xml
+C:\myproject\demoProject1\demoProject1\obj\Debug\demoProject1.csproj.CoreCompileInputs.cache
+C:\myproject\demoProject1\demoProject1\obj\Debug\demoProject1.csproj.CopyComplete
+C:\myproject\demoProject1\demoProject1\obj\Debug\demoProject1.csprojAssemblyReference.cache

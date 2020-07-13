@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a2497d23def433fa720718ac5f292a4" Name="Diagram1">
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.Account" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.ownerDetail" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.Regional" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.TransportDetail" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.TransportPart" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.TransportType" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegionalTransportOfficeModel.Usertype" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="RegionalTransportOfficeModel.FK__Account__Regiona__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="RegionalTransportOfficeModel.FK__Account__usertyp__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="RegionalTransportOfficeModel.FK__Transport__Accou__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="RegionalTransportOfficeModel.FK__Transport__Owner__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="RegionalTransportOfficeModel.FK__Transport__Trans__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="RegionalTransportOfficeModel.FK__Transport__ID_Ty__49C3F6B7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

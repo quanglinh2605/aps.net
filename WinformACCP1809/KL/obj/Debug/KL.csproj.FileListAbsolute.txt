@@ -1,0 +1,12 @@
+C:\myproject\WinformACCP1809\KL\bin\Debug\KL.exe.config
+C:\myproject\WinformACCP1809\KL\bin\Debug\KL.exe
+C:\myproject\WinformACCP1809\KL\bin\Debug\KL.pdb
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.csprojAssemblyReference.cache
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.Form1.resources
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.Properties.Resources.resources
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.csproj.GenerateResource.cache
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.csproj.CoreCompileInputs.cache
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.exe
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.pdb
+C:\myproject\WinformACCP1809\KL\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\myproject\WinformACCP1809\KL\obj\Debug\KL.csproj.ResolveComReference.cache

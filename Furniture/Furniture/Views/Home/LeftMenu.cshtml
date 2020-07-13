@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Models.EF.Category>
+
+@{
+    var listCateDetail = (List<Models.EF.CategoryDetail>)ViewBag.listCateDetail;
+    var listProductCate = (List<Models.EF.ProductCategory>)ViewBag.listProductCate;
+}
+<div class="leftmenu">
+    <ul>
+        @foreach (var item in Model)
+        {
+            var link = item.MetaTitle;
+
+            var groupCateDetail = listCateDetail.Where(X => X.CategoryID == item.ID && X.TypeID==2);
+
+            var parentClass = groupCateDetail.Count() > 0 ? "class=has-sub" : "";
+
+            <li @parentClass style="background:url(../../Assets/Client/images/images/icon-no.png) no-repeat 5px">
+            
+                <a href="/danh-muc/@link-@item.ID" title="@item.Name">@item.Name</a>
+                
+                @if (groupCateDetail.Count() > 0)
+                {
+                    <ul>
+                
+                        @foreach (var sub in groupCateDetail)
+                        {
+
+                            var groupProductCate = listProductCate.Where(X => X.ParentID == sub.ID && X.TypeID == 3);
+
+                            var Class = groupProductCate.Count() > 0 ? "class=has-sub" : "";
+                            
+                            <li @Class style="background:url(../../Assets/Client/images/images/icon-no.png) no-repeat 5px">
+                            
+                                <a href="/danh-muc-con/@sub.MetaTitle-@item.ID-@sub.ID" title="@sub.Name">@sub.Name</a>
+                                
+                                @if (groupProductCate.Count() > 0)
+                                {
+                                    <ul>
+                                        @foreach (var i in groupProductCate)
+                                        {
+                                            <li style="background:url(../../Assets/Client/images/images/icon-no.png) no-repeat 5px">
+                                
+                                                <a href=@Url.Action("Index", "ProductCate", new { cateId = item.ID, catedetailId = sub.ID, id = i.ID, type = i.TypeID}) title="@i.Name">@i.Name</a>
+                                            
+                                            </li>
+                                        }
+                                    </ul>
+
+                                }
+                            </li>
+
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</div>

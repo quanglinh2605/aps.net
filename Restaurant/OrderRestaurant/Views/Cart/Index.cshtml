@@ -1,0 +1,53 @@
+﻿@using Newtonsoft.Json;
+@using OrderRestaurant.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Cart</h2>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>Option</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    @foreach (DetailMenu item in (List<DetailMenu>)Session["cart"])
+    {
+        <tr>
+            <td><a href="@Url.Action("Remove", "Cart", new { id = item.Menu.Id, item.Cus_Id })">Remove</a></td>
+            <td>@item.Menu.Id</td>
+            <td>@item.Menu.Name</td>
+            <td><img src="C:\myproject\Restaurant\RestaurantManagement\Content\Uploads\@item.Menu.ImgPath" width="60" /> </td>
+            <td>@item.Menu.Price</td>
+            <td>@item.quantity</td>
+            <td>@(item.Menu.Price * item.quantity)</td>
+        </tr>
+    }
+    <tr>
+        <td align="right" colspan="6">Sum</td>
+        <td>
+            @{
+                List<DetailMenu> cart = (List<DetailMenu>)Session["cart"];
+                var total = cart.Sum(item => item.Menu.Price * item.quantity);
+            }
+            @total
+        </td>
+    </tr>
+</table>
+@{ 
+    List<string> menu = new List<string>();
+    foreach(var item in cart)
+    {
+        menu.Add(item.Menu.Name);
+    }
+    var json = JsonConvert.SerializeObject(menu);
+ }
+
+<br>
+<a href="@Url.Action("Index", "Product")" class="btn btn-group-sm btn-primary">Continue choose Menu</a>
+<a href="@Url.Action("createOrder","Order",new { Cus_Id = ViewBag.Cus_Id,Res_Id = cart.FirstOrDefault().Menu.Res_Id, menu = menu })" class="btn btn-success">Order</a>

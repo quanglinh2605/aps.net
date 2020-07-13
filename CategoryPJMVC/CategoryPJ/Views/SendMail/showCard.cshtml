@@ -1,0 +1,112 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<CategoryPJ.Models.ModelsView.SendMailView>
+
+@{
+    ViewBag.Title = "showCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<CategoryPJ.Models.ModelsView.MailGroupView> lsmail = ViewBag.lsmail as List<CategoryPJ.Models.ModelsView.MailGroupView>;
+    List<CategoryPJ.Models.ModelsView.template_userView> lstemp = ViewBag.lstemp as List<CategoryPJ.Models.ModelsView.template_userView>;
+    int d = 1;
+}
+@section slide{
+<div class="grow">
+    <div class="container">
+        <h2>showCard</h2>
+    </div>
+</div>}
+
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Template
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Sendby)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().SendDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Message)
+            </th>
+            <th>
+                Receiver
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            d = 1;
+            <tr>
+                @foreach (var i in lstemp)
+                {
+                    if (i.ID == item.IDtemp_user)
+                    {
+                        <td>@i.Title</td>
+                    }
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sendby)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SendDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                @foreach (var i in lsmail)
+                {
+                    if (item.Receiver[0] == i.ID.ToString())
+                    {
+                        <td>@(i.Email)</td>
+                    }
+                }
+                <td>
+                    @Html.ActionLink("Details", "showTemp_user", "temp_user", new { id = item.IDtemp_user }, false)
+                </td>
+            </tr>
+            if (item.Receiver.Count() >= 2)
+            {
+                foreach (var e in item.Receiver)
+                {
+                    if (d == item.Receiver.Count()) { break; }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        @foreach (var i in lsmail)
+                        {
+                            if (i.ID.ToString() == item.Receiver[d])
+                            {
+                                <td>@i.Email</td>
+                            }
+                        }
+                        <td></td>
+                    </tr>
+                    d++;
+                }
+            }
+        }
+
+    </table>}
+else
+{
+    <h3>There is no Result for @ViewBag.Keyword</h3>
+}
+<div style="clear:both"></div>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="Menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("showMail", new { name = ViewBag.Keyword, page = page }))
+</div>
+<style>
+    .Menutrang li {
+        display: inline;
+        margin-right: 10px;
+    }
+</style>
+

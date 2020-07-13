@@ -1,0 +1,88 @@
+﻿@model TransportManagerSystem.Models.ModelsViews.TransportDetail
+@{
+    ViewBag.Title = "createTransportDetail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<TransportManagerSystem.Models.ModelsViews.Account> lsAcc = ViewBag.lsAcc as List<TransportManagerSystem.Models.ModelsViews.Account>;
+    List<TransportManagerSystem.Models.ModelsViews.OwnerDetail> lsowner = ViewBag.lsowner as List<TransportManagerSystem.Models.ModelsViews.OwnerDetail>;
+    List<TransportManagerSystem.Models.ModelsViews.TransportPart> lstrans = ViewBag.lstrans as List<TransportManagerSystem.Models.ModelsViews.TransportPart>;
+    List<TransportManagerSystem.Models.ModelsViews.Regional> lsregion = ViewBag.lsregion as List<TransportManagerSystem.Models.ModelsViews.Regional>;
+    List<TransportManagerSystem.Models.ModelsViews.TransportType> lstype = ViewBag.lstype as List<TransportManagerSystem.Models.ModelsViews.TransportType>;
+}
+
+<h2>createTransportDetail</h2>
+<form action="@Url.Action("createTransDetailDB")" method="post" validate="true">
+    <div class="form-group">
+        <label>Account</label>
+        <select name="Account_id" id="" class="form-control" required>
+            <option value="-1">Select Transport</option>
+            @foreach (var item in lsAcc)
+            {
+                <option value="@item.Id">@item.Username</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Owner</label>
+        <select name="Owner_id" id="" class="form-control" required>
+            <option value="-1">Select owner</option>
+            @foreach (var item in lsowner)
+            {
+                <option value="@item.Id">@item.Fullname</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Transport Part</label>
+        <select name="Transport_id" id="" class="form-control" required>
+            <option value="-1">Select Transport</option>
+            @foreach (var item in lstrans)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form_group">
+        <label for="slTransType">Transport Type : </label>
+        <select name="transType_Id" id="slTransType" class="form-control" required>
+            <option value="-1">Choose Transport Type</option>
+            @if (ViewBag.lstype != null)
+            {
+                foreach (var item in lstype)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Region</label>
+        <select name="Region_Id" id="" class="form-control" required>
+            <option value="-1">Select Region</option>
+            @foreach (var item in lsregion)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>License Plate</label>
+        <input type="number" name="Number" value="" class="form-control" required />
+    </div>
+    <div>
+        <label>Color</label>
+        <input type="text" name="Color" value="" required class="form-control" />
+    </div>
+    <div>
+        <label>Active</label>
+        <input type="checkbox" id="chkActive" />
+        <input type="hidden" name="Status" id="chkActiveValue" value="" />
+    </div> 
+    <button type="submit" name="btnSave" class="btn btn-primary" value="Save">Save</button>
+</form>
+    @section scripts{
+        <script>
+            $("#chkActive").change(function() {
+                $("#chkActive").is(":checked") ? $("#chkActiveValue").val("True") : $("#chkActiveValue").val("False");
+            })
+        </script>
+        }

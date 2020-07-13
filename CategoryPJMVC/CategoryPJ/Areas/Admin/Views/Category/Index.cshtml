@@ -1,0 +1,83 @@
+﻿@model PagedList.IPagedList<Modelclass.EF.Category>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var category = (List < Modelclass.EF.Category >) ViewBag.Category;
+
+}
+
+<h2>Index</h2>
+@section header{
+    List Category
+
+}
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Danh sach nguoi dung</h6>
+            </div>
+            @using (Html.BeginForm("Index", "Category", FormMethod.Post))
+            {
+                <div>
+                    <div class="card-header py-3">
+                        <input type="text" value="@ViewBag.Searching" name="searchString " />
+                        <span>
+                            <button class="btn btn-light" type="submit">Search </button>
+                        </span>
+                    </div>
+                </div>
+            }
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Occasions</th>
+                                <th>Descriptions</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Occasions</th>
+                                <th>Descriptions</th>
+                                <th>Image</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="/Admin/Category/Edit/@item.ID">Edit |</a>
+                                        @Ajax.ActionLink("Delete", "Delete", new { @id = item.ID }, new AjaxOptions
+                                   {
+                                       Confirm = "Are you sure to delete this user",
+                                       OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                       HttpMethod = "Delete"
+                                   })
+                                    </td>
+                                    <td>@item.Occasions</td>
+                                    <td>@item.Descriptions</td>
+                                    <td><img src="@Url.Content(@item.ImageCate)" width="250" height="250" alt="@item.Occasions"></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.Searching }))
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

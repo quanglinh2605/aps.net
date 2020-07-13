@@ -1,0 +1,44 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<OrderRestaurant.Models.MenuModelView>
+
+@{
+    ViewBag.Title = "showMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+    List<OrderRestaurant.Models.RestaurantModelView> lsres = ViewBag.Res as List<OrderRestaurant.Models.RestaurantModelView>;
+}
+
+<h2>showMenu</h2>
+
+<form method="get" enctype="multipart/form-data">
+    <input type="hidden" value="@Model.PageNumber" name="page" />
+    <input type="text" value="@ViewBag.Tukhoa" name="name" />
+    <input type="submit" value="Search" />
+</form>
+@foreach (var item in lsres)
+{
+    <div>@item.Name Restaurant</div>
+    <hr />
+    foreach (var product in Model)
+    {
+        if (product.Res_Id == item.Id)
+        {
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px;">
+            <div class="thumbnail product-item" style="height:320px">
+                <img class="img-responsive" style="cursor:pointer;height:160px;width:100%" src="C:\myproject\Restaurant\RestaurantManagement\Content\Uploads\@product.ImgPath" />
+                <div class="caption">
+                    <h3>@product.Name</h3>
+                    <p>@product.Price</p>                    
+                </div>
+            </div>
+        </div>
+        }
+    }
+    <div class="clearfix"></div>
+}
+<div style="clear:both"></div>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("showMenu", new { id = ViewBag.Res_Id, page = page, name = ViewBag.Tukhoa }))
+</div>
