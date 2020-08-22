@@ -165,7 +165,9 @@
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProduceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProduceDetailController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCateController.cs" />
@@ -181,6 +183,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductCateController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -2193,6 +2196,14 @@
     <Content Include="Scripts\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\ckfinder\userfiles\.htaccess" />
     <Content Include="libman.json" />
+    <Content Include="Areas\Admin\Views\CategoryDetail\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryDetail\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryDetail\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\ckeditor.php" />
     <Content Include="Scripts\ckeditor\ckeditor_basic.js" />
@@ -3229,11 +3240,15 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Thanks.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Invoice\loadInvoice.cshtml" />
+    <Content Include="Views\Invoice\loadDetail.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\CategoryDetail\" />
+    <Folder Include="Areas\Admin\Views\MenuType\" />
     <Folder Include="Areas\Admin\Views\ProduceDetail\" />
     <Folder Include="Areas\Admin\Views\Produce\" />
   </ItemGroup>

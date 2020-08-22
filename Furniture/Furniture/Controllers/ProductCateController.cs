@@ -12,7 +12,7 @@ namespace Furniture.Controllers
     {
         ProductDao dao = new ProductDao();
         // GET: ProductCate
-        public ActionResult Index(long cateId, long catedetailId, long id, long? idPrice, long type) 
+        public ActionResult Index(long cateId, long catedetailId, long id, long? idPrice) 
         {
             var model = dao.filterByPrice(idPrice, cateId, catedetailId);
             model = dao.listByProCateId(id);
@@ -23,9 +23,9 @@ namespace Furniture.Controllers
             Session.Add("cateId", cateId);
             Session.Add("catedetailId", catedetailId);
             ViewBag.proCate = new ProductCateDao().getbyID(id);
-            var produce = new ProduceDao().findproduce(type, id);
-            ViewBag.produce = produce;
-            ViewBag.listProduce = new ProduceDetailDao().listByProduceID(produce.ID);
+            //var produce = new ProduceDao().findproduce(type, id);
+            //ViewBag.produce = produce;
+            //ViewBag.listProduce = new ProduceDetailDao().listByProduceID(produce.ID);
             ViewBag.category = new CategoryDao().getById((long)Session["cateId"]);
             ViewBag.categoryDetail = new CateDetailDao().getById((long)Session["cateDetailId"]);
             ViewBag.listprice = new PriceDao().listAll();

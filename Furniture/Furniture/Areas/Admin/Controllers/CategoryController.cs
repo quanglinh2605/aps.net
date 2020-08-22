@@ -20,6 +20,7 @@ namespace Furniture.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            setViewBag();
             return View();
         }
         [HttpPost]
@@ -28,6 +29,7 @@ namespace Furniture.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new CategoryDao();
+                model.CreatedDate = DateTime.Now;
                 var result = dao.Insert(model);
                 if (result > 0)
                     return RedirectToAction("Index");
@@ -38,7 +40,8 @@ namespace Furniture.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
-            return View();
+            var model = new CategoryDao().getById(id);
+            return View(model);
         }
         [HttpPost]
         public ActionResult Edit(Category model)
@@ -58,7 +61,12 @@ namespace Furniture.Areas.Admin.Controllers
         {
             var dao = new CategoryDao();
             dao.Delete(id);
-            return View();
+            return RedirectToAction("Index");
+        }
+        
+        public void setViewBag(long? id = null)
+        {
+            ViewBag.TypeID = new SelectList(new MenuTypeDao().AllMenuType(), "ID", "Name", id);
         }
     }
 }

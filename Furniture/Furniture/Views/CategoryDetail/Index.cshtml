@@ -27,7 +27,7 @@
                 <span class="rowbr">›</span>
             </li>
             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                <a href="/danh-muc-con/@cateDetail.MetaTitle-@cateDetail.ID" title="@cateDetail.Name" itemprop="item">
+                <a href="/danh-muc-con/@cateDetail.MetaTitle-@cateDetail.CategoryID-@cateDetail.ID" title="@cateDetail.Name" itemprop="item">
                     <h2><span itemprop="name">@cateDetail.Name</span></h2>
                 </a>
                 <meta itemprop="position" content="3">
@@ -39,7 +39,7 @@
         <div class="row_submenu">
             @foreach (var item in listProcate)
             {
-                <a href="@item.MetaTitle" title="@item.Name" class="menusub">@item.Name</a>
+                <a href="http://localhost:61366/chi-tiet/@item.MetaTitle-@category.ID-@item.ParentID-@item.ID" title="@item.Name" class="menusub">@item.Name</a>
             }
         </div>
     </div>
@@ -56,7 +56,7 @@
                         <li class="@(item.ID == price ? "activebl" : "")"><a href="@Url.Action("Index", "Category", new { cateId = (long)Session["cateId"] ,catedetailId = (long)Session["cateDetailId"], Price = item.ID })" rel="nofollow" title="@item.Name">@item.Name</a></li>
                     }
                 }
-            }
+            }032
         </ul>
         <div class="sapxepsp">
             <select class="property" rel="Ban-ghe-go">
@@ -81,12 +81,13 @@
     <div id="jspage"></div>
     <script src="~/Assets/Client/images/skins/main.js"></script>
 }
-
-@foreach (var element in listProcate)
+@if(listProcate != null)
 {
+    foreach (var element in listProcate)
+    {
     int i = 0;
     <div class="title_home">
-        <h2><a href="@element.MetaTitle" title="@element.Name">@element.Name</a></h2>
+        <h2><a href="http://localhost:61366/chi-tiet/@element.MetaTitle-@category.ID-@element.ParentID-@element.ID" title="@element.Name">@element.Name</a></h2>
     </div>
     <div class="rowsp tutorial_list@{@element.ID}">
         @if (Model != null)
@@ -97,18 +98,24 @@
                 {
                     <div class="boxproduct">
                         <div class="grid">
+                            @if (item.CreateDate >= DateTime.Now.AddDays(-60))
+                            {
+                                <div class="new-item">
+                                    <img src="~/Assets/Client/images/images/new.png" alt="Sản phẩm mới">
+                                </div>
+                            }
                             @if (item.State != null)
                             {
-                                <div class="icontext">@item.State</div>
+                                <div class="icontext">@</div>
                             }
-                            <span class="discount">- @(Math.Round((decimal)((1 - @item.Price / @item.PromotionPrice)) * 100))%</span>
+                            <span class="discount">- @( )%</span>
                             <div class="images">
-                                <a href="@item.MetaTitle" title="@item.Name"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
+                                <a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.Name" class="viewIncrease" id="@item.ID"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
                             </div>
-                            <h3><a href="@item.MetaTitle" title="@item.Name">@item.Name</a></h3>
+                            <h3><a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.Name" class="viewIncrease" id="@item.ID">@</a></h3>
                             <div class="setprice">
-                                <p class="code"><span>Mã sp: @item.Code</span></p>
-                                <p class="giaban">@item.Price<sup>đ</sup></p>
+                                <p class="code"><span>Mã sp: @</span></p>
+                                <p class="giaban">@<sup>đ</sup></p>
                                 <del>@item.PromotionPrice</del>
                             </div>
                         </div>
@@ -126,8 +133,10 @@
             <span class="show_morecat show_more show_more@{@element.ID} " val="4" count="4" id="@element.ID">Xem thêm @element.Name</span>
         </div>
     }
+    }
 }
-
+@if(produce != null)
+{
 <div class="mframe pad10">
     <div class="divdetail" id="scrollheight" style="overflow: hidden; height: 500px;">
         <span style="font-size:14px;">
@@ -178,3 +187,4 @@
     <div class="clr"></div>
     <div style="text-align:center"><a class="read-more" style="display: inline-block;">Xem thêm</a></div>
 </div>
+}

@@ -11,11 +11,11 @@
             }); var f = d.getElementsByTagName(s)[0],
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-NKHG4VG');</script>
+        })(window, document, 'script', 'dataLayer', 'GTM-NKHG4VG');</script>  
     <!-- End Google Tag Manager -->
     <meta name="p:domain_verify" content="1723af03eb6b28907a9a31894094bb83" />
     <meta name="google-site-verification" content="HL2_4oYUl5XAGnx70WSr-0qPyOdv-Mk92bCWPZCuQbM" />
-    <title>Nội Thất Đồ Gỗ Việt, Nội Thất Giá Rẻ Cho Gia Đình, Khách Sạn</title>
+    <title>@ViewBag.Title</title>
     <meta name="keywords" content="nội thất" />
     <meta name="description" content="Nội Thất Đồ Gỗ Việt, xưởng sản xuất đồ gỗ nội thất giá rẻ cho gia đình, khách sạn, chuyên phòng ngủ giá tốt, khuyến mãi 20% - 09 8888 7878" />
     <base href="" />
@@ -1365,7 +1365,7 @@
                 width: 100%
             }
         }
-    </style>    
+    </style>
 </head>
 <body id="content">
     <script src="~/Assets/Client/images/skins/jquery-1.8.3.js" type="text/javascript"></script>
@@ -1387,11 +1387,9 @@
         <div class="header-bot container">
             <div class="logo"><a href="/" title="Trang chủ | Nội Thất Đồ Gỗ Việt, Nội Thất Giá Rẻ Cho Gia Đình, Khách Sạn"><img src="~/Assets/Client/images/upload/giaodien/logo.png" alt="Nội Thất Đồ Gỗ Việt, Nội Thất Giá Rẻ Cho Gia Đình, Khách Sạn" /><img src="~/favicon.png" alt="Nội Thất Đồ Gỗ Việt, Nội Thất Giá Rẻ Cho Gia Đình, Khách Sạn" class="logomb" /></a></div>
             <div class="formsearch">
-                <form action="index.php?page=dta_sanpham" method="get" class="search">
-                    <input type="hidden" name="page" value="dta_sanpham" />
-                    <input type="hidden" name="timkiem" value="ok" />
+                <form action="@Url.Action("Search")" method="get" class="search">
                     <div class="">
-                        <select name="cat">
+                        <select>
                             <option value="0">Tất cả danh mục</option>
 
                             <option value="1">Nội Thất Phòng Khách</option>
@@ -1424,15 +1422,14 @@
 
                         </select>
                     </div>
-                    <input type="text" name="tukhoa" placeholder="Bạn cần tìm gì?" />
+                    <input type="text" name="keyword" placeholder="Bạn cần tìm gì?" />
                     <input type="submit" onClick="this.form.submit()" value="Tìm kiếm" />
-                    <ul style="display:none" class="search_ajax_resutl"></ul>
                 </form>
             </div>
             <div class="information">
                 <div class="box-info cart">
-                    <a href="/gio-hang" title="Xem giỏ hàng">
-                        <span class="text">Giỏ hàng </span><span class="num cart_qty">@(Session[Furniture.Common.CommonConstants.quantityCart]==null?0: Session[Furniture.Common.CommonConstants.quantityCart])</span>
+                    <a href="#" title="Xem giỏ hàng" id="cart" val="@(Session[Furniture.Common.CommonConstants.quantityCart]==null?0: Session[Furniture.Common.CommonConstants.quantityCart])">
+                        <span class="text">Giỏ hàng </span><span class="num cart_qty">@(Session[Furniture.Common.CommonConstants.quantityCart] == null ? 0 : Session[Furniture.Common.CommonConstants.quantityCart])</span>
                         <!--<span class="carticon"></span>-->
                     </a>
                 </div>
@@ -1460,13 +1457,13 @@
                                     }
 
                                         .leftmenu a {
-                        display: block;
-                        padding: 7px 15px;
-                        color: #333;
+                                            display: block;
+                                            padding: 7px 15px;
+                                            color: #333;
                                             padding-left: 35px;
-                        line-height: 24px;
-                        text-transform: capitalize;
-                    }
+                                            line-height: 24px;
+                                            text-transform: capitalize;
+                                        }
 
                                         .leftmenu ul li {
                                             float: none;
@@ -1507,14 +1504,14 @@
                                         }
 
                                         .leftmenu ul ul li {
-                    background: none
-                }
+                                            background: none
+                                        }
 
                                             .leftmenu ul ul li:hover > a {
                                                 color: #623827
                                             }
                                 </style>
-                               @{ Html.RenderAction("LeftMenu", "Home");}
+                                @{ Html.RenderAction("LeftMenu", "Home");}
                             </div>
                         </div>
                     </div>
@@ -1525,12 +1522,12 @@
                             }
 
                             .menu ul {
-                    padding: 0px;
-                    margin: 0px;
-                    list-style: none;
-                    position: relative;
-                    display: inline-block;
-                }
+                                padding: 0px;
+                                margin: 0px;
+                                list-style: none;
+                                position: relative;
+                                display: inline-block;
+                            }
 
                             .menu > li > ul.sub_menu {
                                 min-width: 10em;
@@ -1553,16 +1550,16 @@
                             }
 
                             .menu ul li a {
-                    display: block;
-                    text-decoration: none;
-                    color: #424242;
+                                display: block;
+                                text-decoration: none;
+                                color: #424242;
                                 text-transform: uppercase;
-                    font-weight: normal;
-                    font-size: 13px
-                }
+                                font-weight: normal;
+                                font-size: 13px
+                            }
 
                             .menu ul li:last-child a {
-                }
+                            }
 
                             .menu ul li li a:hover {
                                 color: #fff !important
@@ -1596,36 +1593,36 @@
                             }
 
                                 .menu ul ul > li a {
-                    padding: 7px 15px !important;
-                    height: auto;
-                    color: #333 !important;
+                                    padding: 7px 15px !important;
+                                    height: auto;
+                                    color: #333 !important;
                                     border: none;
-                    font-size: 13px;
-                    border-bottom: 1px solid #ccc;
+                                    font-size: 13px;
+                                    border-bottom: 1px solid #ccc;
                                     text-transform: none;
                                     float: none !important;
-                    line-height: 24px !important
-                }
+                                    line-height: 24px !important
+                                }
 
                             .menu ul ul li:last-child a {
-                    border: none
-                }
+                                border: none
+                            }
 
                             .menu ul ul > li a:hover {
                                 color: #fff !important
                             }
 
                             .menu ul ul ul {
-                    position: absolute;
-                    left: 100%;
-                    top: 0px;
-                    margin-left: 1px;
-                    width: 250px;
-                    border-top: 0
+                                position: absolute;
+                                left: 100%;
+                                top: 0px;
+                                margin-left: 1px;
+                                width: 250px;
+                                border-top: 0
                             }
 
                                 .menu ul ul ul > li a {
-                    background: #fff;
+                                    background: #fff;
                                     color: #000
                                 }
                         </style>

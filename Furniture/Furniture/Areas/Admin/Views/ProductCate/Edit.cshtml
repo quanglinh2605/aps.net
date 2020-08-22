@@ -1,19 +1,25 @@
 ﻿@model Models.EF.ProductCategory
 
 @{
-    ViewBag.Title = "Danh muc con";
+    ViewBag.Title = "Danh muc Chi tiet";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var cateDetail = ViewBag.cateDetail as Models.EF.CategoryDetail;
+    var listCategory = ViewBag.listCategory as List<Models.EF.Category>;
+    var listCateDetail = ViewBag.listCateDetail as List<Models.EF.CategoryDetail>;
 }
 
 @section header{
-    Cap nhat danh muc con
+    Cap nhat danh muc chi tiet
+}
+@section jsFooter{
+    <script src="~/Assets/Admin/js/productController.js"></script>
 }
 <br /><br />
 <div class="card card-primary" style="width:600px;margin-left:200px;">
     <div class="card-header">
         <h3 class="card-title">Nhap thong tin danh muc</h3>
     </div>
-    @using (Html.BeginForm("Edit","ProductCate",FormMethod.Post))
+    @using (Html.BeginForm("Edit", "ProductCate", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -36,10 +42,24 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.ParentID, htmlAttributes: new { @class = "control-label " })
+                @Html.LabelFor(model => model.ParentID, htmlAttributes: new { @class = "control-label " })<br />
+                <div style="float:left; margin-right:5px;">
+                    <select class="cbbCategory">
+                        <option value="-1">Select Category</option>
+                        @foreach (var i in listCategory)
+                        {
+                            <option value="@i.ID" @(i.ID == cateDetail.CategoryID ? "selected='seleted'" : "")>@i.Name</option>
+                        }
+                    </select>
+                </div>
                 <div>
-                    @Html.EditorFor(model => model.ParentID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ParentID, "", new { @class = "text-danger" })
+                    <select class="cbbCateDetail" name="ParentID">
+                        <option value="-1">Select Category Detail</option>
+                        @foreach (var i in listCateDetail)
+                        {
+                            <option value="@i.ID" @(i.ID == cateDetail.ID ? "selected='seleted'" : "")>@i.Name</option>
+                        }
+                    </select>
                 </div>
             </div>
 
@@ -52,65 +72,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.SeoTittle, htmlAttributes: new { @class = "control-label " })
-                <div>
-                    @Html.EditorFor(model => model.SeoTittle, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.SeoTittle, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label " })
-                <div>
-                    @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.CreateBy, htmlAttributes: new { @class = "control-label " })
-                <div>
-                    @Html.EditorFor(model => model.CreateBy, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ModifidedDate, htmlAttributes: new { @class = "control-label " })
-                <div>
-                    @Html.EditorFor(model => model.ModifidedDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ModifidedDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ModifidedBy, htmlAttributes: new { @class = "control-label " })
-                <div>
-                    @Html.EditorFor(model => model.ModifidedBy, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ModifidedBy, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.MetaKeywords, htmlAttributes: new { @class = "control-label " })
-                <div>
-                    @Html.EditorFor(model => model.MetaKeywords, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MetaKeywords, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.MetaDescriptions, htmlAttributes: new { @class = "control-label " })
-                <div>
-                    @Html.EditorFor(model => model.MetaDescriptions, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MetaDescriptions, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label " })
                 <div>
-                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.CheckBoxFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                 </div>
             </div>

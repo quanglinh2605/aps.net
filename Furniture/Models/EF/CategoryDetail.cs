@@ -40,7 +40,7 @@ namespace Models.EF
         [StringLength(250)]
         public string MetaDescription { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         [StringLength(500)]
         public string Description { get; set; }

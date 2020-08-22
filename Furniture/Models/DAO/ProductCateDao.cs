@@ -25,7 +25,7 @@ namespace Models.DAO
         {
             return db.ProductCategories.Where(x => x.Status == true).ToList();
         }
-        public List<ProductCategory> getByCateDetailId(long id)
+        public List<ProductCategory> getByCateDetailId(long? id)
         {
             return db.ProductCategories.Where(x => x.ShowOnHome==true && x.ParentID == id).OrderBy(x => x.DisplayOrder).ToList();
         }
@@ -34,9 +34,9 @@ namespace Models.DAO
             var model = db.ProductCategories;
             if (!string.IsNullOrEmpty(keyword))
             {
-                model.Where(x => x.Name.Contains(keyword)).OrderByDescending(x => x.CreatedDate);
+                model.Where(x => x.Name.Contains(keyword));
             }
-            return model.ToPagedList(page, pagesize);
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pagesize);
         }
         public ProductCategory getbyID(long? id)
         {

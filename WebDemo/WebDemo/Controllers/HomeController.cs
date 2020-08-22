@@ -16,7 +16,7 @@ namespace WebDemo.Controllers
             IEnumerable<Models.CategoryViewModel> lscate = null;
             using(var client = new HttpClient())
             {   
-                client.BaseAddress = new Uri("http://localhost/WebDemoAPI/api/");
+                client.BaseAddress = new Uri("http://localhost:56907/api/");
                 var responseTask = client.GetAsync("Category");
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -39,7 +39,7 @@ namespace WebDemo.Controllers
         {
             using(var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost/WebDemoAPI/api/Category");
+                client.BaseAddress = new Uri("http://localhost:56907/api/");
                 var responseTask = client.PostAsJsonAsync("Category", model);
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -55,7 +55,7 @@ namespace WebDemo.Controllers
             CategoryViewModel cate = null;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost/WebDemoAPI/api/");
+                client.BaseAddress = new Uri("http://localhost:56907/api/");
                 var responseTask = client.GetAsync("Category?id=" + id.ToString());
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -73,7 +73,7 @@ namespace WebDemo.Controllers
         {            
             using(var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost/WebDemoAPI/api/");
+                client.BaseAddress = new Uri("http://localhost:56907/api/");
                 var responseTask = client.PutAsJsonAsync("Category", model);
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -88,7 +88,7 @@ namespace WebDemo.Controllers
         {
             using(var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost/WebDemoAPI/api/");
+                client.BaseAddress = new Uri("http://localhost:56907/api/");
                 var deleteTask = client.DeleteAsync("Category/" + id.ToString());
                 deleteTask.Wait();
                 var result = deleteTask.Result;

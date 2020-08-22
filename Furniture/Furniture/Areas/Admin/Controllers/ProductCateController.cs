@@ -22,7 +22,7 @@ namespace Furniture.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            SetViewBag();
+            ViewBag.listCategory = new CategoryDao().ListAll(1);
             return View();
         }
         [HttpPost]
@@ -31,6 +31,7 @@ namespace Furniture.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new ProductCateDao();
+                model.CreatedDate = DateTime.Now;
                 var result = dao.Insert(model);
                 if (result > 0)
                 {
@@ -41,7 +42,6 @@ namespace Furniture.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Them thanh cong");
                 }
             }           
-            SetViewBag();
             return View();
         }
         [HttpGet]
@@ -49,7 +49,10 @@ namespace Furniture.Areas.Admin.Controllers
         {
             var dao = new ProductCateDao();
             var model = dao.getbyID(id);
-            SetViewBag(id);
+            var cateDetail = new CateDetailDao().getById(model.ParentID);
+            ViewBag.cateDetail = cateDetail;
+            ViewBag.listCategory = new CategoryDao().ListAll(1);
+            ViewBag.listCateDetail = new CateDetailDao().getByCateID(cateDetail.CategoryID);
             return View(model);
         }
         [HttpPost]
@@ -77,10 +80,14 @@ namespace Furniture.Areas.Admin.Controllers
             dao.Delete(id);
             return RedirectToAction("Index");
         }
-        public void SetViewBag(long? id = null)
+
+        public JsonResult listProCate(long id)
         {
-            var dao = new CategoryDao();
-            ViewBag.ParentID = new SelectList(dao.ListAll(1), "ID", "Name", id);
+            var listProCate = new ProductCateDao().getByCateDetailId(id);
+            return Json(new
+            {
+                data = listProCate
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

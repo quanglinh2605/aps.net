@@ -6,10 +6,10 @@
     var category = (Models.EF.Category)ViewBag.category;
     var categoryDetai = (Models.EF.CategoryDetail)ViewBag.categoryDetail;
     var proCate = (Models.EF.ProductCategory)ViewBag.proCate;
-    var produce = (Models.EF.Produce)ViewBag.produce;
+    //var produce = (Models.EF.Produce)ViewBag.produce;
     var boloc = (List<Models.EF.FilterPrice>)ViewBag.listprice;
     var listProCate = (List<Models.EF.ProductCategory>)ViewBag.listProCate;
-    var listProduce = (List<Models.EF.ProduceDetail>)ViewBag.listProduce;
+    //var listProduce = (List<Models.EF.ProduceDetail>)ViewBag.listProduce;
 }
 @section filter{
     <div class="breadandfilter">
@@ -36,7 +36,7 @@
                 <span class="rowbr">›</span>
             </li>
             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                <a href="@Url.Action("Index","ProductCate", new { id = Session["cateId"], type = proCate.TypeID})" title="@proCate.Name" itemprop="item">
+                <a href="http://localhost:61366/chi-tiet/@proCate.MetaTitle-@category.ID-@proCate.ParentID-@proCate.ID" title="@proCate.Name" itemprop="item">
                     <h2><span itemprop="name">@proCate.Name</span></h2>
                 </a>
                 <meta itemprop="position" content="4">
@@ -48,7 +48,7 @@
         <div class="row_submenu">
             @foreach (var i in listProCate)
             {
-                <a href="@i.MetaTitle" title="@i.Name" class="menusub">@i.Name</a>
+                <a href="http://localhost:61366/chi-tiet/@i.MetaTitle-@category.ID-@i.ParentID-@i.ID" title="@i.Name" class="menusub">@i.Name</a>
             }
 
             <div class="clear"></div>
@@ -92,7 +92,7 @@
     <script src="~/Assets/Client/images/skins/main.js"></script>
 }
 <div class="title_home">
-    <h2><a href="@proCate.MetaTitle" title="@proCate.Name">@proCate.Name</a></h2>
+    <h2><a href="http://localhost:61366/chi-tiet/@proCate-@category.ID-@proCate.ParentID-@proCate.ID" title="@proCate.Name">@proCate.Name</a></h2>
 </div>
 <div class="rowsp tutorial_list@{@proCate.ID}">
     @{ int j = 0;}
@@ -104,15 +104,21 @@
             {
                 <div class="boxproduct">
                     <div class="grid">
+                        @if (item.CreateDate >= DateTime.Now.AddDays(-60))
+                        {
+                            <div class="new-item">
+                                <img src="~/Assets/Client/images/images/new.png" alt="Sản phẩm mới">
+                            </div>
+                        }
                         @if (item.State != null)
                         {
                             <div class="icontext">@item.State</div>
                         }
                         <span class="discount">- @(Math.Round((decimal)((1 - @item.Price / @item.PromotionPrice)) * 100))%</span>
                         <div class="images">
-                            <a href="@item.MetaTitle" title="@item.Name"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
+                            <a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.Name" class="viewIncrease" id="@item.ID"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
                         </div>
-                        <h3><a href="@item.MetaTitle" title="@item.Name">@item.Name</a></h3>
+                        <h3><a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.Name" class="viewIncrease" id="@item.ID">@item.Name</a></h3>
                         <div class="setprice">
                             <p class="code"><span>Mã sp: @item.Code</span></p>
                             <p class="giaban">@item.Price<sup>đ</sup></p>
@@ -133,7 +139,7 @@
     <span class="show_morecat show_more show_more@{@proCate.ID} " val="4" count="4" id="@proCate.ID">Xem thêm @proCate.Name</span>
 </div>
     }
-<div class="mframe pad10">
+@*<div class="mframe pad10">
     <div class="divdetail" id="scrollheight" style="overflow: hidden; height: 500px;">
         <span style="font-size:14px;">
             <a href="@Url.Action("Index","ProductCate", new { id = proCate.ID, type = proCate.TypeID})" title="@produce.Name">
@@ -208,4 +214,4 @@
     </div>
     <div class="clr"></div>
     <div style="text-align:center"><a class="read-more" style="display: inline-block;">Xem thêm</a></div>
-</div>
+</div>*@

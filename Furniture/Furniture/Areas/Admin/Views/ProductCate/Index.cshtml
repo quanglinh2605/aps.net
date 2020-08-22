@@ -1,18 +1,19 @@
 ﻿@model PagedList.IPagedList<Models.EF.ProductCategory>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "Danh sach danh muc con";
+    ViewBag.Title = "Danh muc chi tiet";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    List<Models.EF.Category> listCate = ViewBag.listCate as List<Models.EF.Category>;
 }
 
 @section header{
-    Danh sach danh muc con
+    Danh muc chi tiet
 }
 <br /><br />
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Danh sach nguoi dung</h3>
+        <h3 class="card-title">Danh sach chi tiet</h3>
+        <br /><br />
+        <a href="/Admin/ProductCate/create" type="button" class="btn btn-primary" style="margin-left:0;float:left;">Them moi</a>
         @using (Html.BeginForm("Index", "ProductCate", FormMethod.Get, new { @style = "margin-left:1060px;" }))
         {
             <div class="card-tools">
@@ -34,7 +35,7 @@
                     <th>Action</th>
                     <th>Ten danh muc</th>
                     <th>Title</th>
-                    <th>Danh muc cha</th>
+                    <th>Order</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,22 +44,11 @@
                     <tr>
                         <td>
                             <a href="/Admin/ProductCate/Edit/@item.ID">Sua</a> |
-                            @Ajax.ActionLink("Xoa", "Delete", new { @id = item.ID }, new AjaxOptions
-                       {
-                           Confirm = "Ban co muon xoa ban ghi nay?",
-                           OnComplete = "$('#row_" + @item.ID + "').remove()",
-                           HttpMethod = "Delete"
-                       })
+                            <a href="/Admin/ProductCate/Delete/@item.ID">Xoa</a> 
                         </td>
                         <td>@item.Name</td>
                         <td>@item.MetaTitle</td>
-                        @foreach(var i in listCate)
-                        {
-                            if(item.ParentID == i.ID)
-                            {
-                                <td>@i.Name</td>
-                            }
-                        }
+                        <td>@item.DisplayOrder</td>
                     </tr>
                 }
             </tbody>

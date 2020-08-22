@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,8 +17,17 @@ namespace Furniture.Controllers
             ViewBag.categories = new CategoryDao().ListAll(1);
             ViewBag.produce = new ProduceDao().listproduce(7,0);
             ViewBag.prodetail = new ProduceDetailDao().listProdetail();
+            ViewBag.newproduct = new ProductDao().listproduct().Take(10).ToList();
             ViewBag.news = new NewsDao().listNews("");
             return PartialView(model);
+        }
+
+        public ActionResult Search(string keyword)
+        {
+            var model = new ProductDao().Search(keyword.ToLower());
+            ViewBag.newslist = new NewsDao().Search(keyword);
+            ViewBag.hidemenu = "hidemenu";
+            return View(model);
         }
 
         [ChildActionOnly]
@@ -68,6 +78,20 @@ namespace Furniture.Controllers
             ViewBag.listCateDetail = new CateDetailDao().listCateDetail();
             ViewBag.listProductCate = new ProductCateDao().listprocate();
             return PartialView(model);
+        }
+
+        private string ConvertViewToString(string viewName, object model)
+        {
+            ViewBag.productlist = model;
+
+            using (StringWriter writer = new StringWriter())
+            {
+                ViewEngineResult vResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext vContext = new ViewContext(this.ControllerContext, vResult.View, ViewData, new TempDataDictionary(), writer);
+                vResult.View.Render(vContext, writer);
+                vResult.ViewEngine.ReleaseView(ControllerContext, vResult.View);
+                return writer.GetStringBuilder().ToString();
+            }
         }
     } 
 }

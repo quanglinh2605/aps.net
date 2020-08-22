@@ -22,7 +22,7 @@ namespace Models.EF
 
         public long? TypeID { get; set; }
 
-        public long? ParentID { get; set; }
+        public long ParentID { get; set; }
 
         public int? DisplayOrder { get; set; }
 
@@ -45,7 +45,7 @@ namespace Models.EF
         [StringLength(250)]
         public string MetaDescriptions { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public bool? ShowOnHome { get; set; }
 

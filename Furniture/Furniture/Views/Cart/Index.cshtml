@@ -1,7 +1,6 @@
 ﻿@model List<Furniture.Models.CartItem>
 @{
     Layout = null;
-    int i = 0;
     Decimal tongtien = 0;
 }
 
@@ -144,7 +143,7 @@ input[type=radio]:checked {  background:url(../../Assets/Client/images/images/ra
                                 @foreach (var item in Model)
                                 {
 
-                                    <tr class="product" id="product-@i">
+                                    <tr class="product" id="product-@item.Product.ID">
                                         <td class="image">
                                             <img alt="@item.Product.Name" src="@item.Product.Image">
                                             <span>@item.Quantity</span>
@@ -155,10 +154,9 @@ input[type=radio]:checked {  background:url(../../Assets/Client/images/images/ra
                                         </td>
                                         <td class="price">
                                             <p>@item.Product.Price</p>
-                                            <span onclick="remove_this_item(@i);"></span>
+                                            <span onclick="remove_this_item(@item.Product.ID);"></span>
                                         </td>
                                     </tr>
-                                    i++;
                                     tongtien = tongtien + (item.Product.Price * item.Quantity).GetValueOrDefault(0);
                                 }
                             </tbody>

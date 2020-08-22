@@ -24,6 +24,7 @@ namespace Furniture.Controllers
             ViewBag.productCate = new ProductCateDao().getbyID(product.ProCateID);
             ViewBag.cateDetail = new CateDetailDao().getById(product.CateDetailID);
             ViewBag.relatedProduct = new ProductDao().listRelatedProduct(id).Take(2).ToList();
+            ViewBag.proCate = new ProductCateDao().getbyID(product.ProCateID);
             ViewBag.hidemenu = "hidemenu";
             var images = dao.getByID(id).MoreImages;
             if(images != null)
@@ -66,6 +67,23 @@ namespace Furniture.Controllers
                 vResult.ViewEngine.ReleaseView(ControllerContext, vResult.View);
                 return writer.GetStringBuilder().ToString();
             }
+        }
+
+        public JsonResult ViewIncrease(long id)
+        {
+            ProductDao dao = new ProductDao();
+            bool kq = dao.viewIncrease(id);
+            if (kq)
+            {
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            return Json(new
+            {
+                status = false
+            });
         }
     }
 }

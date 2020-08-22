@@ -7,6 +7,7 @@
     var category = (Models.EF.Category)ViewBag.category;
     var cateDetail = (Models.EF.CategoryDetail)ViewBag.cateDetail;
     var listImage = (List<string>)ViewBag.listImage;
+    var proCate = (Models.EF.ProductCategory)ViewBag.proCate;
 }
 @section jsFooter{
     <script src="~/Assets/Client/images/skins/main.js"></script>
@@ -108,8 +109,8 @@
             </a><meta itemprop="position" content="3"><span class="rowbr">›</span>
         </li>
         <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-            <a href="ban-ghe-salon-go" title="Bàn Ghế Salon Gỗ" itemprop="item">
-                <h2><span itemprop="name">Bàn Ghế Salon Gỗ</span></h2>
+            <a href="http://localhost:61366/chi-tiet/@proCate.MetaTitle-@category.ID-@proCate.ParentID-@proCate.ID" title="@proCate.Name" itemprop="item">
+                <h2><span itemprop="name">@proCate.Name</span></h2>
             </a><meta itemprop="position" content="4">
         </li>
     </ol>
@@ -119,14 +120,27 @@
 <link rel="stylesheet" href="~/Assets/Client/images/skins/mkslider/mkslider.css" type="text/css">
 <div class="bg-detail">
     <div class="picture clear">
-        <div id="slidesp">
-            <a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)">
-                <img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" />
-            </a>
-            <a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-1.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-1.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-2.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-2.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-3.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-3.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-4.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-4.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-5.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-5.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-6.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-6.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-7.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-7.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-8.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-8.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-9.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-9.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-10.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-10.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-11.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-11.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-12.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-12.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-13.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-13.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-14.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-14.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-15.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-15.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-16.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-16.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-17.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-17.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-18.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-18.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a><a href="~/Assets/Client/images/upload/sanpham/large/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-19.jpg" class="highslide" title="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" onclick="return hs.expand(this)"><img src="~/Assets/Client/images/upload/sanpham/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-19.jpg" alt="Bộ Bàn Ghế Gỗ Gõ Đỏ Phòng Khách Chạm Voi Tay 10 6 Món Đẹp Giá Rẻ" /></a>
+        @if (listImage != null)
+        {
+            <div id="slidesp">
+                @foreach (var item in listImage)
+                {
+                    if (item.Contains("large"))
+                    {
+                        <a href="@item" class="highslide" title="@Model.Name" onclick="return hs.expand(this)">
+                            <img src="@item.Replace("/large", "")" alt="@Model.Name" />
+                        </a>
+                    }
+                }
+            </div>
+            <nav id="additional-menu">
+                @foreach (var item in listImage)
+                {
+                    <a><img src="@item.Replace("large", "small")" /></a>
+                }
+            </nav>
+        }
         </div>
-        <nav id="additional-menu"><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-1.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-2.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-3.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-4.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-5.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-6.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-7.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-8.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-9.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-10.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-11.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-12.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-13.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-14.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-15.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-16.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-17.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-18.jpg" /></a><a><img src="~/Assets/Client/images/upload/sanpham/small/bo-ban-ghe-go-go-do-phong-khach-cham-voi-tay-10-6-mon-dep-gia-re-19.jpg" /></a></nav>
-    </div>
     <div class="listinfo">
         <form class="product" name="Order">
             <h3 class="ten">@Model.Name</h3>
@@ -162,8 +176,25 @@
             <input type="hidden" name="giaban" class="giabansp" value="32500000">
             <input type="hidden" name="giacty" class="giactysp" value="37500000">
             <input type="hidden" name="product_id" value="@Model.ID">
-            <input type="submit" class="buynow" value="Mua ngay">
-            <input type="submit" class="intocart cd-popup-trigger" value="Thêm vào giỏ">
+            @if (Model.Quantity > 0)
+            {
+                <input type="submit" class="buynow" value="Mua ngay">
+                <input type="submit" class="intocart cd-popup-trigger" value="Thêm vào giỏ">
+            }
+            else
+            {
+                <input type="button" style="background-color:red;left;
+    width: 180px;
+    overflow: hidden;
+    padding: 9px 0;
+    margin: 10px 10px 0 0px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid #d97f00;
+    border-radius: 4px;" value="Het Hang" />
+            }
             <div class="clear"></div>
             <div class="khuyenmai">
                 <strong>Chất liệu:</strong>&nbsp;@Model.Material<br>
@@ -190,9 +221,9 @@
     </div>
     <div class="clear10"></div>
     <div class="divmcat">
-        <p><a href="/@category.MetaTitle-@category.ID" title="@category.Name" rel="nofollow">@category.Name</a>:</p>
+        <p><a href="/danh-muc/@category.MetaTitle-@category.ID" title="@category.Name" rel="nofollow">@category.Name</a>:</p>
         <ul>
-            <li><a href="ban-ghe-go" title="@cateDetail.Name" rel="nofollow">@cateDetail.Name</a></li>
+            <li><a href="/danh-muc-con/@cateDetail.MetaTitle-@category.ID-@cateDetail.ID" title="@cateDetail.Name" rel="nofollow">@cateDetail.Name</a></li>
         </ul>
         <div class="clear5"></div>
     </div>
@@ -284,22 +315,24 @@
                             <img src="~/Assets/Client/images/images/new.png" alt="Sản phẩm mới">
                         </div>
                     }
+                    @if (item.State != null)
+                    {
+                        <div class="icontext">@item.State</div>
+                    }
                     <span class="discount">- @(Math.Round((decimal)((1 - @item.Price / @item.PromotionPrice)) * 100))%</span>
                     <div class="images">
-                        <a href="ban-ghe-go-xoan-dao-trien-tay-12-6-mon-dep-gia-re.html" title="@item.MetaTitle">
+                        <a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.MetaTitle" class="viewIncrease" id="@item.ID">
                             <img src="@item.Image" alt="@Model.Name" class="lazyload" style="display: inline;">
                         </a>
                     </div>
-                    <h3><a href="ban-ghe-go-xoan-dao-trien-tay-12-6-mon-dep-gia-re.html" title="@item.Name">@item.Name</a></h3>
+                    <h3><a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.Name" class="viewIncrease" id="@item.ID">@item.Name</a></h3>
                     <div class="setprice">
                         <p class="code"><span>Mã sp: @item.Code</span></p>
                         <p class="giaban">@item.Price<sup>đ</sup></p>
                         <del>@item.PromotionPrice</del>
                     </div>
-
                 </div>
             </div>
-
         }
     </div>
     <div class="show_more_main" id="show_more_main">

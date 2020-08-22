@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "Danh sach danh muc";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    List<Models.EF.Category> ListCate = ViewBag.Cate as List<Models.EF.Category>;
-    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+    List<Models.EF.Category> ListCate = ViewBag.Cate as List<Models.EF.Category>;    
 }
 
 @section header{
@@ -13,7 +12,9 @@
 <br /><br />
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Danh sach tin tuc</h3>
+        <h3 class="card-title">Danh sach danh muc</h3>
+        <br /><br />
+        <a href="/Admin/Category/create" type="button" class="btn btn-primary" style="margin-left:0;float:left;">Them moi</a>
         @using (Html.BeginForm("Index", "Category", FormMethod.Get, new { @style = "margin-left:1060px;" }))
         {
             <div class="card-tools">
@@ -43,12 +44,7 @@
                     <tr>
                         <td>
                             <a href="/Admin/Category/Edit/@item.ID">Sua</a> |
-                            @Ajax.ActionLink("Xoa", "Delete", new { @id = item.ID }, new AjaxOptions
-                       {
-                           Confirm = "Ban co muon xoa ban ghi nay?",
-                           OnComplete = "$('#row_" + @item.ID + "').remove()",
-                           HttpMethod = "Delete"
-                       })
+                            <a href="/Admin/Category/Delete/@item.ID">Xoa</a>
                         </td>
                         <td>@item.Name</td>
                         <td>@item.MetaTitle</td>

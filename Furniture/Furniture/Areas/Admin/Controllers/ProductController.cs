@@ -13,7 +13,7 @@ using System.Xml.Linq;
 
 namespace Furniture.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         public object JavaScriptSerializer { get; private set; }
 
@@ -28,7 +28,7 @@ namespace Furniture.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            SetViewBag();
+            ViewBag.listCategory = new CategoryDao().ListAll(1);           
             return View();
         }
         [HttpPost]
@@ -37,6 +37,9 @@ namespace Furniture.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new ProductDao();
+                model.CreateDate = DateTime.Now;
+                model.CateDetailID = new ProductCateDao().getbyID(model.ProCateID).ParentID;
+                model.CategoryID = new CateDetailDao().getById(model.CateDetailID).CategoryID;
                 var result = dao.Insert(model);
                 if (result > 0)
                 {
@@ -54,7 +57,9 @@ namespace Furniture.Areas.Admin.Controllers
         public ActionResult Edit(long id)
         {
             var model = new ProductDao().getByID(id);
-            SetViewBag(model.ID);
+            ViewBag.listCategory = new CategoryDao().ListAll(1);
+            ViewBag.listCateDetail = new CateDetailDao().getByCateID(model.CategoryID);
+            ViewBag.listProCate = new ProductCateDao().getByCateDetailId(model.CateDetailID);
             return View(model);
         }
         [HttpPost]
@@ -63,6 +68,8 @@ namespace Furniture.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new ProductDao();
+                model.CateDetailID = new ProductCateDao().getbyID(model.ProCateID).ParentID;
+                model.CategoryID = new CateDetailDao().getById(model.CateDetailID).CategoryID;
                 var result = dao.Update(model);
                 if (result)
                 {
@@ -125,12 +132,11 @@ namespace Furniture.Areas.Admin.Controllers
                     status = false
                 });
             }
-            
-            
         }
+        
         public void SetViewBag(long? id = null)
         {
-            ViewBag.CategoryID = new SelectList(new ProductCateDao().listprocate(), "ID", "Name", id);
+            ViewBag.ProCateID = new SelectList(new ProductCateDao().listprocate(), "ID", "Name", id);
         }       
     }
 }

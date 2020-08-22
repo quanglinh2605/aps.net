@@ -4,15 +4,21 @@
     {
         <div class="boxproduct">
             <div class="grid">
+                @if (item.CreateDate >= DateTime.Now.AddDays(-60))
+                {
+                    <div class="new-item">
+                        <img src="~/Assets/Client/images/images/new.png" alt="Sản phẩm mới">
+                    </div>
+                }
                 @if (item.State != null)
                 {
                     <div class="icontext">@item.State</div>
                 }
                 <span class="discount">- @(Math.Round((decimal)((1 - @item.Price / @item.PromotionPrice)) * 100))%</span>
                 <div class="images">
-                    <a href="@item.MetaTitle" title="@item.Name"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
+                    <a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.Name" class="viewIncrease" id="@item.ID"><img data-original="@item.Image" alt="@item.Name" class="lazyload" src="@item.Image" style="display: inline;"></a>
                 </div>
-                <h3><a href="@item.MetaTitle" title="@item.Name">@item.Name</a></h3>
+                <h3><a href="http://localhost:61366/@item.MetaTitle-@item.ID" title="@item.Name" class="viewIncrease" id="@item.ID">@item.Name</a></h3>
                 <div class="setprice">
                     <p class="code"><span>Mã sp: @item.Code</span></p>
                     <p class="giaban">@item.Price<sup>đ</sup></p>

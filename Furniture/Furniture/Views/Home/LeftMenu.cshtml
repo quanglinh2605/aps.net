@@ -8,15 +8,13 @@
     <ul>
         @foreach (var item in Model)
         {
-            var link = item.MetaTitle;
-
             var groupCateDetail = listCateDetail.Where(X => X.CategoryID == item.ID && X.TypeID==2);
 
             var parentClass = groupCateDetail.Count() > 0 ? "class=has-sub" : "";
 
             <li @parentClass style="background:url(../../Assets/Client/images/images/icon-no.png) no-repeat 5px">
             
-                <a href="/danh-muc/@link-@item.ID" title="@item.Name">@item.Name</a>
+                <a href="http://localhost:61366/danh-muc/@item.MetaTitle-@item.ID" title="@item.Name">@item.Name</a>
                 
                 @if (groupCateDetail.Count() > 0)
                 {
@@ -31,7 +29,7 @@
                             
                             <li @Class style="background:url(../../Assets/Client/images/images/icon-no.png) no-repeat 5px">
                             
-                                <a href="/danh-muc-con/@sub.MetaTitle-@item.ID-@sub.ID" title="@sub.Name">@sub.Name</a>
+                                <a href="http://localhost:61366/danh-muc-con/@sub.MetaTitle-@item.ID-@sub.ID" title="@sub.Name">@sub.Name</a>
                                 
                                 @if (groupProductCate.Count() > 0)
                                 {
@@ -40,7 +38,7 @@
                                         {
                                             <li style="background:url(../../Assets/Client/images/images/icon-no.png) no-repeat 5px">
                                 
-                                                <a href=@Url.Action("Index", "ProductCate", new { cateId = item.ID, catedetailId = sub.ID, id = i.ID, type = i.TypeID}) title="@i.Name">@i.Name</a>
+                                                <a href="http://localhost:61366/chi-tiet/@i.MetaTitle-@item.ID-@sub.ID-@i.ID" title="@i.Name">@i.Name</a>
                                             
                                             </li>
                                         }

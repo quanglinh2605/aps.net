@@ -17,7 +17,7 @@ namespace Models.DAO
         }
 
         public long Insert(Product entity)
-        {
+        {            
             db.Products.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -34,7 +34,7 @@ namespace Models.DAO
         }
 
         public List<Product> listproduct(){
-            return db.Products.ToList();
+            return db.Products.OrderByDescending(x => x.ID).ToList();
         }
 
         public List<Product> filterByPrice(long? idPrice,long cateId, long? cateDetailId)
@@ -100,6 +100,9 @@ namespace Models.DAO
                 model.Material = entity.Material;
                 model.State = entity.State;
                 model.Design = entity.Design;
+                model.ProCateID = entity.ProCateID;
+                model.CateDetailID = entity.CateDetailID;
+                model.CategoryID = entity.CategoryID;
                 db.SaveChanges();
                 return true;
             }
@@ -112,6 +115,11 @@ namespace Models.DAO
         public Product getByID(long id)
         {
             return db.Products.Find(id);
+        }
+
+        public List<Product> Search(string keyword)
+        {
+            return db.Products.Where(x => x.Name.ToLower().Contains(keyword) || x.MetaTitle.Contains(keyword)).ToList();
         }
 
         public bool Delete(long id)
@@ -145,6 +153,17 @@ namespace Models.DAO
             var product = db.Products.Find(productId);
             product.MoreImages = images;
             db.SaveChanges();
+        }
+
+        public bool viewIncrease(long id)
+        {
+            var product = db.Products.Find(id);
+            product.ViewCount = product.ViewCount + 1;
+            if (db.SaveChanges() > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

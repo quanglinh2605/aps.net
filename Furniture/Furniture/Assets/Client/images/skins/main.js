@@ -24,6 +24,24 @@
             });
         });
 
+        $(document).on('click', '.viewIncrease', function () {
+            var id = $(this).attr('id');
+            var dataString = "id=" + id;
+            $.ajax({
+                type: 'POST',
+                url: '/Product/ViewIncrease',
+                data: dataString,
+                success: function (response) {
+                    if (response.status) {
+                        console.log('success');
+                    }
+                    else {
+                        console.log('false');
+                    }
+                }
+            });
+        });
+
         if ($('#scrollheight').length) {
             var clientHeight = document.getElementById('scrollheight').clientHeight;
             //alert(clientHeight);
@@ -110,6 +128,41 @@
                 }
             });
         });
+
+        $('#cart').on('click', function (e) {
+            e.preventDefault();
+            var qty = $(this).attr('val');
+            if (qty == 0) {
+                alert('Chua co san pham nao trong gio hang');
+            } else {
+                window.location="http://localhost:61366/gio-hang";
+            }
+        });
+
+        $("#butcheck").on("click", function () {
+            var value = $("#nhapcart").val();
+            var dataString = "value=" + value;
+            $.ajax({
+                type: "POST",
+                url: "/Invoice/loadInvoice",
+                data: dataString,
+                success: function (response) {
+                    $("#showcheck").html(response.PartialView);
+                }
+            });
+        });      
     }
 }
 product.init();
+
+function detail(val){
+    var dataString = "value=" + val;
+    $.ajax({
+        type: "POST",
+        url: "/Invoice/loadDetail",
+        data: dataString,
+        success: function (response) {
+            $("#showcheck").html(response.PartialView);
+        }
+    });
+}

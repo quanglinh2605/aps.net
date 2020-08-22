@@ -12,7 +12,7 @@
 <br /><br />
       <div class="card">
           <div class="card-header">
-              <h3 class="card-title">Danh sach tin tuc</h3>
+              <a href="/Admin/User/create" type="button" class="btn btn-primary" style="margin-left:0;float:left;">Them moi</a>
               @using (Html.BeginForm("Index", "Content", FormMethod.Get, new { @style = "margin-left:1060px;" }))
               {
                   <div class="card-tools">
@@ -37,7 +37,6 @@
                           <th>Mo ta</th>
                           <th>Hinh anh</th>
                           <th>Danh muc</th>
-                          <th>Chi tiet</th>
                           <th>Ten tag</th>
                       </tr>
                   </thead>
@@ -62,11 +61,9 @@
                               {
                                 if(i.ID == @item.CategoryID)
                                   {
-                              <td>i.Name</td>
+                              <td>@i.Name</td>
                                   }
                               }
-                              
-                              <td>@item.Detail</td>
                               <td>@item.Tags</td>
                           </tr>
                       }

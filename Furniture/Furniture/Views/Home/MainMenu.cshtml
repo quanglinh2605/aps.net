@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Models.EF.Menu>
-
+@using Models.DAO;
 <nav id="menu" class="menu">
     <ul class="dropdown">
         @{ int i = 1;}
@@ -13,7 +13,7 @@
                 <ul>
                     @foreach (var e in menucate)
                     {
-                        <li><a href="/danh-muc/@e.MetaTitle-@e.ID" title="@e.Name">@e.Name</a></li>
+                        <li><a href="http://localhost:61366/danh-muc-con/@e.MetaTitle-@e.CategoryID-@e.ID" title="@e.Name">@e.Name</a></li>
                     }
                 </ul>
             }
@@ -23,7 +23,8 @@
                 <ul>
                     @foreach (var e in menupro)
                     {
-                        <li><a href="/danh-muc-con/@e.MetaTitle-@e.ID" title="@e.Name">@e.Name</a></li>
+                        var cateID = new CateDetailDao().getById(e.ParentID).CategoryID;
+                        <li><a href="http://localhost:61366/chi-tiet/@e.MetaTitle-@cateID-@e.ParentID-@e.ID" title="@e.Name">@e.Name</a></li>
                     }
                 </ul>
             }

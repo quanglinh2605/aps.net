@@ -31,6 +31,20 @@ namespace Furniture
             );
 
             routes.MapRoute(
+                name: "News",
+                url: "tin-tuc-tu-van",
+                defaults: new { controller = "News", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Furniture.Controllers" }
+            );
+
+            routes.MapRoute(
+               name: "Check Order",
+               url: "kiem-tra-don-hang",
+               defaults: new { controller = "Invoice", action = "Index", id = UrlParameter.Optional },
+               namespaces: new[] { "Furniture.Controllers" }
+           );
+
+            routes.MapRoute(
                 name: "Payment Success",
                 url: "hoan-thanh",
                 defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional },
@@ -72,6 +86,13 @@ namespace Furniture
                 defaults: new { controller = "Category", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Furniture.Controllers" }
             );
+
+            routes.MapRoute(
+               name: "ProductCategory",
+               url: "chi-tiet/{metatitle}-{cateId}-{catedetailId}-{id}",
+               defaults: new { controller = "ProductCate", action = "Index", id = UrlParameter.Optional },
+               namespaces: new[] { "Furniture.Controllers" }
+           );
 
             routes.MapRoute(
                 name: "Default",

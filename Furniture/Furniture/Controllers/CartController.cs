@@ -64,7 +64,7 @@ namespace Furniture.Controllers
         public JsonResult RemoveItem(int pid)
         {
             List<CartItem> sessionCart = (List<CartItem>)Session[CartSession];
-            sessionCart.RemoveAt(pid);
+            sessionCart.Remove(sessionCart.Find(x => x.Product.ID == pid));
             Session[CartSession] = sessionCart;
             Session[Common.CommonConstants.quantityCart] = sessionCart.Count;
             decimal? total = 0;
