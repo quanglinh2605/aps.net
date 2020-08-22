@@ -1,0 +1,48 @@
+﻿@if (ViewBag.listDetail != null)
+{
+    decimal? total = 0;
+    int j = 1;
+    var invoicelist = ViewBag.invoicelist as Models.EF.Order;
+    var listDetail = ViewBag.listDetail as List<Models.EF.OrderDetail>;
+    <div class="infocart">
+        <ul>
+            <li>Họ tên: @invoicelist.ShipName</li>
+            <li>Điện thoại: @invoicelist.ShipMobile</li>
+            <li>Địa chỉ: @invoicelist.ShipAddress</li>
+            <li>Ngày mua: @invoicelist.CreateDate</li>
+        </ul>
+    </div>
+    <table class="bordered">
+        <tbody>
+            <tr>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Kích thước</th>
+                <th>Giá bán</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+            @foreach (var item in listDetail.Where(x => x.OrderID == invoicelist.ID))
+            {
+                var product = new Models.DAO.ProductDao().getByID(item.ProductID);
+                total = total + item.Quantity * item.Price;
+                <tr>
+                    <td>@j</td>
+                    <td><a href="http://localhost:61366/@product.MetaTitle-@product.ID" title="" target="_blank">@product.Name</a></td>
+                    <td><img src=@product.Image></td>
+                    <td>@product.Size</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Quantity*item.Price)</td>
+                </tr>
+                j++;
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">Tổng tiền: @total</td>
+            </tr>
+        </tfoot>
+    </table>
+}

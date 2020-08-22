@@ -1,0 +1,58 @@
+﻿@model PagedList.IPagedList<Models.EF.CategoryDetail>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Danh sach danh muc
+}
+<br /><br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Danh sach danh muc</h3>
+        <br /><br />
+        <a href="/Admin/CategoryDetail/create" type="button" class="btn btn-primary" style="margin-left:0;float:left;">Them moi</a>
+        @using (Html.BeginForm("Index", "CategoryDetail", FormMethod.Get, new { @style = "margin-left:1060px;" }))
+        {
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Ten danh muc</th>
+                    <th>Tieu de</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Admin/CategoryDetail/Edit/@item.ID">Sua</a> |
+                            <a href="/Admin/CategoryDetail/delete/@item.ID">Xoa</a>
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.MetaTitle</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyword = ViewBag.keyword }))
+</div>
+

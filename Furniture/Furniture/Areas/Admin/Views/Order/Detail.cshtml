@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList<Models.EF.OrderDetail>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Hoa don chi tiet";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<Models.EF.Product> listProduct = ViewBag.listProduct as List<Models.EF.Product>;
+    int j = 1;
+    decimal? total = 0;
+}
+
+@section header{
+    Danh sach hoa don
+}
+<br /><br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Hoa don chi tiet</h3>
+        @using (Html.BeginForm("Detail", "Order", FormMethod.Get, new { @style = "margin-left:1060px;" }))
+        {
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ten San Pham</th>
+                    <th>Gia ban</th>
+                    <th>So Luong</th>
+                    <th>Thanh Tien</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var price = item.Quantity * item.Price;
+                        total = total + item.Quantity * item.Price;
+                    <tr>
+                        <td>@j</td>
+                        @foreach (var e in listProduct)
+                        {
+                            if (e.ID == item.ProductID)
+                            {
+                                <td>@e.Name</td>
+                            }
+                        }
+                        <td>@item.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@price</td>
+                    </tr>
+                    j++;
+                }
+                <tr>
+                    <td colspan="4"></td>
+                    <td><p style="font-weight:bold;color:red">TONG TIEN: @total</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyword = ViewBag.keyword }))
+</div>

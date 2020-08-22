@@ -1,0 +1,48 @@
+﻿@{
+    int j = 1;
+    var invoicelist = ViewBag.invoicelist as List<Models.EF.Order>;
+    var listDetail = ViewBag.listDetail as List<Models.EF.OrderDetail>;
+}
+@if (invoicelist.Count != 0)
+{
+    <table class="bordered">
+        <tbody>
+            <tr>
+                <th>STT</th>
+                <th>Mã đơn hàng</th>
+                <th>Tên</th>
+                <th>Ngày mua</th>
+                <th>Tổng tiền</th>
+                <th>Thanh toán</th>
+            </tr>
+            @foreach (var item in invoicelist)
+            {
+                decimal? price = 0;
+                <tr class="rowcart">
+                    <td>@j</td>
+                    <td><a href="#" title="Xem chi tiet don hang" onclick="return detail('@item.ID')" >@item.ID</a></td>
+                    <td>@item.ShipName</td>
+                    <td>@item.CreateDate</td>
+                    @for (int i = 0; i <= listDetail.Count; i++)
+                    {
+                        if (listDetail[i].OrderID == item.ID)
+                        {
+                            price = listDetail.ElementAt(i).Price * listDetail.ElementAt(i).Quantity + price;
+                        }
+                        if (i == listDetail.Count - 1)
+                        {
+                            <td>@price</td>
+                            break;
+                        }
+                    }
+                    <td>@(item.Status == 1 ? "Xong" : "Chua")</td>
+                </tr>
+                j++;
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="infocart">Thông tin bị sai hay Đơn hàng không tồn tại</div>
+}

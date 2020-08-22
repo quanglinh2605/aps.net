@@ -1,0 +1,121 @@
+﻿@model Models.EF.Order
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.hidemenu = "hidemenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <style type="text/css">
+        .formktdh {
+            margin: 0px 0 10px;
+            overflow: hidden;
+        }
+
+            .formktdh input {
+                border: 1px solid #dadada;
+                padding: 6px 12px;
+                box-sizing: border-box;
+                width: 300px;
+                height: 40px;
+                line-height: 40px;
+                float: left;
+            }
+
+            .formktdh a {
+                display: inline-block;
+                padding: 6px 12px;
+                background: #dc0021;
+                color: #fff;
+                height: 40px;
+                text-align: center;
+                line-height: 30px;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+
+                .formktdh a:hover {
+                    background: #333
+                }
+
+        table.bordered {
+            border: 1px solid #ddd;
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+            table.bordered tr:first-child {
+                background: #f9f9f9
+            }
+
+            table.bordered th, table.bordered td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                line-height: 1.42857143;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+        table.bordered {
+        }
+
+            table.bordered tfoot {
+                text-align: right;
+                color: #dc0021;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+                table.bordered tfoot td {
+                    text-align: right;
+                }
+
+            table.bordered img {
+                width: 50px
+            }
+
+            table.bordered a {
+                color: #3187c5;
+                cursor: pointer;
+                background: none;
+                font-weight: bold;
+                display: inline-block;
+                padding: 6px 12px
+            }
+
+            table.bordered strong {
+                font-weight: normal;
+                color: #3187c5
+            }
+
+        .infocart {
+            margin-bottom: 10px;
+            padding: 20px;
+            background: #d8f1eb;
+            overflow: hidden;
+        }
+
+            .infocart li {
+                margin-bottom: 5px;
+            }
+    </style>
+
+    <div class="breadandfilter">
+        <ul class="breadcrumb"><li typeof="v:Breadcrumb"><a href="" title="Trang chủ" rel="v:url" property="v:title"><img src="~/Assets/Client/images/images/home.png"></a><span>›</span></li><li typeof="v:Breadcrumb"><h2>Kiểm tra đơn hàng</h2></li></ul>
+    </div>
+    <div class="clear"></div>
+    <div class="bg-detail" style="min-height:300px">
+        <div class="formktdh">
+            <input type="text" value="" id="nhapcart" placeholder="Nhập mã đơn hàng hoặc số điện thoại" required="">
+            <a id="butcheck">Tìm kiếm</a>
+        </div>
+        <div id="showcheck"></div>
+    </div>
+
+</div>
+@section jsFooter{
+    <div id="jspage"></div>
+    <script src="~/Assets/Client/images/skins/main.js"></script>
+}

@@ -1,0 +1,70 @@
+﻿@model PagedList.IPagedList<Models.EF.Menu>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Danh sach menu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<Models.EF.MenuType> listType = ViewBag.listType as List<Models.EF.MenuType>; 
+}
+
+@section header{
+    Danh sach menu
+}
+<br /><br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Danh sach menu</h3>
+        <br /><br />
+        <a href="/Admin/Menu/create" type="button" class="btn btn-primary" style="margin-left:0;float:left;">Them moi</a>
+        @using (Html.BeginForm("Index", "Menu", FormMethod.Get, new { @style = "margin-left:1060px;" }))
+        {
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="keyword" value="@ViewBag.keyword" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Ten danh muc</th>
+                    <th>Order</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        <a href="/Admin/Menu/Edit/@item.ID">Sua</a> |
+                        @Ajax.ActionLink("Xoa", "Delete", new { @id = item.ID }, new AjaxOptions
+                   {
+                       Confirm = "Ban co muon xoa ban ghi nay?",
+                       OnComplete = "$('#row_" + @item.ID + "').remove()",
+                       HttpMethod = "Delete"
+                   })
+                    </td>
+                    <td>@item.Text</td>
+                    <td>@item.DisplayOrder</td>
+                    @foreach (var i in listType)
+                    {
+                        if (item.TypeID == i.ID)
+                        {
+                            <td>@i.Name</td>
+                        }
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyword = ViewBag.keyword }))
+</div>
