@@ -9,3 +9,6 @@ C:\myproject\eShopSolution\eShopSolution.Data\bin\Debug\netcoreapp2.1\eShopSolut
 C:\myproject\eShopSolution\eShopSolution.Data\bin\Debug\netcoreapp2.1\eShopSolution.Data.pdb
 C:\myproject\eShopSolution\eShopSolution.Data\obj\Debug\netcoreapp2.1\eShopSolution.Data.dll
 C:\myproject\eShopSolution\eShopSolution.Data\obj\Debug\netcoreapp2.1\eShopSolution.Data.pdb
+C:\myproject\eShopSolution\eShopSolution.Data\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\myproject\eShopSolution\eShopSolution.Data\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\myproject\eShopSolution\eShopSolution.Data\obj\Debug\netcoreapp2.1\eShopSolution.Data.csproj.CopyComplete
