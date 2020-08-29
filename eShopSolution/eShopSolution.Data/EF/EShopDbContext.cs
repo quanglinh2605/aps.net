@@ -33,6 +33,7 @@ namespace eShopSolution.Data.EF
 
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<int>>().ToTable("AppUserClaims");
             modelBuilder.Entity<IdentityUserRole<int>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId});
@@ -69,5 +70,7 @@ namespace eShopSolution.Data.EF
 
 
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
     }
 }
