@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/eShopSolution/eShopSolution.BackendApi/wwwroot/user-content
