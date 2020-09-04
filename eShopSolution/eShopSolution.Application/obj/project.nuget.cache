@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+oqdOv65LoT1DEBP2mQR0aRP267wFbW8K4nghaXVYzu58ex6ygTczJZop1ZpoCXFS4rjguSF2kF0ZukI0proYw==",
+  "dgSpecHash": "XaN0boScLgHHtuooFVoMX540XJeRRsFZrKQ9JiWS7TF7kkOvWIiZXG/A7ahZ33LC6F4B9A38Tl4JrVGmWdf/gg==",
   "success": true,
   "projectFilePath": "C:\\myproject\\eShopSolution\\eShopSolution.Application\\eShopSolution.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\QuangLinh\\.nuget\\packages\\fluentvalidation\\9.2.0\\fluentvalidation.9.2.0.nupkg.sha512",
     "C:\\Users\\QuangLinh\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.7\\microsoft.aspnetcore.cryptography.internal.3.1.7.nupkg.sha512",
     "C:\\Users\\QuangLinh\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.7\\microsoft.aspnetcore.cryptography.keyderivation.3.1.7.nupkg.sha512",
     "C:\\Users\\QuangLinh\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.7\\microsoft.aspnetcore.http.features.3.1.7.nupkg.sha512",
