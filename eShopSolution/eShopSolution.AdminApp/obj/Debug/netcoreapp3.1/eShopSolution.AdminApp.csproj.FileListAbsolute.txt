@@ -397,6 +397,10 @@ C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\Micros
 C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopSolution.AdminApp.csproj.CoreCompileInputs.cache
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopSolution.AdminApp.MvcApplicationPartsAssemblyInfo.cs
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopSolution.AdminApp.MvcApplicationPartsAssemblyInfo.cache

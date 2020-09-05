@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using eShopSolution.AdminApp.Services;
 using eShopSolution.ViewModels.System.Users;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,12 +29,18 @@ namespace eShopSolution.AdminApp
         {
             services.AddHttpClient();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/User/Login";
+                options.AccessDeniedPath = "/Account/Forbiden/";
+            });
+
             services.AddControllersWithViews()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
             services.AddTransient<IUserApiClient, UserApiClient > ();
 
-            var enviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIROMENT");
+            var enviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             IMvcBuilder builder = services.AddRazorPages();
 
             #if DEBUG
@@ -59,6 +66,8 @@ namespace eShopSolution.AdminApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 
