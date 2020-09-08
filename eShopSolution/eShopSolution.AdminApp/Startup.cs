@@ -31,8 +31,8 @@ namespace eShopSolution.AdminApp
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
-                options.LoginPath = "/User/Login";
-                options.AccessDeniedPath = "/Account/Forbiden/";
+                options.LoginPath = "/Login/Index";
+                options.AccessDeniedPath = "/User/Forbiden/";
             });
 
             services.AddControllersWithViews()
