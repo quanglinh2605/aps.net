@@ -28,14 +28,14 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="#"><b>Admin</b>LTE</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Dang nhap</p>
 
-                <form asp-action="Login" asp-controller="User" method="post">
+                <form asp-action="Index" asp-controller="Login" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" asp-for="UserName" placeholder="Nhap tai khoan">
                         <div class="input-group-append">
@@ -61,7 +61,7 @@
                                 </label>
                             </div>
                         </div>
-                        <!-- /.col --> 
+                        <!-- /.col -->
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Sing In</button>
                         </div>
