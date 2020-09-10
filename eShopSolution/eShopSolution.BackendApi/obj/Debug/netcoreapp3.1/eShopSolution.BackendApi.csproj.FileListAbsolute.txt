@@ -1,3 +1,8 @@
+C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.csprojAssemblyReference.cache
+C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.AssemblyInfoInputs.cache
+C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.AssemblyInfo.cs
+C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.csproj.CoreCompileInputs.cache
+C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.MvcApplicationPartsAssemblyInfo.cache
 C:\myproject\eShopSolution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\myproject\eShopSolution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\appsettings.json
 C:\myproject\eShopSolution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -74,12 +79,6 @@ C:\myproject\eShopSolution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\eSho
 C:\myproject\eShopSolution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\eShopSolution.Data.pdb
 C:\myproject\eShopSolution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\eShopSolution.Utilities.pdb
 C:\myproject\eShopSolution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\eShopSolution.ViewModels.pdb
-C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.csprojAssemblyReference.cache
-C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.AssemblyInfoInputs.cache
-C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.AssemblyInfo.cs
-C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.csproj.CoreCompileInputs.cache
-C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.MvcApplicationPartsAssemblyInfo.cs
-C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.MvcApplicationPartsAssemblyInfo.cache
 C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.RazorTargetAssemblyInfo.cache
 C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.csproj.CopyComplete
 C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\staticwebassets\eShopSolution.BackendApi.StaticWebAssets.Manifest.cache
