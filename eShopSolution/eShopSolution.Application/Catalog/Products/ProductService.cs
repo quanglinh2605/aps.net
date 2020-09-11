@@ -133,8 +133,8 @@ namespace eShopSolution.Application.Catalog.Products
             //3. Paging
             int totalRow = await query.CountAsync();
 
-            var data = await query.Skip((request.pageIndex - 1) * request.pageSize).Take(request.pageSize)
-                .Take(request.pageSize)
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize).Take(request.PageSize)
+                .Take(request.PageSize)
                 .Select(x => new ProductViewModel()
                 {
                     Id = x.p.Id,
@@ -156,7 +156,9 @@ namespace eShopSolution.Application.Catalog.Products
             var pageResult = new PagedResult<ProductViewModel>()
             {
                 Items = data,
-                TotalRecord = totalRow
+                TotalRecord = totalRow,
+                PageSize = request.PageSize,
+                PageIndex = request.PageIndex
             };
             return pageResult;
         }
@@ -327,8 +329,8 @@ namespace eShopSolution.Application.Catalog.Products
             //3. Paging
             int totalRow = await query.CountAsync();
 
-            var data = await query.Skip((request.pageIndex - 1) * request.pageSize).Take(request.pageSize)
-                .Take(request.pageSize)
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
+                .Take(request.PageSize)
                 .Select(x => new ProductViewModel()
                 {
                     Id = x.p.Id,

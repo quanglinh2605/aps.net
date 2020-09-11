@@ -72,6 +72,7 @@ namespace eShopSolution.Application.System.Users
             }
             var userVm = new UserVm()
             {
+                UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 FirstName = user.FirstName,
@@ -93,8 +94,8 @@ namespace eShopSolution.Application.System.Users
             //3. Paging
             int totalRow = await query.CountAsync();
 
-            var data = await query.Skip((request.pageIndex - 1) * request.pageSize).Take(request.pageSize)
-                .Take(request.pageSize)
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
+                .Take(request.PageSize)
                 .Select(x => new UserVm()
                 {
                     Email = x.Email,
@@ -109,6 +110,8 @@ namespace eShopSolution.Application.System.Users
             //4/ Select and projection
             var pageResult = new PagedResult<UserVm>()
             {
+                PageIndex = request.PageIndex,
+                PageSize = request.PageSize,
                 Items = data,
                 TotalRecord = totalRow
             };

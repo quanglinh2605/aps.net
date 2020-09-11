@@ -407,3 +407,5 @@ C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopS
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopSolution.AdminApp.genruntimeconfig.cache
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\eShopSolution.AdminApp.MvcApplicationPartsAssemblyInfo.cs
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs
+C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\User\Details.cshtml.g.cs
+C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Pager\Default.cshtml.g.cs

@@ -86,3 +86,4 @@ C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\stat
 C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.dll
 C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.pdb
 C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.genruntimeconfig.cache
+C:\myproject\eShopSolution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.MvcApplicationPartsAssemblyInfo.cs

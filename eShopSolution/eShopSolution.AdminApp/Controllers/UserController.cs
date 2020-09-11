@@ -17,16 +17,23 @@ namespace eShopSolution.AdminApp.Controllers
             _userApiClient = userApiClient;
         }
 
-        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 10)
+        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 1)
         {
             var request = new GetUserPagingRequest()
             {
                 Keyword = keyword,
-                pageIndex = pageIndex,
-                pageSize = pageSize
+                PageIndex = pageIndex,
+                PageSize = pageSize
             };
             var data = await _userApiClient.GetUsersPagings(request);
             return View(data.ResultObj);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var result = await _userApiClient.GetById(id);
+            return View(result.ResultObj);
         }
 
         [HttpGet]
