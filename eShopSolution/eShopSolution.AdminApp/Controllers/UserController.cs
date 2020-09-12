@@ -49,8 +49,11 @@ namespace eShopSolution.AdminApp.Controllers
             if (!ModelState.IsValid)
                 return View();
             var result = await _userApiClient.RegisterUser(request);
-            if (result.IsSuccessed) return RedirectToAction("Index");
-
+            if (result.IsSuccessed)
+            {
+                setAlert("Them user thanh cong", "success");
+                return RedirectToAction("Index");
+            }
             ModelState.AddModelError("", result.Message);
             return View(request);
         }
@@ -83,8 +86,11 @@ namespace eShopSolution.AdminApp.Controllers
             if (!ModelState.IsValid)
                 return View();
             var result = await _userApiClient.UpdateUser(request.Id, request);
-            if (result.IsSuccessed) return RedirectToAction("Index");
-
+            if (result.IsSuccessed)
+            {
+                setAlert("Cap nhat user thanh cong", "success");
+                return RedirectToAction("Index");
+            }
             ModelState.AddModelError("", result.Message);
             return View(request);
         }
@@ -112,8 +118,11 @@ namespace eShopSolution.AdminApp.Controllers
             if (!ModelState.IsValid)
                 return View();
             var result = await _userApiClient.Delete(request.Id);
-            if (result.IsSuccessed) return RedirectToAction("Index");
-
+            if (result.IsSuccessed)
+            {
+                setAlert("Xoa user thanh cong", "success");
+                return RedirectToAction("Index");
+            }
             ModelState.AddModelError("", result.Message);
             return View(request);
         }

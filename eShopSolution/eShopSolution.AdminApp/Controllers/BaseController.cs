@@ -21,5 +21,21 @@ namespace eShopSolution.AdminApp.Controllers
             }
             base.OnActionExecuted(context);
         }
+        protected void setAlert(string message, string type)
+        {
+            TempData["AlertMessage"] = message;
+            if (type == "error")
+            {
+                TempData["AlertType"] = "alert-danger";
+            }
+            else if (type == "warning")
+            {
+                TempData["AlertType"] = "alert-warning";
+            }
+            else if (type == "success")
+            {
+                TempData["AlertType"] = "alert-success";
+            }
+        }
     }
 }
