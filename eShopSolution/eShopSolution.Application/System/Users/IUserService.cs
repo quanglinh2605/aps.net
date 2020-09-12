@@ -18,5 +18,7 @@ namespace eShopSolution.Application.System.Users
         Task<ApiResult<PagedResult<UserVm>>> GetUserPaging(GetUserPagingRequest request);
 
         Task<ApiResult<UserVm>> GetById(int id);
+
+        Task<ApiResult<bool>> Delete(int id);
     }
 }

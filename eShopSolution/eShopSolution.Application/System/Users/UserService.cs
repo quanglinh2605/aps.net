@@ -35,12 +35,12 @@ namespace eShopSolution.Application.System.Users
         public async Task<ApiResult<string>> Authencate(LoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
-            if (user == null) return null;
+            if (user == null) return new ApiErrorResult<string>("Tai khoang khong ton tai");
 
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
             {
-                return null;
+                return new ApiErrorResult<string>("Dang nhap khong dung");
             }
 
             var roles = await _userManager.GetRolesAsync(user);
@@ -61,6 +61,21 @@ namespace eShopSolution.Application.System.Users
                 signingCredentials: creds);
 
             return new ApiSuccessResult<string>(new JwtSecurityTokenHandler().WriteToken(token));           
+        }
+
+        public async Task<ApiResult<bool>> Delete(int id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("User khong ton tai");
+            }
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return new ApiSuccessResult<bool>();
+            }
+            return new ApiErrorResult<bool>("Xoa khong thanh cong");
         }
 
         public async Task<ApiResult<UserVm>> GetById(int id)
@@ -88,7 +103,7 @@ namespace eShopSolution.Application.System.Users
             var query = _userManager.Users;
             if (!string.IsNullOrEmpty(request.Keyword))
             {
-                query = query.Where(x => x.UserName == request.Keyword 
+                query = query.Where(x => x.UserName.Contains(request.Keyword) 
                 || x.PhoneNumber.Contains(request.Keyword));
             }
             //3. Paging
