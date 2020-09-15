@@ -20,5 +20,7 @@ namespace eShopSolution.Application.System.Users
         Task<ApiResult<UserVm>> GetById(int id);
 
         Task<ApiResult<bool>> Delete(int id);
+
+        Task<ApiResult<bool>> RolesAssign(int id, RoleAssignRequest request);
     }
 }

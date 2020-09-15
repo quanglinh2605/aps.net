@@ -1,11 +1,12 @@
-﻿using System;
+﻿using eShopSolution.ViewModels.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace eShopSolution.ViewModels.System.Users
 {
-    public class UserVm 
+    public class UserVm
     {
         public int Id { get; set; }
 
@@ -26,5 +27,7 @@ namespace eShopSolution.ViewModels.System.Users
 
         [Display(Name = "Ngay sinh")]
         public DateTime Dob { get; set; }
+
+        public IList<string> Roles { get; set; } 
     }
 }

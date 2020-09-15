@@ -85,6 +85,7 @@ namespace eShopSolution.Application.System.Users
             {
                 return new ApiErrorResult<UserVm>("User khong ton tai");
             }
+            var roles = await _userManager.GetRolesAsync(user);
             var userVm = new UserVm()
             {
                 UserName = user.UserName,
@@ -93,7 +94,8 @@ namespace eShopSolution.Application.System.Users
                 FirstName = user.FirstName,
                 Id = user.Id,
                 LastName = user.LastName,
-                Dob = user.Dob
+                Dob = user.Dob,
+                Roles = roles
             };
             return new ApiSuccessResult<UserVm>(userVm);
         }
@@ -161,6 +163,35 @@ namespace eShopSolution.Application.System.Users
                 return new ApiSuccessResult<bool>();
             }
             return new ApiErrorResult<bool>("Dang ky khong thanh cong");
+        }
+
+        public async Task<ApiResult<bool>> RolesAssign(int id, RoleAssignRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("Tai khoan khong ton tai");
+            }
+            
+            var removedRoles = request.Roles.Where(x => x.Selected == false).Select(x => x.Name).ToList();
+            foreach (var roleName in removedRoles)
+            {
+                if (await _userManager.IsInRoleAsync(user, roleName) == true)
+                {
+                    await _userManager.RemoveFromRoleAsync(user, roleName);
+                }
+            }
+
+            var addedRoles = request.Roles.Where(x => x.Selected).Select(x => x.Name).ToList();
+            foreach(var roleName in addedRoles)
+            {
+                if (await _userManager.IsInRoleAsync(user, roleName) == false)
+                {
+                    await _userManager.AddToRoleAsync(user, roleName);
+                }
+            }
+
+            return new ApiSuccessResult<bool>();
         }
 
         public async Task<ApiResult<bool>> Update(int id, UserUpdateRequest request)

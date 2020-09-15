@@ -410,3 +410,4 @@ C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\User\Details.cshtml.g.cs
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Pager\Default.cshtml.g.cs
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\User\Delete.cshtml.g.cs
+C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\User\RoleAssign.cshtml.g.cs

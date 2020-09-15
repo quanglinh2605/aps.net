@@ -229,7 +229,8 @@ namespace eShopSolution.Application.Catalog.Products
             _context.ProductImages.Remove(productImage);
             return await _context.SaveChangesAsync();
         }
-            public async Task<int> Update(ProductUpdateRequest request)
+        
+        public async Task<int> Update(ProductUpdateRequest request)
         {
             var product = await _context.Products.FindAsync(request.Id);
             var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductId == request.Id && x.LanguageId == request.LanguageId);

@@ -6,14 +6,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Danh sach nguoi dung</h1>
-@section Scripts{ 
+@section Scripts{
     <script>
         setTimeout(function () {
             $('#msgAlert').fadeOut('slow');
         }, 2000);
     </script>
 }
+<div class="container-fluid">
+    <h1 class="mt-4">Danh sach nguoi dung</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="#">Trang chu</a></li>
+        <li class="breadcrumb-item active">Danh sach nguoi dung</li>
+    </ol>
 <div class="card">
     <div class="card-header">
         <div class="row">
@@ -92,9 +97,10 @@
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            @Html.ActionLink("Sua", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Xem", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Xoa", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Gan quyen", "RoleAssign", new { id = item.Id })
                         </td>
                     </tr>
                 }
@@ -103,6 +109,7 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer clearfix">
-       @await Component.InvokeAsync("Pager", Model)
+        @await Component.InvokeAsync("Pager", Model)
     </div>
+</div>
 </div>
