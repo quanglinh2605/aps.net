@@ -2248,6 +2248,16 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "eShopSolution.Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/eShopSolution.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eShopSolution.Utilities.dll": {}
+        }
+      },
       "eShopSolution.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -7258,6 +7268,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "eShopSolution.Utilities/1.0.0": {
+      "type": "project",
+      "path": "../eShopSolution.Utilities/eShopSolution.Utilities.csproj",
+      "msbuildProject": "../eShopSolution.Utilities/eShopSolution.Utilities.csproj"
+    },
     "eShopSolution.ViewModels/1.0.0": {
       "type": "project",
       "path": "../eShopSolution.ViewModels/eShopSolution.ViewModels.csproj",
@@ -7273,6 +7288,7 @@
       "Microsoft.IdentityModel.Tokens >= 6.7.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
       "System.IdentityModel.Tokens.Jwt >= 6.7.1",
+      "eShopSolution.Utilities >= 1.0.0",
       "eShopSolution.ViewModels >= 1.0.0"
     ]
   },
@@ -7306,6 +7322,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\myproject\\eShopSolution\\eShopSolution.Utilities\\eShopSolution.Utilities.csproj": {
+              "projectPath": "C:\\myproject\\eShopSolution\\eShopSolution.Utilities\\eShopSolution.Utilities.csproj"
+            },
             "C:\\myproject\\eShopSolution\\eShopSolution.ViewModels\\eShopSolution.ViewModels.csproj": {
               "projectPath": "C:\\myproject\\eShopSolution\\eShopSolution.ViewModels\\eShopSolution.ViewModels.csproj"
             }
