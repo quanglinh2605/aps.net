@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">Tim</button>
-                            <button type="reset" onclick="window.location.href='/user/index'" class="btn btn-dark">Reset</button>
+                            <button type="reset" onclick="window.location.href='/User/Index'" class="btn btn-dark">Reset</button>
                         </div>
                     </div>
                 </form>
@@ -53,9 +53,6 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>
-                        Id
-                    </th>
                     <th>
                         Ten
                     </th>
@@ -78,9 +75,6 @@
                 @foreach (var item in Model.Items)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.FirstName)
                         </td>

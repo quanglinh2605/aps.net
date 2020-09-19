@@ -414,3 +414,4 @@ C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\
 C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\eShopSolution.Utilities.dll
 C:\myproject\eShopSolution\eShopSolution.AdminApp\bin\Debug\netcoreapp3.1\eShopSolution.Utilities.pdb
 C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Navigation\Default.cshtml.g.cs
+C:\myproject\eShopSolution\eShopSolution.AdminApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
