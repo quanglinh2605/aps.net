@@ -39,6 +39,7 @@ namespace eShopSolution.BackendApi.Controllers
         }
 
         [HttpPost]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Create([FromForm] ProductCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -50,7 +51,7 @@ namespace eShopSolution.BackendApi.Controllers
 
             var product = await _productService.GetById(productId, request.LanguageId); 
             
-            return CreatedAtAction(nameof(GetById), new { id = productId}, request);
+            return CreatedAtAction(nameof(GetById), new { id = productId}, product);
         }
 
         [HttpPut]

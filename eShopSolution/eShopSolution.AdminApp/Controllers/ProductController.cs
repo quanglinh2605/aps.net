@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace eShopSolution.AdminApp.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductApiClient _productApiClient;
         private readonly IConfiguration _configuration;
@@ -36,6 +36,28 @@ namespace eShopSolution.AdminApp.Controllers
             var data = await _productApiClient.GetPagings(request);
             ViewBag.Keyword = keyword;
             return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Create([FromForm]ProductCreateRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View();
+            var result = await _productApiClient.CreateProduct(request);
+            if (result)
+            {
+                setAlert("Them moi san pham thanh cong", "success");
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Them san pham that bai");
+            return View(request);
         }
     }
 }
