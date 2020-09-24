@@ -18,8 +18,8 @@ namespace eShopSolution.AdminApp.Services
             IConfiguration configuration, 
             IHttpContextAccessor httpContextAccessor) 
             :base(httpClientFactory,configuration,httpContextAccessor)
-        {
-        }
+         {
+         }
         public async Task<ApiResult<List<LanguageVm>>> GetAll()
         {
             return await GetAsync<ApiResult<List<LanguageVm>>>("/api/languages");
