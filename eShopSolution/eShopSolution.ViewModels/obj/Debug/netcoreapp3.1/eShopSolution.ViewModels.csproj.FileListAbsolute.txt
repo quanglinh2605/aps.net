@@ -6,3 +6,4 @@ C:\myproject\eShopSolution\eShopSolution.ViewModels\bin\Debug\netcoreapp3.1\eSho
 C:\myproject\eShopSolution\eShopSolution.ViewModels\bin\Debug\netcoreapp3.1\eShopSolution.ViewModels.pdb
 C:\myproject\eShopSolution\eShopSolution.ViewModels\obj\Debug\netcoreapp3.1\eShopSolution.ViewModels.dll
 C:\myproject\eShopSolution\eShopSolution.ViewModels\obj\Debug\netcoreapp3.1\eShopSolution.ViewModels.pdb
+C:\myproject\eShopSolution\eShopSolution.ViewModels\obj\Debug\netcoreapp3.1\eShopSolution.ViewModels.csprojAssemblyReference.cache
