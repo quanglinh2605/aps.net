@@ -2,7 +2,7 @@
 @model PagedResult<eShopSolution.ViewModels.Catalog.Products.ProductVm>
 
 @{
-    ViewData["Title"] = "Danh sach nguoi dung";
+    ViewData["Title"] = "Danh sach san pham";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -98,7 +98,8 @@
                             <td>
                                 @Html.ActionLink("Sua", "Edit", new { id = item.Id }) |
                                 @Html.ActionLink("Xem", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Xoa", "Delete", new { id = item.Id })
+                                @Html.ActionLink("Xoa", "Delete", new { id = item.Id }) |
+                                @Html.ActionLink("Gan danh muc", "CategoryAssign", new { id = item.Id })
                             </td>
                         </tr>
                     }
